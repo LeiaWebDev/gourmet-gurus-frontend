@@ -3,40 +3,61 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  --clr-accent: #f36527;
+  --gradient: linear-gradient(
+    45deg,
+    #d65db1,
+    #ff6f91,
+    #ff9671,
+    #ffc75f,
+    #f9f871
+  );
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.create-workshop-form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 2rem;
+  border: 5px solid var(--clr-accent);
+  border-radius: 5%;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+select {
+  width: 80%;
+  padding: 16px 20px;
+  border-radius: 4px;
+  background-color: #f1f1f1a1;
+  accent-color: var(--clr-accent);
+  border: 3px solid yellow;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+input[type="text"],
+[type="number"],
+[type="file"],
+[type="date"] {
+  width: 100%;
+  padding: 0.8rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  color: var(--clr-accent);
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type="text"],
+[type="number"],
+[type="file"],
+[type="date"]:focus {
+  border: 3px solid yellow;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.create-workshop-form label {
+  color: var(--clr-accent);
 }
-
-.card {
-  padding: 2em;
+.submit-button:hover {
+  background-color: var(--clr-accent);
 }
-
-.read-the-docs {
-  color: #888;
+.pagetitle {
+  font-weight: lighter;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
