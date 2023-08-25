@@ -11,12 +11,12 @@ myApi.interceptors.request.use((request)=>{
 })
 
 myApi.verifyUser = function (){
-    return myApi.get("/api/auth/verify")
+    return myApi.get("/auth/verify")
 }
 
-myApi.getAllBookings = function (){
-    return myApi.get("/api/bookings")
-}
+// myApi.getAllBookings = function (){
+//     return myApi.get("/api/bookings")
+// }
 
 
 

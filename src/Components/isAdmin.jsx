@@ -4,7 +4,7 @@ import { UserContext } from '../context/AuthContext'
 import { Navigate, Outlet } from 'react-router-dom'
 
 
-function isAdmin() {
+function IsAdmin() {
     const {user, isLoggedIn, isLoading} = useContext(UserContext)
     if(isLoading){
       return <div>Loading...</div>
@@ -22,4 +22,4 @@ function isAdmin() {
     )
   }
 
-export default isAdmin
+export default IsAdmin

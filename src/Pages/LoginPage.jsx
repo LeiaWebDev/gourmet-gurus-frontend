@@ -3,35 +3,33 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import { useContext } from 'react'
-import AuthContext from '../context/AuthContext';
+// import {AuthContext} from '../context/AuthContext';
 import { UserContext } from '../context/AuthContext';
 
-
 const API_URL = import.meta.env.VITE_API_URL
-
 
 function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const navigate = useNavigate()
-  // const {authenticateUser} = useContext(AuthContext)
   const {authenticateUser} = useContext(UserContext)
-
+  
 
   async function handleSubmit(event){
     event.preventDefault()
     const loginUser = {email, password}
     try {
-      await axios.post(`${API_URL}/api/auth/login`, loginUser)
+      const response = await axios.post(`${API_URL}/api/auth/login`, loginUser)
       localStorage.setItem("token", response.data.token)
       authenticateUser()
       navigate("/")
-      
+
     } catch (error) {
       console.log(error)
       if(event.response){
         setError(event.response.data.message)
+        
         setTimeout(()=>{
           setError("")
         }, 3000)
@@ -69,7 +67,7 @@ function LoginPage() {
                     </div>
                 </div>
                 <p className="error">{error}</p>
-                <button>Login</button>
+                <button type="submit">Login</button>
             </form>
     </div>
   )

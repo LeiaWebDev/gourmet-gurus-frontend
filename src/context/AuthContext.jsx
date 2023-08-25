@@ -1,8 +1,8 @@
 import React from 'react'
 import { createContext } from 'react'
 import { useState, useEffect } from 'react'
-export const UserContext = createContext()
 import myApi from '../api/service'
+export const UserContext = createContext()
 
 
 function AuthContext({children}) {
@@ -12,7 +12,7 @@ function AuthContext({children}) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     function authenticateUser(){
-        console.log("here")
+        
         myApi
             .verifyUser()
             .then((response)=>{
