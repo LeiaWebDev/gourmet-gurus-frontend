@@ -46,9 +46,26 @@ function CreateWorkshopPage() {
       });
   };
 
+  //   const [picture, setPicture] = useState("")
+  //   const [pictures, setPictures] = useState([])
+
+  // async function handleSubmit(e) {
+  //   e.preventDefault()
+
+  //   try {
+  //     const fd = new FormData()
+  //     fd.append("title", title)
+  //     fd.append("pictue", picture)
+  //     const response = await axios.post("http://localust:5005/api", fd)
+  //     setPictures((current)=> [...current, response.data])
+  //   }catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
   return (
     <>
-    <h1 className="pagetitle">Create a workshop</h1>
+      <h1 className="pagetitle">Create a workshop</h1>
       <div className="create-workshop-form">
         <div>
           <label>Workshop Title</label>
@@ -93,6 +110,7 @@ function CreateWorkshopPage() {
             <option value="3h">3h</option>
           </select>
         </div>
+
         <div>
           <label>Max Participants</label>
           <input
@@ -142,15 +160,18 @@ function CreateWorkshopPage() {
           ></input>
         </div>
         <div>
-          <label>Sessions Available</label>
+          <label>Available Sessions</label>
           <input
             type="date"
             name="date"
             value={sessionsAvailable}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(e) => setSessionsAvailable(e.target.value)}
           ></input>
         </div>
-        <button className="submit-button" onClick={handleSubmit}> Submit </button>
+        <button className="submit-button" onClick={handleSubmit}>
+          {" "}
+          Create{" "}
+        </button>
       </div>
     </>
   );

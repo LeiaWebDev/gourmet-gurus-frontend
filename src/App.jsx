@@ -26,6 +26,9 @@ import IsTeacher from "./Components/IsTeacher"
 
 
 function App() {
+ 
+
+
   // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   // function storeUser(userArg) {
@@ -37,6 +40,7 @@ function App() {
   //     setUser(null);
   //     localStorage.removeItem("user");
   // }
+
   
 
   return (
