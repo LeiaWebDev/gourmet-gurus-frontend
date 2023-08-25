@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
+// import { UserContext } from '../context/AuthContext';
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -10,6 +11,8 @@ function SignupPage() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const navigate = useNavigate()
+  // const {authenticateUser} = useContext(UserContext)
+
 
     async function handleSubmit(event){
       event.preventDefault()
