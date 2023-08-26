@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
-
+import './createWorkshop.css'
 const API_URL = import.meta.env.VITE_API_URL;
 
 function CreateWorkshopPage() {
@@ -20,7 +20,9 @@ function CreateWorkshopPage() {
   const [price, setPrice] = useState("");
   const [sessionsAvailable, setSessionsAvailable] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log("User from localStorage:", user);
+  const teacherId = user.teacherId
   const handleSubmit = () => {
     const workshopToCreate = {
       title,

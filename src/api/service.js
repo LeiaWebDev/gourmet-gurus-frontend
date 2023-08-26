@@ -14,10 +14,9 @@ myApi.verifyUser = function (){
     return myApi.get("/auth/verify")
 }
 
-// myApi.getAllBookings = function (){
-//     return myApi.get("/api/bookings")
-// }
-
+myApi.getWorkshopsByTeacherId = function (teacherId) {
+    return myApi.get(`/api/workshops?teacherId=${teacherId}`)
+}
 
 
 export default myApi
