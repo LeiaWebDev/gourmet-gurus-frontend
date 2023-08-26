@@ -18,7 +18,6 @@ function CreateWorkshopPage() {
   const [location, setLocation] = useState("");
   const [workshopMaterial, setWorkshopMaterial] = useState("");
   const [price, setPrice] = useState("");
-  const [teacherId, setTeacherId] = useState("");
   const [sessionsAvailable, setSessionsAvailable] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
