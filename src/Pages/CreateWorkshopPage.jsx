@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,6 @@ function CreateWorkshopPage() {
   const [location, setLocation] = useState("");
   const [workshopMaterial, setWorkshopMaterial] = useState("");
   const [price, setPrice] = useState("");
-  const [teacherId, setTeacherId] = useState("");
   const [sessionsAvailable, setSessionsAvailable] = useState("");
 
   const handleSubmit = () => {
@@ -90,7 +89,7 @@ function CreateWorkshopPage() {
       ></input>
       <label>Workshop Photos</label>
       <input
-        type="image"
+        type="text"
         name="workshopPics"
         value={workshopPics}
         onChange={(e) => setWorkshopPics(e.target.value)}
@@ -116,13 +115,7 @@ function CreateWorkshopPage() {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       ></input>
-      <label>Sessions Available</label>
-      <input
-        type="date"
-        name="date"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      ></input>
+      
 
       <button onClick={handleSubmit}> Submit </button>
     </div>
