@@ -26,6 +26,9 @@ import IsTeacher from "./Components/IsTeacher"
 
 
 function App() {
+ 
+
+
   // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   // function storeUser(userArg) {
@@ -37,6 +40,7 @@ function App() {
   //     setUser(null);
   //     localStorage.removeItem("user");
   // }
+
   
 
   return (
@@ -60,10 +64,10 @@ function App() {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>
+          <Route path="/create-workshop" element={<CreateWorkshopPage />} />
         
         <Route path="/create-workshop" element={<CreateWorkshopPage />} />
         <Route path="/" element={<IsTeacher/>}>
-          
           <Route path="/see-workshops" element={<SeeMyWorkshops />} />
           <Route path="/update-workshop" element={<UpdateMyWorkshopPage />} />
           <Route path="/see-sessions" element={<SeeMySessions />} />
