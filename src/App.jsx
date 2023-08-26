@@ -65,9 +65,9 @@ function App() {
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>
           <Route path="/create-workshop" element={<CreateWorkshopPage />} />
+          <Route path="/see-workshops" element={<SeeMyWorkshops />} />
         
         <Route path="/" element={<IsTeacher/>}>
-          <Route path="/see-workshops" element={<SeeMyWorkshops />} />
           <Route path="/update-workshop" element={<UpdateMyWorkshopPage />} />
           <Route path="/see-sessions" element={<SeeMySessions />} />
           <Route path="/create-session" element={<CreateSessionPage />} />
