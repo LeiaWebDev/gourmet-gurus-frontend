@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/AuthContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function CreateWorkshopPage() {
   const navigate = useNavigate();
+  const { authenticateUser } = useContext(UserContext);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [subCategory, setSubCategory] = useState("");
@@ -18,6 +20,7 @@ function CreateWorkshopPage() {
   const [price, setPrice] = useState("");
   const [teacherId, setTeacherId] = useState("");
   const [sessionsAvailable, setSessionsAvailable] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = () => {
     const workshopToCreate = {
@@ -39,6 +42,7 @@ function CreateWorkshopPage() {
       .then((response) => {
         console.log(response);
         const newWorkshop = response.data;
+        setSuccessMessage("Workshop successfully created!");
         navigate("/see-workshops");
       })
       .catch((error) => {
@@ -46,25 +50,9 @@ function CreateWorkshopPage() {
       });
   };
 
-  //   const [picture, setPicture] = useState("")
-  //   const [pictures, setPictures] = useState([])
-
-  // async function handleSubmit(e) {
-  //   e.preventDefault()
-
-  //   try {
-  //     const fd = new FormData()
-  //     fd.append("title", title)
-  //     fd.append("pictue", picture)
-  //     const response = await axios.post("http://localust:5005/api", fd)
-  //     setPictures((current)=> [...current, response.data])
-  //   }catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   return (
     <>
+      {successMessage && <p>{successMessage}</p>}
       <h1 className="pagetitle">Create a workshop</h1>
       <div className="create-workshop-form">
         <div>
@@ -122,6 +110,15 @@ function CreateWorkshopPage() {
             onChange={(e) => setMaxParticipants(e.target.value)}
           ></input>
         </div>
+        <label>Description</label>
+        <div>
+          <input
+            type="text"
+            name="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></input>
+        </div>
         <div>
           <label>Workshop Photos</label>
           <input
@@ -160,7 +157,7 @@ function CreateWorkshopPage() {
           ></input>
         </div>
         <div>
-          <label>Available Sessions</label>
+          <label>Sessions Available</label>
           <input
             type="date"
             name="date"
@@ -168,6 +165,13 @@ function CreateWorkshopPage() {
             onChange={(e) => setSessionsAvailable(e.target.value)}
           ></input>
         </div>
+        <label> Teacher's Id</label>
+        <input
+          type="text"
+          name="teacherId"
+          value={teacherId}
+          onChange={(e) => setTeacherId(e.target.value)}
+        ></input>
         <button className="submit-button" onClick={handleSubmit}>
           {" "}
           Create{" "}
@@ -178,3 +182,20 @@ function CreateWorkshopPage() {
 }
 
 export default CreateWorkshopPage;
+
+//   const [picture, setPicture] = useState("")
+//   const [pictures, setPictures] = useState([])
+
+// async function handleSubmit(e) {
+//   e.preventDefault()
+
+//   try {
+//     const fd = new FormData()
+//     fd.append("title", title)
+//     fd.append("pictue", picture)
+//     const response = await axios.post("http://localust:5005/api", fd)
+//     setPictures((current)=> [...current, response.data])
+//   }catch (error) {
+//     console.log(error);
+//   }
+// }
