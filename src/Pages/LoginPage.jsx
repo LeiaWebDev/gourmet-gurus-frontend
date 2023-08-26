@@ -27,8 +27,8 @@ function LoginPage() {
 
     } catch (error) {
       console.log(error)
-      if(event.response){
-        setError(event.response.data.message)
+      if(error.response){
+        setError(error.response.data.message)
         
         setTimeout(()=>{
           setError("")

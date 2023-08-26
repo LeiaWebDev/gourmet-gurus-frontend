@@ -20,7 +20,7 @@ function CreateWorkshopPage() {
   const [price, setPrice] = useState("");
   const [sessionsAvailable, setSessionsAvailable] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-
+  
   const handleSubmit = () => {
     const workshopToCreate = {
       title,

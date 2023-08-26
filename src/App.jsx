@@ -29,27 +29,27 @@ function App() {
  
 
 
-  // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
-  // function storeUser(userArg) {
-  //     setUser(userArg);
-  //     localStorage.setItem("user", JSON.stringify(userArg));
-  // }
+  function storeUser(userArg) {
+      setUser(userArg);
+      localStorage.setItem("user", JSON.stringify(userArg));
+  }
 
-  // function removeUser() {
-  //     setUser(null);
-  //     localStorage.removeItem("user");
-  // }
+  function removeUser() {
+      setUser(null);
+      localStorage.removeItem("user");
+  }
 
   
 
   return (
     <>
-        {/* {user ? <NavBar removeUser={removeUser} user={user}/> : <NavBar/>} */}
+        {user ? <NavBar removeUser={removeUser} user={user}/> : <NavBar/>}
 
-        {/* {user && (
-        <h2 className="welcome">Welcome {user.firstName} {user.lastName}</h2>
-      )} */}
+        {user && (
+        <h1 className="welcome">Welcome {user.firstName} {user.lastName}</h1>
+        )}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
