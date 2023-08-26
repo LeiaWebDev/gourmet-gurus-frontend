@@ -66,7 +66,6 @@ function App() {
         </Route>
           <Route path="/create-workshop" element={<CreateWorkshopPage />} />
         
-        <Route path="/create-workshop" element={<CreateWorkshopPage />} />
         <Route path="/" element={<IsTeacher/>}>
           <Route path="/see-workshops" element={<SeeMyWorkshops />} />
           <Route path="/update-workshop" element={<UpdateMyWorkshopPage />} />
