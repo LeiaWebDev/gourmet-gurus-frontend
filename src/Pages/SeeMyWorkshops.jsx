@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import myApi from "../api/service";
+import { Link } from "react-router-dom";
 
 function SeeMyWorkshops() {
   const [myWorkshops, setMyWorkshops] = useState([]);
@@ -17,7 +18,7 @@ function SeeMyWorkshops() {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });   
   }, [teacherId]);
 
   return (
@@ -27,8 +28,14 @@ function SeeMyWorkshops() {
         <div key={workshop._id}>
           <h2>{workshop.title}</h2>
           <p>{workshop.description}</p>
+          <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
         </div>
       ))}
+
+      {/* <div key= {workshop._id}>
+        <h2>{workshop.title}</h2>
+        <p>{workshop.description}</p>
+      </div> */}
     </div>
   );
 }
