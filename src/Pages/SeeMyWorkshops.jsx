@@ -9,7 +9,6 @@ function SeeMyWorkshops() {
   const teacherId = user._id;
   console.log(teacherId);
   useEffect(() => {
-
     myApi
       .getWorkshopsByTeacherId(teacherId)
       .then((response) => {
@@ -18,24 +17,45 @@ function SeeMyWorkshops() {
       })
       .catch((error) => {
         console.log(error);
-      });   
-  }, [teacherId]);
+      });
+  }, []);
+
+  const handleDeleteWorkshop = (workshopId) => {
+    myApi
+      .deleteWorkshopById(workshopId)
+      .then((response) => {
+        console.log("Workshop deleted successfully:", response);
+        const updatedWorkshops = myWorkshops.filter(
+          (workshop) => workshop.id !== workshopId
+        );
+        setMyWorkshops(updatedWorkshops);
+      })
+      .catch((error) => {
+        console.log("Error deleting workshop:", error);
+      });
+  };
 
   return (
     <div>
       <h1>My Workshops</h1>
-      {myWorkshops.map((workshop) => (
-        <div key={workshop._id}>
-          <h2>{workshop.title}</h2>
-          <p>{workshop.description}</p>
-          <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
-        </div>
-      ))}
-
-      {/* <div key= {workshop._id}>
-        <h2>{workshop.title}</h2>
-        <p>{workshop.description}</p>
-      </div> */}
+      <div>
+        {myWorkshops.map((workshop) => (
+          <div key={workshop._id} id="workshop-container">
+            <h2>{workshop.title}</h2>
+            <p>{workshop.description}</p>
+            <p>{workshop.price}</p>
+            <p>{workshop.duration}</p>
+            {/* <div>  <img className="workshop-pics" src={workshop.workshopPics} /> </div> */}
+            <button>
+              <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
+            </button>
+            <button onClick={() => handleDeleteWorkshop(workshop.id)}>
+              {" "}
+              Delete{" "}
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

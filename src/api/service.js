@@ -34,4 +34,8 @@ myApi.updateWorkshopById = function (workshopId, updatedData) {
   return myApi.put(`/api/workshops/${workshopId}, updatedData`);
 };
 
+myApi.deleteWorkshopById = function (workshopId) {
+    return myApi.delete(`/api/workshops/${workshopId}`)
+}
+
 export default myApi;
