@@ -6,7 +6,13 @@ const myApi = axios.create({
 })
 
 myApi.interceptors.request.use((request)=>{
-    request.headers.Authorization = `Bearer ${localStorage.getItem("token")}`
+    const token = localStorage.getItem("token")
+    console.log("Token from localStorage:", token); // Check if token is retrieved
+    if(token){
+        request.headers.Authorization = `Bearer ${token}`
+    console.log("Authorization header set with token:", request.headers.Authorization); // Check if header is set
+    }
+    
     return request
 })
 
@@ -14,9 +20,9 @@ myApi.verifyUser = function (){
     return myApi.get("/auth/verify")
 }
 
-myApi.getWorkshopsByTeacherId = function (teacherId) {
-    return myApi.get(`/api/workshops?teacherId=${teacherId}`)
-}
+// myApi.getWorkshopsByTeacherId = function (teacherId) {
+//     return myApi.get(`/api/workshops?teacherId=${teacherId}`)
+// }
 
 
 export default myApi

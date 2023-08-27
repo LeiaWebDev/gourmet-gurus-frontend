@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios"
 import { useContext } from 'react'
 // import {AuthContext} from '../context/AuthContext';
@@ -11,7 +11,7 @@ const API_URL = import.meta.env.VITE_API_URL
 function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
   const navigate = useNavigate()
   const {authenticateUser} = useContext(UserContext)
   
@@ -21,7 +21,7 @@ function LoginPage() {
     const loginUser = {email, password}
     try {
       const response = await axios.post(`${API_URL}/api/auth/login`, loginUser)
-      localStorage.setItem("token", response.data.token)
+      localStorage.setItem("token", response.data.token) // store token
     //   localStorage.setItem("user", JSON.stringify(response.data.user))
     //   console.log("User stored in localStorage:", response.data.user);
       authenticateUser()
@@ -29,16 +29,11 @@ function LoginPage() {
 
     } catch (error) {
       console.log(error)
-      if(error.response){
-        setError(error.response.data.message)
-        
-        setTimeout(()=>{
-          setError("")
-        }, 3000)
+        setErrorMessage(error.response.data.message)
       }
     }
     
-  }
+  
     return (
       <div>
         <h1 className="login">Login</h1>
@@ -68,9 +63,13 @@ function LoginPage() {
                         />
                     </div>
                 </div>
-                <p className="error">{error}</p>
+                <p className="error">{errorMessage}</p>
                 <button type="submit">Login</button>
             </form>
+            { errorMessage && <p className="error-message">{errorMessage}</p> }
+ 
+            <p>Don't have an account yet?</p>
+             <Link to={"/signup"}> Sign Up</Link>
     </div>
   )
 }

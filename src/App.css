@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,3 +6,20 @@
   text-align: center;
 
 }
+=======
+/* #root { */
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
+  /* text-align: center;
+  --clr-accent: #f36527;
+  --gradient: linear-gradient(
+    45deg,
+    #d65db1,
+    #ff6f91,
+    #ff9671,
+    #ffc75f,
+    #f9f871
+  );
+} */
+>>>>>>> 49d7f03fde0cd6d60bf0df283c8a1966590cf328
