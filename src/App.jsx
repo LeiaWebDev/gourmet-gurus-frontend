@@ -26,22 +26,19 @@ import IsTeacher from "./Components/IsTeacher"
 
 
 function App() {
- 
 
-
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(localStorage.getItem("token"));
   function storeUser(userArg) {
       setUser(userArg);
-      localStorage.setItem("user", JSON.stringify(userArg));
+      // localStorage.setItem("user", JSON.stringify(userArg));
+      localStorage.setItem("token", JSON.stringify(userArg));
   }
-
   function removeUser() {
       setUser(null);
-      localStorage.removeItem("user");
+      // localStorage.removeItem("user");
+      localStorage.removeItem("token");
   }
-
-  
 
   return (
     <>

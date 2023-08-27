@@ -10,14 +10,17 @@ function AuthContext({children}) {
     // perform login logic and set user state
     const [isLoading, setIsLoading] = useState(true)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+   
+    
     function authenticateUser(){
-        
+        const token = localStorage.getItem("token"); // retrieve the token inside the function
         myApi
             .verifyUser()
             .then((response)=>{
-                setIsLoading(true)
-                setIsLoggedIn(false)
+                // setIsLoading(true)
+                // setIsLoggedIn(false)
+                setIsLoading(false)
+                setIsLoggedIn(true)
                 setUser(response.data.user)
             })
             .catch((error)=>{
@@ -32,7 +35,16 @@ function AuthContext({children}) {
         authenticateUser()
     },[])
 
+    // const removeToken = () =>{
+    //     localStorage.removeItem("authToken")
+    // }
+    // const logOutUser = () =>{
+    //     removeToken()
+    //     // and update the state variables
+    //     authenticateUser()
+    // }
   return (
+    // value = logOutUser
     <UserContext.Provider value={{authenticateUser, isLoggedIn, isLoading}}>
          {children}
     </UserContext.Provider>

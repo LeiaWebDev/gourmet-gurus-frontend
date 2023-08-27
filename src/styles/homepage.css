@@ -1,0 +1,10 @@
+*{
+    display: flex;
+    text-align: center;
+}
+
+.audience-persona{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
