@@ -53,6 +53,7 @@ function SeeMyWorkshops() {
               {" "}
               Delete{" "}
             </button>
+            <button> <Link to={`/see-sessions/${workshop._id}`}>Available Sessions</Link> </button>
           </div>
         ))}
       </div>

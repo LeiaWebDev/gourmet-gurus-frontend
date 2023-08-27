@@ -65,8 +65,8 @@ function App() {
           <Route path="/see-workshops" element={<SeeMyWorkshops />} />
           <Route path="/update-workshop/:workshopId" element={<UpdateMyWorkshopPage />} />
         
-        <Route path="/" element={<IsTeacher/>}>
           <Route path="/see-sessions" element={<SeeMySessions />} />
+        <Route path="/" element={<IsTeacher/>}>
           <Route path="/create-session" element={<CreateSessionPage />} />
         </Route>
        

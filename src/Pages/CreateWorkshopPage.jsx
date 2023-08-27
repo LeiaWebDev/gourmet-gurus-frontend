@@ -2,11 +2,12 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
-import "./createWorkshop.css";
+// import "./createWorkshop.css";
+import "../styles/createworkshop.css";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function CreateWorkshopPage() {
-  // const [workshop, setWorkshop] = useState({})
+  const [newWorkshop, setNewWorkshop] = useState(null);
   const navigate = useNavigate();
   const { authenticateUser } = useContext(UserContext);
   const [title, setTitle] = useState("");
@@ -24,7 +25,7 @@ function CreateWorkshopPage() {
   const [successMessage, setSuccessMessage] = useState("");
 
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log("User from localStorage:", user);
+  // console.log("User from localStorage:", user);
   //   const teacherId = user.teacherId
   const handleSubmit = () => {
     const workshopToCreate = {
@@ -42,12 +43,12 @@ function CreateWorkshopPage() {
       sessionsAvailable,
     };
     axios
-      .post(`${API_URL}/api/create-workshop`, workshopToCreate)
+      .post(`${API_URL}/api/workshops/create-workshop`, workshopToCreate)
       .then((response) => {
-        console.log(response);
-        const newWorkshop = response.data;
+        const createdWorkshop = response.data;
 
         setSuccessMessage("Workshop successfully created!");
+        setNewWorkshop(createdWorkshop);
         navigate("/see-workshops");
       })
       .catch((error) => {
@@ -172,13 +173,13 @@ function CreateWorkshopPage() {
           ></input>
         </div>
         <div>
-            <label> Teacher's Id</label>
-            <input
-              type="text"
-              name="teacherId"
-              value={teacherId}
-              onChange={(e) => setTeacherId(e.target.value)}
-            ></input>
+          <label> Teacher's Id</label>
+          <input
+            type="text"
+            name="teacherId"
+            value={teacherId}
+            onChange={(e) => setTeacherId(e.target.value)}
+          ></input>
         </div>
         <button className="submit-button" onClick={handleSubmit}>
           {" "}
