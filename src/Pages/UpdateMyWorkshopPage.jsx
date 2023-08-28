@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import myApi from "../api/service";
 
 function UpdateMyWorkshopPage() {
-  const { workshopId } = useParams();
+  const { teacherId, workshopId } = useParams();
+
   const navigate = useNavigate();
   const [workshop, setWorkshop] = useState({});
   const [updatedTitle, setUpdatedTitle] = useState("");
@@ -19,7 +20,7 @@ function UpdateMyWorkshopPage() {
   const [updatedPrice, setUpdatedPrice] = useState("");
   const [updatedSessionsAvailable, setUpdatedSessionsAvailable] = useState("");
   const [updatedSuccessMessage, setUpdatedSuccessMessage] = useState("");
-  const [teacherId, setTeacherId] = useState("");
+  // const [teacherId, setTeacherId] = useState("");
 
   useEffect(() => {
     myApi
@@ -38,7 +39,7 @@ function UpdateMyWorkshopPage() {
         setUpdatedWorkshopMaterial(workshop.workshopMaterial);
         setUpdatedPrice(workshop.price);
         setUpdatedSessionsAvailable(workshop.sessionsAvailable);
-        setTeacherId(workshopData.teacherId);
+        // setTeacherId(workshopData.teacherId);
       })
       .catch((error) => {
         console.log(error);
@@ -46,7 +47,7 @@ function UpdateMyWorkshopPage() {
   }, [workshopId]);
 
   const handleSubmit = () => {
-    const updatedWorkshop = {
+    const updatedData = {
       title: updatedTitle,
       category: updatedCategory,
       subCategory: updatedSubCategory,
@@ -58,10 +59,10 @@ function UpdateMyWorkshopPage() {
       workshopMaterial: updatedWorkshopMaterial,
       price: updatedPrice,
       sessionsAvailable: updatedSessionsAvailable,
-      teacherId: teacherId,
+      // teacherId: teacherId,
     };
     myApi
-      .updateWorkshopById(workshopId, updatedWorkshop)
+      .updateWorkshopById(teacherId, workshopId, updatedData)
       .then((response) => {
         console.log("Workshop updated successfully:", response);
         navigate("/see-workshops");
@@ -193,7 +194,7 @@ function UpdateMyWorkshopPage() {
           ></input>
         </div>
 
-        <div>
+        {/* <div>
           <label>Sessions Available</label>
           <input
             type="date"
@@ -201,8 +202,8 @@ function UpdateMyWorkshopPage() {
             value={updatedSessionsAvailable}
             onChange={(e) => setUpdatedSessionsAvailable(e.target.value)}
           ></input>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <label> Teacher's Id</label>
           <input
             type="text"
@@ -210,7 +211,7 @@ function UpdateMyWorkshopPage() {
             value={teacherId}
             readOnly
           ></input>
-        </div>
+        </div> */}
         <button className="submit-button" onClick={handleSubmit}>
           {" "}
           Update workshop{" "}

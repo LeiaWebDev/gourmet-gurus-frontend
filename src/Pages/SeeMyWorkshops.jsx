@@ -7,10 +7,11 @@ function SeeMyWorkshops() {
   const user = JSON.parse(localStorage.getItem("user"));
   console.log("User from localStorage:", user);
   const teacherId = user._id;
+
   console.log(teacherId);
   useEffect(() => {
     myApi
-      .getWorkshopsByTeacherId(teacherId)
+      .getAllWorkshopsByTeacherId(teacherId)
       .then((response) => {
         const createdWorkshops = response.data;
         setMyWorkshops(createdWorkshops);
@@ -22,7 +23,7 @@ function SeeMyWorkshops() {
 
   const handleDeleteWorkshop = (workshopId) => {
     myApi
-      .deleteWorkshopById(workshopId)
+      .deleteWorkshopByTeacher(teacherId, workshopId)
       .then((response) => {
         console.log("Workshop deleted successfully:", response);
         const updatedWorkshops = myWorkshops.filter(
@@ -43,17 +44,23 @@ function SeeMyWorkshops() {
           <div key={workshop._id} id="workshop-container">
             <h2>{workshop.title}</h2>
             <p>{workshop.description}</p>
-            <p>{workshop.price}</p>
+            <p>{workshop.price}€</p>
             <p>{workshop.duration}</p>
+            <p>{workshop.workshopMaterial}</p>
             {/* <div>  <img className="workshop-pics" src={workshop.workshopPics} /> </div> */}
             <button>
               <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
             </button>
-            <button onClick={() => handleDeleteWorkshop(workshop.id)}>
+            <button onClick={() => handleDeleteWorkshop(workshop._id)}>
               {" "}
               Delete{" "}
             </button>
-            <button> <Link to={`/see-sessions/${workshop._id}`}>Available Sessions</Link> </button>
+            <button>
+              {" "}
+              <Link to={`/see-sessions/${workshop._id}`}>
+                Available Sessions
+              </Link>{" "}
+            </button>
           </div>
         ))}
       </div>
