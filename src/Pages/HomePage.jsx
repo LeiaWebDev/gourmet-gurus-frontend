@@ -33,11 +33,9 @@ function HomePage() {
           <Search />
         </div>
 
-        <div className="create-workshop-area">
+        <div className='create-workshop-area'>
           <Link to={`/create-workshop`}>
-            <button className="button-create-workshop">
-              Create a workshop
-            </button>
+            <button className="button-create-workshop">Create a workshop</button>
           </Link>
         </div>
       </div>
