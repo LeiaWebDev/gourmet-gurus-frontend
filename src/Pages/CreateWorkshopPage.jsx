@@ -23,7 +23,7 @@ function CreateWorkshopPage() {
   const [sessionsAvailable, setSessionsAvailable] = useState("");
   const [teacherId, setTeacherId] = useState(authenticateUser._id || "");
   const [successMessage, setSuccessMessage] = useState("");
-
+  const [sessionsAmount, setSessionsAmount] = useState(0);
   const user = JSON.parse(localStorage.getItem("user"));
   // console.log("User from localStorage:", user);
   //   const teacherId = user.teacherId
@@ -40,7 +40,7 @@ function CreateWorkshopPage() {
       workshopMaterial,
       price,
       teacherId,
-      sessionsAvailable,
+      sessionsAvailable: sessionsAvailable.map((el) => el.value),
     };
     axios
       .post(`${API_URL}/api/workshops/create-workshop`, workshopToCreate)
@@ -164,14 +164,45 @@ function CreateWorkshopPage() {
           ></input>
         </div>
         <div>
-          <label>Sessions Available</label>
-          <input
-            type="date"
-            name="date"
-            value={sessionsAvailable}
-            onChange={(e) => setSessionsAvailable(e.target.value)}
-          ></input>
+          <fieldset>
+            <legend>Sessions Available</legend>
+          </fieldset>
+          {new Array(sessionsAmount).fill(0).map((el, index) => {
+            console.log(el, index, sessionsAmount);
+            const currentSession = sessionsAvailable[index];
+            return (
+              <div key={currentSession?.id}>
+                <input
+                  name="date"
+                  type="datetime-local"
+                  value={currentSession?.value}
+                  onBlur={(e) =>
+                    setSessionsAvailable([
+                      ...sessionsAvailable,
+                      { id: crypto.randomUUID(), value: e.target.value },
+                    ])
+                  }
+                ></input>
+                <button
+                  onClick={() => {
+                    console.log(currentSession);
+                    setSessionsAvailable(
+                      sessionsAvailable.filter(
+                        (session) => session.id !== currentSession.id
+                      )
+                    );
+                    setSessionsAmount(sessionsAmount - 1);
+                  }}
+                >
+                  X
+                </button>
+              </div>
+            );
+          })}
         </div>
+        <button onClick={() => setSessionsAmount(sessionsAmount + 1)}>
+          Add A session
+        </button>
         <div>
           <label> Teacher's Id</label>
           <input
