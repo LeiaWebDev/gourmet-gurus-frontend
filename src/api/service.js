@@ -49,6 +49,10 @@ myApi.getWorkshopByTeacherId = function (teacherId, workshopId) {
   return myApi.get(`/api/workshops/${teacherId}/${workshopId}`);
 };
 
+// myApi.getWorkshopsByTeacherId = function (teacherId) {
+//     return myApi.get(`/api/workshops?teacherId=${teacherId}`)
+// }
+
 myApi.deleteWorkshopByTeacher = function (teacherId, workshopId) {
   return myApi.delete(`/api/workshops/${teacherId}/${workshopId}`);
 };
@@ -57,6 +61,7 @@ myApi.deleteWorkshopByTeacher = function (teacherId, workshopId) {
 myApi.getTeacherDetails = function (workshopId, teacherId) {
   return myApi.get(`/api/workshops/${workshopId}/${teacherId}`);
 };
+
 
 myApi.createWorkshop = function (workshopData) {
   return myApi.post("/api/workshops/create-workshop", workshopData);
@@ -90,32 +95,13 @@ myApi.getAWorkshopSession = function (workshopId) {
   return myApi.get(`/api/workshops/${workshopId}/sessions/`);
 };
 
-// myApi.getWorkshopsByTeacherId = function (teacherId) {
-//     return myApi.get(`/api/workshops?teacherId=${teacherId}`)
-// }
-
-//for one workshop page, get teacher details for a specific workshop
-myApi.getTeacherDetails = function(workshopId, teacherId){
-    return myApi.get(`/api/workshops/${workshopId}/${teacherId}`)
-}
 
 
-myApi.getAllWorkshops = function(){
-    return myApi.get(`/api/workshops`)
-}
-
-// myApi.getWorkshopById = function(workshopId){
-//     return myApi.get(`/api/workshops/${workshopId}`)
-// }
 
 
-myApi.getBookingDetails = function(bookingId){
-    return myApi.get(`/api/bookings/${bookingId}/bookingdetails/`)
-}
 
-myApi.getAWorkshopSession = function(workshopId){
-    return myApi.get(`/api/workshops/${workshopId}/sessions/`)
-}
+
+
 
 
 
