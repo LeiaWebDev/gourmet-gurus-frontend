@@ -1,32 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import myApi from "../api/service";
+import { UserContext } from "../context/AuthContext";
 
 function SeeMySessions() {
   const { workshopId } = useParams();
   const [sessions, setSessions] = useState(null);
-
+  const { user } = useContext(UserContext);
   useEffect(() => {
+    console.log(user, workshopId);
+    if (!user) return;
     myApi
-      .getAWorkshopSession(workshopId)
+      .getExistingSessions(user._id, workshopId)
       .then((response) => {
         setSessions(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error fetching sesssions:", error);
       });
-  }, [workshopId]);
-
+  }, [workshopId, user]);
+  console.log(sessions);
+  if (!sessions) {
+    return <div className="loading">Loading...</div>;
+  }
   return (
     <div>
       <h1>My workshop sessions</h1>
-      {/* {workshop.sessionsAvailable && workshop.sessionsAvailable.length > 0 ? (
-        workshop.sessionsAvailable.map((sessionDate, index) => (
-            <div key={index}>
-            <h2></h2>
-
-        ))
-       )} */}
+      <ul>
+        {sessions.map((session, index) => (
+          <li key={index}>
+            {" "}
+            {new Intl.DateTimeFormat(undefined, {
+              timeStyle: "short",
+              dateStyle: "long",
+            }).format(new Date(session))}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

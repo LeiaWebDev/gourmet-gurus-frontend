@@ -74,6 +74,18 @@ myApi.getBookingDetails = function (bookingId) {
   return myApi.get(`/api/bookings/${bookingId}/bookingdetails/`);
 };
 
+//SESSIONS//
+
+myApi.getExistingSessions = function (teacherId, workshopId) {
+  return myApi.get(`/api/workshops/${teacherId}/${workshopId}/sessions`);
+};
+
+myApi.addSessionToWorkshop = function (teacherId, workshopId, newSesion) {
+  return myApi.post(`/api/workshops/${teacherId}/${workshopId}/sessions`, {
+    newSession: newSesion,
+  });
+};
+
 myApi.getAWorkshopSession = function (workshopId) {
   return myApi.get(`/api/workshops/${workshopId}/sessions/`);
 };

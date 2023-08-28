@@ -58,7 +58,7 @@ function SeeMyWorkshops() {
             <button>
               {" "}
               <Link to={`/see-sessions/${workshop._id}`}>
-                Available Sessions
+                See available sessions
               </Link>{" "}
             </button>
           </div>
