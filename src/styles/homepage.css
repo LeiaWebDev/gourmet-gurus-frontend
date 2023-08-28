@@ -1,10 +1,14 @@
 *{
     display: flex;
     text-align: center;
-}
+    
 
 .audience-persona{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 200px;
+    padding-top: 100px;
+}
+
 }

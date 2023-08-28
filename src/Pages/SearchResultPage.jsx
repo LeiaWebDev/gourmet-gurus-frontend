@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams, Link } from 'react-router-dom';
+import WorkshopCard from '../Components/WorkshopCard';
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -14,7 +15,7 @@ function SearchResultPage() {
     useEffect(() => {
       console.log(search);
       axios
-          .get(`${API_URL}?q=${search}`)
+          .get(`${API_URL}/search-result?q=${search}`)
           .then((response) => {
               console.log(response);
               setFilteredAds(response.data);
@@ -31,33 +32,7 @@ function SearchResultPage() {
         {filteredWorkshops.map((workshop)=>{
           return (
             <div className='search-results' key={workshop._id}>
-                <div>
-                  <Link to={`/workshops/${workshop._id}`}>
-                    <h3>{workshop.title}</h3>
-                  </Link>
-                  <img src={workshop.workshopPics} alt={workshop.title}></img>
-                  <h3>Duration: {workshop.duration}</h3>
-                  <h3>Max participants: {workshop.maxParticipants}</h3>
-                  <h3>Workshop material : {workshop.workshopMaterial}</h3>
-                  <p>{workshop.price}$/pers</p>
-                  <Link to={`workshop/teachers/${teacher._id}`}>
-                    {/* <p>{workshop.sessionsAvailable}</p> */}
-                    <p>Check for availatibilities: {workshop.sessionsAvailable} </p>
-                  </Link>
-                  <h3>Teacher details :
-                    {/* <p>{workshop.teacherId}</p> */}
-                      <Link classname="teacher-details" to={`workshop/teachers/${teacher._id}`}>
-                        {/* NOT SURE FOR LINK */}
-                        <p>{workshop.teacherId.firstName}</p>
-                        <p>{workshop.teacherId.lastName}</p>
-                        <p>{workshop.teacherId.photo}</p>
-                        <p>{workshop.teacherId.bio}</p>
-                        
-                      </Link>
-                  </h3>
-              
-
-                </div>
+                <WorkshopCard/>
             </div>
           )
         })}

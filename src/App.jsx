@@ -7,7 +7,7 @@ import BookingPage from "./Pages/BookingPage";
 import HomePage from "./Pages/HomePage";
 import OneWorkshopPage from "./Pages/OneWorkshopPage";
 import SearchResultPage from "./Pages/SearchResultPage";
-import OrderValidationPage from "./Pages/OrderValidationPage";
+import BookingValidationPage from "./Pages/BookingValidationPage";
 import FavoritesPage from "./Pages/FavoritesPage";
 import PaymentPage from "./Pages/PaymentPage";
 import CreateWorkshopPage from "./Pages/CreateWorkshopPage";
@@ -27,17 +27,17 @@ import IsTeacher from "./Components/IsTeacher"
 
 function App() {
 
-  // const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  const [user, setUser] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  // const [user, setUser] = useState(localStorage.getItem("token"));
   function storeUser(userArg) {
       setUser(userArg);
-      // localStorage.setItem("user", JSON.stringify(userArg));
-      localStorage.setItem("token", JSON.stringify(userArg));
+      localStorage.setItem("user", JSON.stringify(userArg));
+      // localStorage.setItem("token", JSON.stringify(userArg));
   }
   function removeUser() {
       setUser(null);
-      // localStorage.removeItem("user");
-      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      // localStorage.removeItem("token");
   }
 
   return (
@@ -54,18 +54,18 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/workshops/:workshopId" element={<OneWorkshopPage />} />
         <Route path="/search-result" element={<SearchResultPage />} />
-        <Route path="/booking" element={<BookingPage />} />
+        <Route path="/booking/:bookingId" element={<BookingPage />} />
 
         <Route path="/" element={<IsLoggedIn/>}>
-          <Route path="/order-details" element={<OrderValidationPage />} />
+          <Route path="/booking-details" element={<BookingValidationPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>
           <Route path="/create-workshop" element={<CreateWorkshopPage />} />
           <Route path="/see-workshops" element={<SeeMyWorkshops />} />
-        
-        <Route path="/" element={<IsTeacher/>}>
           <Route path="/update-workshop" element={<UpdateMyWorkshopPage />} />
+        <Route path="/" element={<IsTeacher/>}>
+          
           <Route path="/see-sessions" element={<SeeMySessions />} />
           <Route path="/create-session" element={<CreateSessionPage />} />
         </Route>

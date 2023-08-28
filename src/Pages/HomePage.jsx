@@ -12,19 +12,23 @@ function HomePage() {
 
   const [workshops, setWorkshops] = useState([])
 
-  useEffect(()=>{
-    myApi.get("/api/workshops")
+  const getAllWorkshops = () =>{
+    myApi.getAllWorkshops()
         .then((response)=>{
             setWorkshops(response.data)
         })
         .catch((error)=>{
           console.log(error)
         })
-  },[])
+  }
+
+    useEffect(()=>{
+      getAllWorkshops()
+    },[])
 
   return (
     <div className='homepage'>
-      
+  
       <div className='audience-persona'>
         <div className='search-area'>
           <Search/>
@@ -41,13 +45,14 @@ function HomePage() {
       <div className='suggested-workshops'>
         <h1>Suggested workshops</h1>
         {workshops &&
-          workshops.map((workshop, index)=>{
+          workshops.map((workshop, index) => (
             <WorkshopCard
               key={workshop._id}
               {...workshop}
               className="one-workshop-card"
             />
-          })
+
+          ))
         }
       </div>
       
