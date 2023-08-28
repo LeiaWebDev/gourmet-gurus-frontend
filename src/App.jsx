@@ -23,6 +23,7 @@ import Search from "./Components/Search";
 import UpdateProfile from "./Components/UpdateProfile";
 import IsAdmin from "./Components/IsAdmin"
 import IsTeacher from "./Components/IsTeacher"
+import BookingCreatePage from "./Pages/BookingCreatePage";
 
 
 function App() {
@@ -54,10 +55,11 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/workshops/:workshopId" element={<OneWorkshopPage />} />
         <Route path="/search-result" element={<SearchResultPage />} />
+        <Route path="/booking/workshop/:workshopId" element={<BookingCreatePage />} />
         <Route path="/booking/:bookingId" element={<BookingPage />} />
 
         <Route path="/" element={<IsLoggedIn/>}>
-          <Route path="/booking-details" element={<BookingValidationPage />} />
+          <Route path="/booking-details/" element={<BookingValidationPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>

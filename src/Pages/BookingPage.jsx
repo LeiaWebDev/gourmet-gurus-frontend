@@ -4,6 +4,7 @@ import myApi from '../api/service';
 
 import IsLoggedIn from "../Components/IsLoggedIn";
 
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function BookingPage() {
@@ -63,7 +64,7 @@ function BookingPage() {
     const handleBooking=()=>{
       // if(user||workshopId){
       if(user||booking.workshopId){
-        navigate(`/booking-details`)
+        navigate(`/booking-details/${bookingId}`)
       } else {
           alert ("You must be logged in to book a workshop")
           navigate(`/login`)
@@ -137,6 +138,7 @@ function BookingPage() {
         </button>
       </div>
       <p>Total Price : {calculateTotalPrice()} euros</p>
+      
       <div>
         <h3>Choose your session</h3>
         

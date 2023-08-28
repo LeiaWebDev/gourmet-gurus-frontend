@@ -13,6 +13,7 @@ function OneWorkshopPage({user}) {
   const navigate = useNavigate()
   const { workshopId, teacherId } = useParams()
   const [loading, setLoading] = useState(true)
+  const [sessionsAvailable, setSessionsAvailable] = useState("")
   // const valuesFromContext = useContext(UserContext)
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -30,7 +31,6 @@ function OneWorkshopPage({user}) {
     getWorkshop()
   }, [workshopId]);
   
-
 
   useEffect(() => {
     const getTeacherDetails = async ()=>{
@@ -50,9 +50,20 @@ function OneWorkshopPage({user}) {
   }, [workshop]);
 
 
-  const handleAvailability=(bookingId)=>{
-      navigate(`/booking/${bookingId}`)
-  }
+  //display all the available dates from sessionsAvailable property of a workshopId that I'm looking at and also 
+  const handleAvailability=()=>{
+    return workshop.sessionsAvailable.map((session, index)=>(
+      <option key={index} value ={session}>{new Date (session).toLocaleDateString()}</option>
+    )
+    )}
+    // {booking.workshopId.sessionsAvailable.map(date => {
+      //  
+      //  return <option key={booking.workshopId.sessionsAvailable.date} value={date}>{new Date(date).toLocaleDateString()}</option>
+      //         })}
+
+  
+  
+  
 
   if(loading){
     return <div>Loading...</div>
@@ -71,45 +82,55 @@ function OneWorkshopPage({user}) {
           
           <div className="workshop-details">
               <h2>Details of workshop</h2>
-              <p>Duration of workshop : {workshop.duration}</p>
+              <p>{workshop.duration} workshop</p>
               <p>Max participants: {workshop.maxParticipants}</p>
               <p>Description: {workshop.description}</p>
-              <p>Workshop material : {workshop.workshopMaterial}</p>
+              <p>Workshop material: {workshop.workshopMaterial}</p>
           </div>
           
           <div className="price-availability">
-            <p>{workshop.price}$/pers</p>
-            {/* <Link to={`/booking/${bookingId}`}> */}
-              <button onClick={handleAvailability}>Check availability</button>
+            <h2>{workshop.price}$/pers</h2>
+            <select name="sessionsAvailable"  value={sessionsAvailable} onChange={(e) => setSessionsAvailable(e.target.value)}>
+             <option value="-1" disabled>Choose an option</option>
+               {handleAvailability()}
+            </select>
+            {/* <Link to={`/booking/workshop/${workshopId}`}>Check availability */}
+              {/* <button onClick={handleAvailability}>Check availability</button> */}
             {/* </Link> */}
           </div>
 
           {teacher && (
             <div className="teacher-details">
-              <h3>Teacher details :</h3>
+              <h2>Teacher's details :</h2>
                 {/* <Link to={`workshops/teachers/${teacherId._id}`}> */}
                 {/* <Link classname="teacher-details" to={`workshops/teachers/${teacherId._id}`}> */}
                 {/* NOT SURE FOR LINK */}
               <p>{teacher.photo}</p>
-              <p>First name : {teacher.firstName}</p>
-              <p>Last name : {teacher.lastName}</p>
-              <p>Teacher's bio: {teacher.bio}</p>
-              {/* <p>Teacher's bio: {workshop.teacherId.bio}</p> */}
-                {/* </Link> */}
+              <p>{teacher.firstName}</p>
+              <p>{teacher.lastName}</p>
+              <p>A few words about the Teacher: {teacher.bio}</p>
+          
             </div>
 
             )
           }
-          
-          
+        
           <div className="workshop-location">
-            <h3>Workshop location : </h3>
+            <h2>Workshop location : </h2>
             <p>{workshop.location}</p>
           </div>
         
           
           </>
         )}
+ 
+    
+      <div>
+        <Link to={`/booking/workshop/${workshopId}`} className="button-book-workshop">
+          <button>Book workshop</button>
+        </Link>
+        
+      </div>
       
     </div>
   );
