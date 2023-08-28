@@ -38,9 +38,35 @@ myApi.deleteWorkshopById = function (workshopId) {
     return myApi.delete(`/api/workshops/${workshopId}`)
 }
 
+myApi.getWorkshopsByTeacherId = function (teacherId) {
+    return myApi.get(`/api/workshops?teacherId=${teacherId}`)
+}
+
+//for one workshop page, get teacher details for a specific workshop
+myApi.getTeacherDetails = function(workshopId, teacherId){
+    return myApi.get(`/api/workshops/${workshopId}/${teacherId}`)
+}
+
+
+myApi.getAllWorkshops = function(){
+    return myApi.get(`/api/workshops`)
+}
+
+myApi.getWorkshopById = function(workshopId){
+    return myApi.get(`/api/workshops/${workshopId}`)
+}
+
+
+myApi.getBookingDetails = function(bookingId){
+    return myApi.get(`/api/bookings/${bookingId}/bookingdetails/`)
+}
+
+myApi.getAWorkshopSessions = function(workshopId){
+    return myApi.get(`/api/workshops/${workshopId}/sessions/`)
+}
 
 
 // myApi.getWorkshopsByTeacherId = function (teacherId) {
 //     return myApi.get(`/api/workshops?teacherId=${teacherId}`)
 // }
-
+export default myApi
