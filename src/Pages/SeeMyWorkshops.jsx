@@ -64,6 +64,7 @@ function SeeMyWorkshops() {
           </div>
         ))}
       </div>
+       
     </div>
   );
 }
