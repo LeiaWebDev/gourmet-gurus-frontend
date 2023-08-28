@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
+import myApi from "../api/service";
 // import "./createWorkshop.css";
 import "../styles/createworkshop.css";
 const API_URL = import.meta.env.VITE_API_URL;
@@ -20,10 +21,10 @@ function CreateWorkshopPage() {
   const [location, setLocation] = useState("");
   const [workshopMaterial, setWorkshopMaterial] = useState("");
   const [price, setPrice] = useState("");
-  const [sessionsAvailable, setSessionsAvailable] = useState("");
+  // const [sessionsAvailable, setSessionsAvailable] = useState("");
   const [teacherId, setTeacherId] = useState(authenticateUser._id || "");
   const [successMessage, setSuccessMessage] = useState("");
-  const [sessionsAmount, setSessionsAmount] = useState(0);
+  // const [sessionsAmount, setSessionsAmount] = useState(0);
   const user = JSON.parse(localStorage.getItem("user"));
   // console.log("User from localStorage:", user);
   //   const teacherId = user.teacherId
@@ -39,15 +40,17 @@ function CreateWorkshopPage() {
       location,
       workshopMaterial,
       price,
-      teacherId,
-      sessionsAvailable: sessionsAvailable.map((el) => el.value),
+      // teacherId,
+      // sessionsAvailable: sessionsAvailable.map((el) => el.value),
     };
-    axios
-      .post(`${API_URL}/api/workshops/create-workshop`, workshopToCreate)
+
+    myApi
+      .createWorkshop(workshopToCreate)
       .then((response) => {
         const createdWorkshop = response.data;
 
         setSuccessMessage("Workshop successfully created!");
+        alert("Workshop successfully created!");
         setNewWorkshop(createdWorkshop);
         navigate("/see-workshops");
       })
@@ -55,6 +58,20 @@ function CreateWorkshopPage() {
         console.log(error);
       });
   };
+
+  //   axios
+  //     .post(`${API_URL}/api/workshops/create-workshop`, workshopToCreate)
+  //     .then((response) => {
+  //       const createdWorkshop = response.data;
+
+  //       setSuccessMessage("Workshop successfully created!");
+  //       setNewWorkshop(createdWorkshop);
+  //       navigate("/see-workshops");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <>
@@ -163,55 +180,7 @@ function CreateWorkshopPage() {
             onChange={(e) => setPrice(e.target.value)}
           ></input>
         </div>
-        <div>
-          <fieldset>
-            <legend>Sessions Available</legend>
-          </fieldset>
-          {new Array(sessionsAmount).fill(0).map((el, index) => {
-            console.log(el, index, sessionsAmount);
-            const currentSession = sessionsAvailable[index];
-            return (
-              <div key={currentSession?.id}>
-                <input
-                  name="date"
-                  type="datetime-local"
-                  value={currentSession?.value}
-                  onBlur={(e) =>
-                    setSessionsAvailable([
-                      ...sessionsAvailable,
-                      { id: crypto.randomUUID(), value: e.target.value },
-                    ])
-                  }
-                ></input>
-                <button
-                  onClick={() => {
-                    console.log(currentSession);
-                    setSessionsAvailable(
-                      sessionsAvailable.filter(
-                        (session) => session.id !== currentSession.id
-                      )
-                    );
-                    setSessionsAmount(sessionsAmount - 1);
-                  }}
-                >
-                  X
-                </button>
-              </div>
-            );
-          })}
-        </div>
-        <button onClick={() => setSessionsAmount(sessionsAmount + 1)}>
-          Add A session
-        </button>
-        <div>
-          <label> Teacher's Id</label>
-          <input
-            type="text"
-            name="teacherId"
-            value={teacherId}
-            onChange={(e) => setTeacherId(e.target.value)}
-          ></input>
-        </div>
+        
         <button className="submit-button" onClick={handleSubmit}>
           {" "}
           Create Workshop{" "}

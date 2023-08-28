@@ -27,27 +27,28 @@ import BookingCreatePage from "./Pages/BookingCreatePage";
 
 
 function App() {
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   // const [user, setUser] = useState(localStorage.getItem("token"));
   function storeUser(userArg) {
-      setUser(userArg);
-      localStorage.setItem("user", JSON.stringify(userArg));
-      // localStorage.setItem("token", JSON.stringify(userArg));
+    setUser(userArg);
+    localStorage.setItem("user", JSON.stringify(userArg));
+    // localStorage.setItem("token", JSON.stringify(userArg));
   }
   function removeUser() {
-      setUser(null);
-      localStorage.removeItem("user");
-      // localStorage.removeItem("token");
+    setUser(null);
+    localStorage.removeItem("user");
+    // localStorage.removeItem("token");
   }
 
   return (
     <>
-        {user ? <NavBar removeUser={removeUser} user={user}/> : <NavBar/>}
+      {user ? <NavBar removeUser={removeUser} user={user} /> : <NavBar />}
 
-        {user && (
-        <h1 className="welcome">Welcome {user.firstName} {user.lastName}</h1>
-        )}
+      {user && (
+        <h1 className="welcome">
+          Welcome {user.firstName} {user.lastName}
+        </h1>
+      )}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -63,15 +64,17 @@ function App() {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>
-          <Route path="/create-workshop" element={<CreateWorkshopPage />} />
-          <Route path="/see-workshops" element={<SeeMyWorkshops />} />
-          <Route path="/update-workshop/:workshopId" element={<UpdateMyWorkshopPage />} />
-        
-          <Route path="/see-sessions" element={<SeeMySessions />} />
-        <Route path="/" element={<IsTeacher/>}>
+        <Route path="/create-workshop" element={<CreateWorkshopPage />} />
+        <Route path="/see-workshops" element={<SeeMyWorkshops />} />
+        <Route
+          path="/update-workshop/:workshopId"
+          element={<UpdateMyWorkshopPage />}
+        />
+        <Route path="/see-sessions/:workshopId" element={<SeeMySessions />} />
+
+        <Route path="/" element={<IsTeacher />}>
           <Route path="/create-session" element={<CreateSessionPage />} />
         </Route>
-       
       </Routes>
     </>
   );
