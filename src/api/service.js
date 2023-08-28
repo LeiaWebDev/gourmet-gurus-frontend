@@ -61,7 +61,7 @@ myApi.getBookingDetails = function(bookingId){
     return myApi.get(`/api/bookings/${bookingId}/bookingdetails/`)
 }
 
-myApi.getAWorkshopSessions = function(workshopId){
+myApi.getAWorkshopSession = function(workshopId){
     return myApi.get(`/api/workshops/${workshopId}/sessions/`)
 }
 
