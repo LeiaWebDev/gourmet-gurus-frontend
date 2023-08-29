@@ -59,7 +59,7 @@ myApi.deleteWorkshopByTeacher = function (teacherId, workshopId) {
 
 //for one workshop page, get teacher details for a specific workshop
 myApi.getTeacherDetails = function (workshopId, teacherId) {
-  return myApi.get(`/api/workshops/${workshopId}/${teacherId}`);
+  return myApi.get(`/api/workshops/${workshopId}/teacher/${teacherId}`);
 };
 
 

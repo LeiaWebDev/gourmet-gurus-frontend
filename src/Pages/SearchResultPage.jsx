@@ -1,29 +1,20 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import WorkshopCard from '../Components/WorkshopCard';
+import myApi from '../api/service';
+import Search from '../Components/Search';
 
 const API_URL = import.meta.env.VITE_API_URL
 
 function SearchResultPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
-    const [filteredWorkshops, setFilteredWorkshops] = useState([]);
-    const search = searchParams.get("search");
-
-    useEffect(() => {
-      console.log(search);
-      axios
-          .get(`${API_URL}/search-result?q=${search}`)
-          .then((response) => {
-              console.log(response);
-              setFilteredAds(response.data);
-          })
-          .catch((e) => console.error(e));
-  }, [searchParams]);
-
-  console.log(filteredWorkshops)
+  const [searchResults, setSearchResults] = useState([])
+  // const [filteredWorkshops, setFilteredWorkshops] = useState()
+  const location = useLocation()
+  const filteredWorkshops = location.state.filteredWorkshops||[]
+  // const [searchParams, setSearchParams] = useSearchParams();
+    // const search = searchParams.get("search");
+    
 
   return (
     <div>

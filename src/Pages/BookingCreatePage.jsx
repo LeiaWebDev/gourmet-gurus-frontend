@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 // import { UserContext } from "../context/AuthContext";
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import myApi from '../api/service'
 import axios from 'axios'
 // import { UserContext } from '../context/AuthContext';
@@ -10,8 +10,13 @@ import axios from 'axios'
 
 
 function BookingCreatePage() {
-    const [newBooking, setNewBooking] = useState({})
-    const [workshop, setWorkshop]= useState({})
+    const [newBooking, setNewBooking] = useState({
+        quantity: 1,
+        session: "date",
+        status: "pending",
+        cancellation: "Free cancellation 48h before session date"
+    })
+    const [workshop, setWorkshop]= useState(null)
     const {workshopId} = useParams()
     const [user, setUser] = useState(null)
     const [quantity, setQuantity] = useState(1)
@@ -23,18 +28,45 @@ function BookingCreatePage() {
     // const { authenticateUser } = useContext(UserContext);
 
 
-    const handleValidateBooking = (e) => {
+    const handleValidateBooking = async(e) => {
         e.preventDefault();
-        const confirmedStatus = newBooking.status("Confirmed")
-        setBookingStatus(confirmedStatus)
+
+        // const confirmedStatus = newBooking.status("Confirmed")
+        // setBookingStatus(confirmedStatus)
         const bookingToCreate = {
-          session,
-          status,
-          cancellation,
-          quantity,
-        //   workshopId,
-        //   userId,
+          session: newBooking.session,
+          status: "Pending",
+          cancellation: newBooking.cancellation,
+          quantity: newBooking.quantity,
+          workshopId: workshopId,
+        //   userId : workshop.userId,
         };
+
+        myApi
+      .createBooking(bookingToCreate)
+      .then((response) => {
+       console.log(response)
+        const createdBooking = response.data;
+        // alert("Your booking is ready for payment");
+        // setNewBooking(createdBooking);
+        navigate(`/payment`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+    useEffect(() => {
+        async function fetchWorkshopDetails(){
+            try {
+                const response = await myApi.get("/api/workshops/" + workshopId)
+                setWorkshop(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchWorkshopDetails()
+    }, [])
 
     const handleIncrement = () =>{
         // setQuantity(()=>(booking.quantity += 1))
@@ -45,7 +77,7 @@ function BookingCreatePage() {
       };
       
     const handleDecrement = () => {
-        if (newBooking.quantity>0){
+        if (newBooking.quantity>1){
           setNewBooking((prevBooking) => ({
             ...prevBooking,
             quantity: prevBooking.quantity - 1
@@ -56,41 +88,25 @@ function BookingCreatePage() {
       }
   
     let calculateTotalPrice=()=>{
-        return booking.quantity * workshop.price
+        return newBooking.quantity * workshop.price
       }
 
 
-    myApi
-      .createBooking(bookingToCreate)
-      .then((response) => {
-       
-        const createdBooking = response.data;
-        alert("Your booking is ready for validation");
-        setNewBooking(createdBooking);
-        navigate(`/booking-details/${bookingId}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    if(!workshop){
+        return <div>loading...</div>
+    }
 
-    useEffect(() => {
-        myApi.get("/api/workshops/" + workshopId).then(({data}) => {
-            setWorkshop(data)
-        }).catch(e => console.log(e))
-    }, [])
-
-
+console.log(workshop)
   return (
     // <div>title{workshop.title}</div>
     <div>
         <h1 className="cart">Your cart</h1>
-        <div classname="cart-text-details">
+        <div className="cart-text-details">
             <h2>{workshop.title}</h2>
-            {/* <img
+            <img
                 src={workshop.workshopPics[0]}
                 alt={workshop.title}
-            /> */}
+            />
             <p>{workshop.duration} workshop</p>
         
             <p>Address : {workshop.location}</p>
@@ -100,30 +116,42 @@ function BookingCreatePage() {
 
         <div>
           <label>Sessions available</label>
-          <select name="session" value={workshop.sessionsAvailable} onChange={(e) => setSession(e.target.value)}>
-            <option value="-1" disabled>Choose a date</option>
-            {workshop.sessionsAvailable.map(date => {
-              console.log(date)
-              return <option key={workshop.sessionsAvailable.date} value={date}>{new Date(date).toLocaleDateString()}</option>
+          <select 
+          name="session" 
+          value={newBooking.session} 
+          onChange={(e) => setNewBooking({...newBooking, session:e.target.value})}>
+            
+            <option value="date" disabled>
+                Choose a date
+            </option>
 
-            })}
+            {workshop.sessionsAvailable.map((date => (
+                
+                 <option key={date} value={date}>
+                    {new Date(date).toLocaleDateString()}
+                </option>
+
+            )))}
           </select>
         </div>
 
 
         <div className='quantity'> 
             <p> Quantity:  </p>
-            <button className='buttonCart' onClick={(e)=> handleDecrement()}>
+            <button className='buttonCart' onClick={handleDecrement}>
             -
             </button>
             <p>{newBooking.quantity}</p>
-            <button className='buttonCart' onClick={(e)=> handleIncrement()}>
+            <button className='buttonCart' onClick={handleIncrement}>
             +
             </button>
         </div>
         <p>Total Price : {calculateTotalPrice()} euros</p>
-        <Link to={`/payment?amount=${totalPrice}`}>
-            <button className="validate-booking" type="submit" onClick={handleValidateBooking}>Validate Booking</button>
+        {/* <Link to={`/payment?amount=${calculateTotalPrice}`}> */}
+        <Link>
+            <button className="validate-booking" onClick={handleValidateBooking}>
+                Validate Booking
+            </button>
         </Link>
     </div>
  

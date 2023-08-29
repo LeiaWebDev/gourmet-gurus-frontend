@@ -101,10 +101,10 @@ function OneWorkshopPage({user}) {
         {workshop &&(
           <>
           <h1>{workshop.title}</h1>
-          {/* <img
+          <img
             src={workshop.workshopPics[0]}
             alt={workshop.title}
-          /> */}
+          />
           
           <div className="workshop-details">
               <h2>Details of workshop</h2>
@@ -158,7 +158,7 @@ function OneWorkshopPage({user}) {
     
       <div>
         <Link to={`/booking/workshop/${workshopId}`} className="button-book-workshop">
-          <button onClick={handleBooking()}>Book workshop</button>
+          <button onClick={handleBooking}>Book workshop</button>
         </Link>
         
       </div>

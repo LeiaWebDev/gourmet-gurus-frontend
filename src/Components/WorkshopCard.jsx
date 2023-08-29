@@ -23,7 +23,7 @@ function WorkshopCard({
         <div className='workshopCard'>
             <span>
                 <img className="card-workshop-pic"
-                src={workshopPics[0]||placeholderImage}
+                src={workshopPics[0]}
                 alt="workshop"/>
             </span>
             <span>{title}</span>
@@ -32,7 +32,7 @@ function WorkshopCard({
             <span>{maxParticipants} max participants</span>
             <span>{description}</span>
             <span>Address: {location}</span>
-            <span>{price}$/pers</span>
+            <span>{price} € / pers</span>
         </div>
     </Link>
    

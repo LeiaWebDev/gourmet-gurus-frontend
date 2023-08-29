@@ -1,14 +1,35 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import myApi from '../api/service';
 
 function Search() {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
+  const [workshops, setWorkshops] = useState([])
+
+  useEffect(()=> {
+    async function fetchWorkshops () {
+      try {
+        const response = await myApi.getAllWorkshops()
+        setWorkshops(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+      
+       
+    }; fetchWorkshops()
+
+  }, [])
+ 
 
   function handleSearch(event) {
     event.preventDefault();
-    navigate(`/search-result?search=${searchText}`);
+    const filteredWorkshops = workshops.filter((workshop)=>
+    workshop.title.toLowerCase().includes(searchText.toLowerCase())
+    )
+    // navigate(`/search-result?search=${searchText}`);
+    navigate(`/search-result`, {state : {filteredWorkshops}});
 }
   return (
     <form className="form-search-bar" onSubmit={handleSearch}>
@@ -23,7 +44,7 @@ function Search() {
           setSearchText(e.target.value);
         }}
         ></input>
-        <button>Search</button>
+        <button type='submit'>Search</button>
         {/* <button onClick={findResult(string.title)}>Search</button> */}
     </form>
   )
