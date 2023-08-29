@@ -60,7 +60,7 @@ function App() {
         <Route path="/booking/:bookingId" element={<BookingPage />} />
 
         <Route path="/" element={<IsLoggedIn/>}>
-          <Route path="/booking-details/" element={<BookingValidationPage />} />
+          <Route path="/booking-details/:bookingId" element={<BookingValidationPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>

@@ -71,13 +71,18 @@ myApi.getAllWorkshops = function () {
   return myApi.get(`/api/workshops`);
 };
 
-myApi.getWorkshopById = function (workshopId) {
-  return myApi.get(`/api/workshops/${workshopId}`);
-};
+// myApi.getWorkshopById = function (workshopId) {
+//   return myApi.get(`/api/workshops/${workshopId}`);
+// };
 
 myApi.getBookingDetails = function (bookingId) {
   return myApi.get(`/api/bookings/${bookingId}/bookingdetails/`);
 };
+
+myApi.createBooking = function (bookingData) {
+    return myApi.post("/api/bookings/create", bookingData);
+  };
+  
 
 //SESSIONS//
 
