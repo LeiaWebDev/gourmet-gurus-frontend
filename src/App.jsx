@@ -64,6 +64,7 @@ function App() {
           {/* <Route path="/booking-details/:bookingId" element={<BookingValidationPage />} /> */}
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/users/:userId/update-profile" element={<UpdateProfile/>}/>
         </Route>
         <Route path="/create-workshop" element={<CreateWorkshopPage />} />
         <Route path="/see-workshops" element={<SeeMyWorkshops />} />

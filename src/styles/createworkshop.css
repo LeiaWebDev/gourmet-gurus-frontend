@@ -1,69 +1,68 @@
 #root {
-    --clr-accent: #f36527;
-    --gradient: linear-gradient(
-      45deg,
-      #d65db1,
-      #ff6f91,
-      #ff9671,
-      #ffc75f,
-      #f9f871
-    );
-    background-color: var(--gradient);
-  }
-  @font-face {
-    font-family: "luckyguy";
-    src: url(./assets/LuckiestGuy-Regular.ttf);
-  }
-  
-  .create-workshop-form {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 2rem;
-    border: 5px solid var(--clr-accent);
-    border-radius: 5%;
-  }
-  select {
-    width: 80%;
-    padding: 16px 20px;
-    border-radius: 4px;
-    background-color: #f1f1f1a1;
-    accent-color: var(--clr-accent);
-    border: 3px solid yellow;
-  }
-  input[type="text"],
-  [type="number"],
-  [type="file"],
-  [type="date"] {
-    width: 100%;
-    padding: 0.8rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-    color: var(--clr-accent);
-  }
-  input[type="text"],
-  [type="number"],
-  [type="file"],
-  [type="date"]:focus {
-    border: 3px solid yellow;
-  }
-  .create-workshop-form label {
-    color: var(--clr-accent);
-  }
-  button:hover {
-    background-color: rgb(240, 240, 148);
-  }
-  h1 {
-    font-family: "luckyguy";
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    font-weight: lighter;
-    color: whitesmoke;
-  }
-  
+  --clr-accent: #f36527;
+  --gradient: linear-gradient(
+    45deg,
+    #d65db1,
+    #ff6f91,
+    #ff9671,
+    #ffc75f,
+    #f9f871
+  );
+  background-color: var(--gradient);
+}
+@font-face {
+  font-family: "luckyguy";
+  src: url(./assets/LuckiestGuy-Regular.ttf);
+}
+
+.create-workshop-form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 2rem;
+  border: 5px solid var(--clr-accent);
+  border-radius: 5%;
+}
+select {
+  width: 80%;
+  padding: 16px 20px;
+  border-radius: 4px;
+  background-color: #f1f1f1a1;
+  accent-color: var(--clr-accent);
+  border: 3px solid rgb(202, 107, 17);
+}
+input[type="text"],
+[type="number"],
+[type="file"],
+[type="date"] {
+  width: 100%;
+  padding: 0.8rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  color: var(--clr-accent);
+}
+input[type="text"],
+[type="number"],
+[type="file"],
+[type="date"]:focus {
+  border: 3px solid rgb(196, 90, 19);
+}
+.create-workshop-form label {
+  color: var(--clr-accent);
+}
+button:hover {
+  background-color: rgb(225, 132, 70);
+}
+h1 {
+  font-family: "luckyguy";
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-weight: lighter;
+  color: rgb(220, 115, 29);
+}
