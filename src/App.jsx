@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import BookingPage from "./Pages/BookingPage";
 import HomePage from "./Pages/HomePage";
 import OneWorkshopPage from "./Pages/OneWorkshopPage";
 import SearchResultPage from "./Pages/SearchResultPage";
-import BookingValidationPage from "./Pages/BookingValidationPage";
+// import BookingValidationPage from "./Pages/BookingValidationPage";
 import FavoritesPage from "./Pages/FavoritesPage";
 import PaymentPage from "./Pages/PaymentPage";
 import CreateWorkshopPage from "./Pages/CreateWorkshopPage";
@@ -19,7 +20,7 @@ import IsLoggedIn from "./Components/IsLoggedIn";
 import NavBar from "./Components/NavBar";
 import Search from "./Components/Search";
 import UpdateProfile from "./Components/UpdateProfile";
-import IsAdmin from "./Components/IsAdmin"
+import IsAdmin from "./Components/isAdmin";
 import IsTeacher from "./Components/IsTeacher"
 import BookingCreatePage from "./Pages/BookingCreatePage";
 
@@ -60,7 +61,7 @@ function App() {
         <Route path="/booking/:bookingId" element={<BookingPage />} />
 
         <Route path="/" element={<IsLoggedIn/>}>
-          <Route path="/booking-details/" element={<BookingValidationPage />} />
+          {/* <Route path="/booking-details/:bookingId" element={<BookingValidationPage />} /> */}
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>

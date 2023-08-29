@@ -8,7 +8,7 @@ import { UserContext } from "../context/AuthContext";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function OneWorkshopPage({user}) {
-  const [workshop, setWorkshop] = useState(null)
+  const [workshop, setWorkshop] = useState({})
   const [teacher, setTeacher] = useState(null)
   const navigate = useNavigate()
   const { workshopId, teacherId } = useParams()
@@ -17,20 +17,58 @@ function OneWorkshopPage({user}) {
   // const valuesFromContext = useContext(UserContext)
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+
+  const handleBooking=()=>{
+    // if(user||workshopId){
+    if(user||workshopId){
+      navigate(`/booking/workshop/${workshopId}`)
+    } else {
+        alert ("You must be logged in to book a workshop")
+        navigate(`/login`)
+    }
+  }
+
+  //display all the available dates from sessionsAvailable property of a workshopId that I'm looking at and also 
+  const handleAvailability=()=>{
+    if(workshop && workshop.sessionsAvailable){
+      
+    return workshop.sessionsAvailable.map((session, index)=>(
+      <option key={index} value ={session}>
+        {new Date (session).toLocaleDateString()}
+      </option>
+    )
+    )}  return null; // Return null or a default option if sessionsAvailable is not available
+  }
+    // {booking.workshopId.sessionsAvailable.map(date => {
+      //  
+      //  return <option key={booking.workshopId.sessionsAvailable.date} value={date}>{new Date(date).toLocaleDateString()}</option>
+      //         })}
+
   useEffect(() => {
     const getWorkshop = async () => {
+      
       try {
+        const workshopEndpoint = `${API_URL}/api/workshops/${workshopId}`;
+        console.log("Workshop Endpoint:", workshopEndpoint);
+        
       const response = await myApi.getWorkshopById(workshopId)
-      const oneWorkshop = response.data
-      setWorkshop(oneWorkshop)
-      setLoading(false) 
+      console.log("Workshop Response:", response.data); 
+      if(response.status === 200) {
+        const oneWorkshop = response.data
+        setWorkshop(oneWorkshop)
+        setLoading(false) 
+      } else {
+        console.log("unexpected status code:", response.status)
+      }
+      
       } catch (error) {
-        console.log(error)
+        console.log("error fetching workshop:", error)
         }
     }
     getWorkshop()
   }, [workshopId]);
   
+  console.log("Workshop State:", workshop); 
 
   useEffect(() => {
     const getTeacherDetails = async ()=>{
@@ -50,21 +88,9 @@ function OneWorkshopPage({user}) {
   }, [workshop]);
 
 
-  //display all the available dates from sessionsAvailable property of a workshopId that I'm looking at and also 
-  const handleAvailability=()=>{
-    return workshop.sessionsAvailable.map((session, index)=>(
-      <option key={index} value ={session}>{new Date (session).toLocaleDateString()}</option>
-    )
-    )}
-    // {booking.workshopId.sessionsAvailable.map(date => {
-      //  
-      //  return <option key={booking.workshopId.sessionsAvailable.date} value={date}>{new Date(date).toLocaleDateString()}</option>
-      //         })}
 
-  
-  
-  
 
+      
   if(loading){
     return <div>Loading...</div>
   }
@@ -89,9 +115,14 @@ function OneWorkshopPage({user}) {
           </div>
           
           <div className="price-availability">
-            <h2>{workshop.price}$/pers</h2>
-            <select name="sessionsAvailable"  value={sessionsAvailable} onChange={(e) => setSessionsAvailable(e.target.value)}>
-             <option value="-1" disabled>Choose an option</option>
+            <h2>{workshop.price} € / pers</h2>
+            <select 
+              name="sessionsAvailable"  
+              value={sessionsAvailable} 
+              onChange={(e) => setSessionsAvailable(e.target.value)}>
+             <option value="-1" disabled>
+                Choose an option
+              </option>
                {handleAvailability()}
             </select>
             {/* <Link to={`/booking/workshop/${workshopId}`}>Check availability */}
@@ -127,7 +158,7 @@ function OneWorkshopPage({user}) {
     
       <div>
         <Link to={`/booking/workshop/${workshopId}`} className="button-book-workshop">
-          <button>Book workshop</button>
+          <button onClick={handleBooking}>Book workshop</button>
         </Link>
         
       </div>

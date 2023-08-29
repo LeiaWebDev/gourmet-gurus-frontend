@@ -22,13 +22,29 @@ function CreateWorkshopPage() {
   const [workshopMaterial, setWorkshopMaterial] = useState("");
   const [price, setPrice] = useState("");
   // const [sessionsAvailable, setSessionsAvailable] = useState("");
-  const [teacherId, setTeacherId] = useState(authenticateUser._id || "");
+  // const [teacherId, setTeacherId] = useState(authenticateUser._id || "");
   const [successMessage, setSuccessMessage] = useState("");
   // const [sessionsAmount, setSessionsAmount] = useState(0);
   const user = JSON.parse(localStorage.getItem("user"));
   // console.log("User from localStorage:", user);
   //   const teacherId = user.teacherId
   const handleSubmit = () => {
+
+    const fd = new FormData()
+        fd.append("title", title)
+        fd.append("category", category)
+        fd.append("subCategory", subCategory)
+        fd.append("duration", duration)
+        fd.append("maxParticipants", maxParticipants)
+        fd.append("description", description)
+        fd.append("workshopPics", workshopPics)
+        fd.append("location", location)
+        fd.append("price", price)
+
+
+        // const response = await axios.post("http://localust:5005/api", fd)
+        // setPictures((current)=> [...current, response.data])
+
     const workshopToCreate = {
       title,
       category,
@@ -147,7 +163,9 @@ function CreateWorkshopPage() {
           <label>Workshop Photos</label>
           <input
             type="file"
+            multiple="true"
             name="workshopPics"
+            id="workshopPics"
             value={workshopPics}
             onChange={(e) => setWorkshopPics(e.target.value)}
           ></input>
@@ -180,7 +198,7 @@ function CreateWorkshopPage() {
             onChange={(e) => setPrice(e.target.value)}
           ></input>
         </div>
-        
+
         <button className="submit-button" onClick={handleSubmit}>
           {" "}
           Create Workshop{" "}

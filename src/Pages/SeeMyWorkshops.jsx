@@ -47,7 +47,7 @@ function SeeMyWorkshops() {
             <p>{workshop.price}€</p>
             <p>{workshop.duration}</p>
             <p>{workshop.workshopMaterial}</p>
-            {/* <div>  <img className="workshop-pics" src={workshop.workshopPics} /> </div> */}
+            <div>  <img className="workshop-pics" src={workshop.workshopPics} /> </div>
             <button>
               <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
             </button>

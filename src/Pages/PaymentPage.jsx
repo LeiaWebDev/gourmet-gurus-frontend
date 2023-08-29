@@ -36,7 +36,9 @@ function PaymentPage() {
             <form onSubmit={handleSubmit} id="card-details">
                 <div className="toto">
                     <div className="Card">
+                       
                         <label className="card-labels">Card Number</label>
+                       
                         <input
                             className="card-inputs"
                             type="number"
@@ -48,6 +50,7 @@ function PaymentPage() {
                             }}
                             onFocus={(e) => SetFocus(e.target.name)}
                         ></input>
+                        
                     </div>
 
                     <div className="Card">
