@@ -34,7 +34,7 @@ function PaymentPage() {
             <h2 id="payment-amount">Payment details for {paymentAmount} euros</h2>
 
             <form onSubmit={handleSubmit} id="card-details">
-                <div className="toto">
+                <div className="each-card">
                     <div className="Card">
                        
                         <label className="card-labels">Card Number</label>

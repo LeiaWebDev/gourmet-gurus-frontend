@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 import Search from './Search'
 import "../styles/navbar.css"
 import AuthContext, { UserContext } from '../context/AuthContext'
@@ -7,10 +7,12 @@ import IsLoggedIn from './IsLoggedIn'
 
 function NavBar() {
 
+    
+    
     // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
-    // const {IsLoggedIn, user} = useContext(AuthContext)
-  
+
+    
   // const {isLoggedIn, user, logOutUser} = useContext(AuthContext)
   // const {isLoggedIn, user} = useContext(AuthContext)
 //  Update the rendering logic to display different content 
@@ -20,6 +22,14 @@ function NavBar() {
   //   removeUser()
     
   // }
+
+
+//   const location = useLocation()
+    // const {isLoggedIn, authenticateUser} = useContext(UserContext)
+    // function logout(){
+    //     localStorage.removeItem("token")
+    //     authenticateUser()
+    // }
 
   return (
     <nav className="navbar">
@@ -40,7 +50,7 @@ function NavBar() {
 
                 <NavLink to={"/see-workshops"}>See my workshops</NavLink>
 
-                {IsLoggedIn ? (
+                {!IsLoggedIn ? (
                     
                     <>
                         <NavLink to={"/signup"}>
@@ -52,7 +62,9 @@ function NavBar() {
                     </>
                 ) : (
                     <>
-                      {/* <NavLink to={"/login"} onClick={logOutUser}></NavLink> */}
+                      {/* <NavLink to={"/login"} onClick={logout}>
+                      <img className="auth-icon" src="/logout.png" alt="Log out" />
+                      </NavLink> */}
                         <NavLink to={"/login"} >
                             <img className="auth-icon" src="/logout.png" alt="Log out" />
                         </NavLink>
