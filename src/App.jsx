@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
@@ -25,6 +23,8 @@ import UpdateProfile from "./Components/UpdateProfile";
 import IsAdmin from "./Components/isAdmin";
 import IsTeacher from "./Components/IsTeacher"
 import BookingCreatePage from "./Pages/BookingCreatePage";
+
+
 
 
 function App() {

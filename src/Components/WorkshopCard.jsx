@@ -1,23 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import "../styles/workshopCard.css"
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/workshopCard.css";
 
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL;
 
 function WorkshopCard({
-    _id: workshopId,
-    title,
-    category,
-    duration,
-    maxParticipants,
-    description,
-    workshopPics,
-    location,
-    price,
-    
+  _id: workshopId,
+  title,
+  category,
+  duration,
+  maxParticipants,
+  description,
+  workshopPics,
+  location,
+  price,
 }) {
-    
-
   return (
     <Link to={`/workshops/${workshopId}`}>
         <div className='workshopCard'>
@@ -35,8 +32,7 @@ function WorkshopCard({
             <span>{price} € / pers</span>
         </div>
     </Link>
-   
-  )
+  );
 }
 
-export default WorkshopCard
+export default WorkshopCard;

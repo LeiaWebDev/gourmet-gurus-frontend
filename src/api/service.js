@@ -62,7 +62,6 @@ myApi.getTeacherDetails = function (workshopId, teacherId) {
   return myApi.get(`/api/workshops/${workshopId}/teacher/${teacherId}`);
 };
 
-
 myApi.createWorkshop = function (workshopData) {
   return myApi.post("/api/workshops/create-workshop", workshopData);
 };
@@ -92,7 +91,7 @@ myApi.getExistingSessions = function (teacherId, workshopId) {
 
 myApi.addSessionToWorkshop = function (teacherId, workshopId, newSesion) {
   return myApi.post(`/api/workshops/${teacherId}/${workshopId}/sessions`, {
-    newSession: newSesion,
+    sessionsAvailable: newSesion,
   });
 };
 
@@ -100,14 +99,8 @@ myApi.getAWorkshopSession = function (workshopId) {
   return myApi.get(`/api/workshops/${workshopId}/sessions/`);
 };
 
+myApi.deleteOneWorkshopSession = function (workshopId, sessionIndex) {
+  return myApi.delete(`/api/workshops/${workshopId}/sessions/${sessionIndex}`);
+};
 
-
-
-
-
-
-
-
-
-
-export default myApi
+export default myApi;
