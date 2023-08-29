@@ -39,7 +39,7 @@ myApi.deleteWorkshopById = function (workshopId) {
 };
 
 myApi.getAllWorkshopsByTeacherId = function (teacherId) {
-  return myApi.get(`/api/workshops/${teacherId}`);
+  return myApi.get(`/api/workshops/teacher/${teacherId}`);
 };
 // myApi.getWorkshopsByTeacherId = function (teacherId) {
 //   return myApi.get(`/api/workshops?teacherId=${teacherId}`);
@@ -79,9 +79,8 @@ myApi.getBookingDetails = function (bookingId) {
 };
 
 myApi.createBooking = function (bookingData) {
-    return myApi.post("/api/bookings/create", bookingData);
-  };
-  
+  return myApi.post("/api/bookings/create", bookingData);
+};
 
 //SESSIONS//
 

@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import myApi from "../api/service";
+import { UserContext } from "./../context/AuthContext";
 import { Link } from "react-router-dom";
 
 function SeeMyWorkshops() {
   const [myWorkshops, setMyWorkshops] = useState([]);
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log("User from localStorage:", user);
-  const teacherId = user._id;
-
-  console.log(teacherId);
+  const { user } = useContext(UserContext);
+  const teacherId = user?._id;
   useEffect(() => {
     myApi
       .getAllWorkshopsByTeacherId(teacherId)
       .then((response) => {
         const createdWorkshops = response.data;
-        setMyWorkshops(createdWorkshops);
+        console.log(response);
+        setMyWorkshops(createdWorkshops || []);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [user]);
 
   const handleDeleteWorkshop = (workshopId) => {
     myApi
@@ -47,7 +46,10 @@ function SeeMyWorkshops() {
             <p>{workshop.price}€</p>
             <p>{workshop.duration}</p>
             <p>{workshop.workshopMaterial}</p>
-            <div>  <img className="workshop-pics" src={workshop.workshopPics} /> </div>
+            <div>
+              {" "}
+              <img className="workshop-pics" src={workshop.workshopPics} />{" "}
+            </div>
             <button>
               <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
             </button>
@@ -64,7 +66,6 @@ function SeeMyWorkshops() {
           </div>
         ))}
       </div>
-       
     </div>
   );
 }
