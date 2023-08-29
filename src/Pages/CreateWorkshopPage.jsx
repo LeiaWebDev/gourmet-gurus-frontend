@@ -29,39 +29,37 @@ function CreateWorkshopPage() {
   // console.log("User from localStorage:", user);
   //   const teacherId = user.teacherId
   const handleSubmit = () => {
+    const fd = new FormData();
+    fd.append("title", title);
+    fd.append("category", category);
+    fd.append("subCategory", subCategory);
+    fd.append("duration", duration);
+    fd.append("maxParticipants", maxParticipants);
+    fd.append("description", description);
+    fd.append("workshopPics", workshopPics);
+    fd.append("location", location);
+    fd.append("price", price);
 
-    const fd = new FormData()
-        fd.append("title", title)
-        fd.append("category", category)
-        fd.append("subCategory", subCategory)
-        fd.append("duration", duration)
-        fd.append("maxParticipants", maxParticipants)
-        fd.append("description", description)
-        fd.append("workshopPics", workshopPics)
-        fd.append("location", location)
-        fd.append("price", price)
+    // const response = await axios.post("http://localust:5005/api", fd)
+    // setPictures((current)=> [...current, response.data])
 
-
-        // const response = await axios.post("http://localust:5005/api", fd)
-        // setPictures((current)=> [...current, response.data])
-
-    const workshopToCreate = {
-      title,
-      category,
-      subCategory,
-      duration,
-      maxParticipants,
-      description,
-      workshopPics,
-      location,
-      workshopMaterial,
-      price,
-      // teacherId,
-      // sessionsAvailable: sessionsAvailable.map((el) => el.value),
-    };
+    // const workshopToCreate = {
+    //   title,
+    //   category,
+    //   subCategory,
+    //   duration,
+    //   maxParticipants,
+    //   description,
+    //   workshopPics,
+    //   location,
+    //   workshopMaterial,
+    //   price,
+    //   // teacherId,
+    //   // sessionsAvailable: sessionsAvailable.map((el) => el.value),
+    // };
 
     myApi
-      .createWorkshop(workshopToCreate)
+      .createWorkshop(fd)
       .then((response) => {
         const createdWorkshop = response.data;
 
@@ -166,8 +164,7 @@ function CreateWorkshopPage() {
             multiple="true"
             name="workshopPics"
             id="workshopPics"
-            value={workshopPics}
-            onChange={(e) => setWorkshopPics(e.target.value)}
+            onChange={(e) => setWorkshopPics(e.target.files[0])}
           ></input>
         </div>
         <div>
