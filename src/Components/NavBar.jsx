@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import Search from './Search'
 import "../styles/navbar.css"
 import AuthContext, { UserContext } from '../context/AuthContext'
@@ -7,8 +7,10 @@ import IsLoggedIn from './IsLoggedIn'
 
 function NavBar() {
 
-  // Subscribe to the AuthContext to gain access to
+    // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
+    // const {IsLoggedIn, user} = useContext(AuthContext)
+  
   // const {isLoggedIn, user, logOutUser} = useContext(AuthContext)
   // const {isLoggedIn, user} = useContext(AuthContext)
 //  Update the rendering logic to display different content 
@@ -35,6 +37,9 @@ function NavBar() {
                     <img className="auth-icon" src="/home.png" alt="home" />
                 </NavLink>
                 {/* <Search onSearch={handleSearch}/> */}
+
+                <NavLink to={"/see-workshops"}>See my workshops</NavLink>
+
                 {IsLoggedIn ? (
                     
                     <>

@@ -3,13 +3,13 @@ import { useLocation } from 'react-router-dom'
 import { UserContext } from '../context/AuthContext'
 
 function Sidebar() {
-    const location = useLocation()
-    const {isLoggedIn, authenticateUser} = useContext(UserContext)
+    // const location = useLocation()
+    // const {isLoggedIn, authenticateUser} = useContext(UserContext)
 
-    function logout(){
-        localStorage.removeItem("token")
-        authenticateUser()
-    }
+    // function logout(){
+    //     localStorage.removeItem("token")
+    //     authenticateUser()
+    // }
   return (
 
     <div className='sidebar'>Sidebar</div>
