@@ -3,8 +3,8 @@ import React, {useState, useEffect} from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import myApi from '../api/service'
 import axios from 'axios'
-// import { UserContext } from '../context/AuthContext';
-
+import { UserContext } from '../context/AuthContext';
+import IsLoggedIn from '../Components/IsLoggedIn';
 
  const API_URL = import.meta.env.VITE_API_URL;
 
@@ -31,6 +31,7 @@ function BookingCreatePage() {
     const handleValidateBooking = async(e) => {
         e.preventDefault();
 
+
         // const confirmedStatus = newBooking.status("Confirmed")
         // setBookingStatus(confirmedStatus)
         const bookingToCreate = {
@@ -49,7 +50,8 @@ function BookingCreatePage() {
        console.log(response)
         const createdBooking = response.data;
         const bookingId = createdBooking._id;
-        navigate(`/payment?amount=${calculateTotalPrice()}`);
+        console.log(bookingId)
+        navigate(`/payment`);
       })
       .catch((error) => {
         console.log(error);
@@ -99,11 +101,11 @@ function BookingCreatePage() {
 console.log(workshop)
   return (
     // <div>title{workshop.title}</div>
-    <div>
-        <h1 className="cart">Your cart</h1>
+    <div className="cart">
+        <h1>Your cart</h1>
         <div className="cart-text-details">
             <h2>{workshop.title}</h2>
-            <img
+            <img className="oneWorkshopPage-pic"
                 src={workshop.workshopPics[0]}
                 alt={workshop.title}
             />
@@ -114,10 +116,11 @@ console.log(workshop)
 
         </div>
 
-        <div>
+        <div className='session'>
+         
           <label>Sessions available</label>
           <select 
-          name="session" 
+          name="select-session" 
           value={newBooking.session} 
           onChange={(e) => setNewBooking({...newBooking, session:e.target.value})}>
             
@@ -146,11 +149,11 @@ console.log(workshop)
             +
             </button>
         </div>
-        <p>Total Price : {calculateTotalPrice()} euros</p>
+        <p className='total-price'>Total Price : {calculateTotalPrice()} euros</p>
         
-        <Link to={`/payment?amount=${calculateTotalPrice()}`}>
+        <Link to={`/payment`}>
         {/* <Link> */}
-            <button className="validate-booking" onClick={handleValidateBooking}>
+            <button className="btn" onClick={handleValidateBooking}>
                 Validate Booking
             </button>
         </Link>

@@ -20,11 +20,11 @@ function OneWorkshopPage({user}) {
 
   const handleBooking=()=>{
     // if(user||workshopId){
-    if(user||workshopId){
-      navigate(`/booking/workshop/${workshopId}`)
-    } else {
+      if(!IsLoggedIn){
         alert ("You must be logged in to book a workshop")
         navigate(`/login`)
+    } else {
+      navigate(`/booking/workshop/${workshopId}`)
     }
   }
 
@@ -101,7 +101,7 @@ function OneWorkshopPage({user}) {
         {workshop &&(
           <>
           <h1>{workshop.title}</h1>
-          <img
+          <img className="oneWorkshopPage-pic"
             src={workshop.workshopPics[0]}
             alt={workshop.title}
           />
@@ -158,7 +158,7 @@ function OneWorkshopPage({user}) {
     
       <div>
         <Link to={`/booking/workshop/${workshopId}`} className="button-book-workshop">
-          <button onClick={handleBooking}>Book workshop</button>
+          <button className="btn" onClick={handleBooking}>Book workshop</button>
         </Link>
         
       </div>

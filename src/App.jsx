@@ -39,10 +39,11 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/workshops/:workshopId" element={<OneWorkshopPage />} />
         <Route path="/search-result" element={<SearchResultPage />} />
-        <Route path="/booking/workshop/:workshopId" element={<BookingCreatePage />} />
-        <Route path="/booking/:bookingId" element={<BookingPage />} />
+        
+        {/* <Route path="/booking/:bookingId" element={<BookingPage />} /> */}
 
         <Route path="/" element={<IsLoggedIn/>}>
+        <Route path="/booking/workshop/:workshopId" element={<BookingCreatePage />} />
           {/* <Route path="/booking-details/:bookingId" element={<BookingValidationPage />} /> */}
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
