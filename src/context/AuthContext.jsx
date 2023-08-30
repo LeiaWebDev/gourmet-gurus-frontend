@@ -9,6 +9,7 @@ function AuthContext({ children }) {
   // perform login logic and set user state
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isTeacher, setIsTeacher] = useState(false);
 
   function authenticateUser() {
     const token = localStorage.getItem("token"); // retrieve the token inside the function

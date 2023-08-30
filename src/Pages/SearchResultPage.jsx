@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import WorkshopCard from '../Components/WorkshopCard';
 import myApi from '../api/service';
 import Search from '../Components/Search';
@@ -17,19 +17,33 @@ function SearchResultPage() {
     
 
   return (
-    <div>
+    
       <div>
         <h1>Your search results</h1>
         {filteredWorkshops.map((workshop)=>{
           return (
-            <div className='search-results' key={workshop._id}>
-                <WorkshopCard/>
-            </div>
+            // <Link to={`/workshops/${workshop._id}`}>
+              <div className='search-results' key={workshop._id}>
+                  <WorkshopCard
+                      key={workshop._id}
+                      workshopId={workshop._id}
+                      title={workshop.title}
+                      category={workshop.category}
+                      duration={workshop.duration}
+                      maxParticipants={workshop.maxParticipants}
+                      description={workshop.description}
+                      workshopPics={workshop.workshopPics}
+                      location={workshop.location}
+                      price={workshop.price}
+                  />
+              </div>
+            // </Link>
           )
+          
         })}
       </div>
 
-    </div>
+    
   )
 }
 

@@ -4,32 +4,24 @@ import Search from './Search'
 import "../styles/navbar.css"
 import AuthContext, { UserContext } from '../context/AuthContext'
 import IsLoggedIn from './IsLoggedIn'
+import IsTeacher from './IsTeacher'
 
 function NavBar() {
-
-    
-    
-    // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider `value` prop
-
     
   // const {isLoggedIn, user, logOutUser} = useContext(AuthContext)
   // const {isLoggedIn, user} = useContext(AuthContext)
-//  Update the rendering logic to display different content 
-  //  depending on whether the user is logged in or not
-  
   // const handleLogout = () => {
   //   removeUser()
-    
   // }
 
-
-//   const location = useLocation()
-    // const {isLoggedIn, authenticateUser} = useContext(UserContext)
-    // function logout(){
-    //     localStorage.removeItem("token")
-    //     authenticateUser()
-    // }
+    const location = useLocation()
+     // Subscribe to the AuthContext to gain access to
+    // the values from AuthContext.Provider `value` prop
+    const {isLoggedIn, isTeacher, authenticateUser} = useContext(UserContext)
+    function logout(){
+        localStorage.removeItem("token")
+        authenticateUser()
+    }
 
   return (
     <nav className="navbar">
@@ -46,11 +38,10 @@ function NavBar() {
                 <NavLink to={"/"}>
                     <img className="auth-icon" src="/home.png" alt="home" />
                 </NavLink>
-                {/* <Search onSearch={handleSearch}/> */}
 
-                <NavLink to={"/see-workshops"}>See my workshops</NavLink>
-
-                {!IsLoggedIn ? (
+                
+                {/* !isloggedIn ? dispay non  legged : isadmin ? user : admin */}
+                {!isLoggedIn ? (
                     
                     <>
                         <NavLink to={"/signup"}>
@@ -62,12 +53,21 @@ function NavBar() {
                     </>
                 ) : (
                     <>
-                      {/* <NavLink to={"/login"} onClick={logout}>
+                      <NavLink to={"/login"} onClick={logout}>
                       <img className="auth-icon" src="/logout.png" alt="Log out" />
-                      </NavLink> */}
-                        <NavLink to={"/login"} >
+                      </NavLink>
+                        {/* <NavLink to={"/login"} >
                             <img className="auth-icon" src="/logout.png" alt="Log out" />
-                        </NavLink>
+                        </NavLink> */}
+                        {isTeacher ? (
+                            <>
+                             <NavLink to={"/see-workshops"}>See my workshops</NavLink>
+                            </>
+                                ):(
+                            <>
+
+                            </>
+                        )}
 
                     </>
                 )}

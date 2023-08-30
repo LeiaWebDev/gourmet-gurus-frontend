@@ -82,6 +82,10 @@ myApi.createBooking = function (bookingData) {
   return myApi.post("/api/bookings/create", bookingData);
 };
 
+myApi.updateBookingStatus = function (bookingId) {
+    return myApi.put(`/api/bookings/confirmed/${bookingId}`);
+  };
+
 //SESSIONS//
 
 myApi.getExistingSessions = function (teacherId, workshopId) {
