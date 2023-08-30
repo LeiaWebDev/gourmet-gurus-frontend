@@ -3,11 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
 import myApi from "../api/service";
-// import "./createWorkshop.css";
 import "../styles/createworkshop.css";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function CreateWorkshopPage() {
+  const { user } = useContext(UserContext);
   const [newWorkshop, setNewWorkshop] = useState(null);
   const navigate = useNavigate();
   const { authenticateUser } = useContext(UserContext);
@@ -21,13 +21,9 @@ function CreateWorkshopPage() {
   const [location, setLocation] = useState("");
   const [workshopMaterial, setWorkshopMaterial] = useState("");
   const [price, setPrice] = useState("");
-  // const [sessionsAvailable, setSessionsAvailable] = useState("");
-  // const [teacherId, setTeacherId] = useState(authenticateUser._id || "");
   const [successMessage, setSuccessMessage] = useState("");
-  // const [sessionsAmount, setSessionsAmount] = useState(0);
-  const user = JSON.parse(localStorage.getItem("user"));
-  // console.log("User from localStorage:", user);
-  //   const teacherId = user.teacherId
+
+  
   const handleSubmit = () => {
     const fd = new FormData();
     fd.append("title", title);
@@ -40,29 +36,10 @@ function CreateWorkshopPage() {
     fd.append("location", location);
     fd.append("price", price);
 
-    // const response = await axios.post("http://localust:5005/api", fd)
-    // setPictures((current)=> [...current, response.data])
-
-    // const workshopToCreate = {
-    //   title,
-    //   category,
-    //   subCategory,
-    //   duration,
-    //   maxParticipants,
-    //   description,
-    //   workshopPics,
-    //   location,
-    //   workshopMaterial,
-    //   price,
-    //   // teacherId,
-    //   // sessionsAvailable: sessionsAvailable.map((el) => el.value),
-    // };
-
     myApi
       .createWorkshop(fd)
       .then((response) => {
         const createdWorkshop = response.data;
-
         setSuccessMessage("Workshop successfully created!");
         alert("Workshop successfully created!");
         setNewWorkshop(createdWorkshop);
@@ -73,24 +50,12 @@ function CreateWorkshopPage() {
       });
   };
 
-  //   axios
-  //     .post(`${API_URL}/api/workshops/create-workshop`, workshopToCreate)
-  //     .then((response) => {
-  //       const createdWorkshop = response.data;
-
-  //       setSuccessMessage("Workshop successfully created!");
-  //       setNewWorkshop(createdWorkshop);
-  //       navigate("/see-workshops");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
 
   return (
     <>
-      {successMessage && <p>{successMessage}</p>}
+      {/* {successMessage && <p>{successMessage}</p>} */}
       <h1 className="pagetitle">Create a workshop</h1>
+    
       <div className="create-workshop-form">
         <div>
           <label>Workshop Title</label>
@@ -206,20 +171,3 @@ function CreateWorkshopPage() {
 }
 
 export default CreateWorkshopPage;
-
-//   const [picture, setPicture] = useState("")
-//   const [pictures, setPictures] = useState([])
-
-// async function handleSubmit(e) {
-//   e.preventDefault()
-
-//   try {
-//     const fd = new FormData()
-//     fd.append("title", title)
-//     fd.append("pictue", picture)
-//     const response = await axios.post("http://localust:5005/api", fd)
-//     setPictures((current)=> [...current, response.data])
-//   }catch (error) {
-//     console.log(error);
-//   }
-// }

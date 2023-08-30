@@ -106,4 +106,8 @@ myApi.deleteOneWorkshopSession = function (workshopId, sessionIndex) {
   return myApi.delete(`/api/workshops/${workshopId}/sessions/${sessionIndex}`);
 };
 
+myApi.updateUserProfile = function (userId, updatedProfile) {
+  return myApi.put(`/api/users/${userId}/update-profile`, updatedProfile);
+};
+
 export default myApi;
