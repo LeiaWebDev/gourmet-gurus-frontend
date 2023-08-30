@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import myApi from '../api/service';
+import "./../styles/searchbar.css";
 
 function Search() {
   const [searchText, setSearchText] = useState("");
@@ -44,7 +45,7 @@ function Search() {
           setSearchText(e.target.value);
         }}
         ></input>
-        <button type='submit'>Search</button>
+        <button className="search-button" type='submit'>Search</button>
         {/* <button onClick={findResult(string.title)}>Search</button> */}
     </form>
   )

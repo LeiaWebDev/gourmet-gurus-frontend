@@ -7,12 +7,6 @@ import IsLoggedIn from './IsLoggedIn'
 import IsTeacher from './IsTeacher'
 
 function NavBar() {
-    
-  // const {isLoggedIn, user, logOutUser} = useContext(AuthContext)
-  // const {isLoggedIn, user} = useContext(AuthContext)
-  // const handleLogout = () => {
-  //   removeUser()
-  // }
 
     const location = useLocation()
      // Subscribe to the AuthContext to gain access to
@@ -30,7 +24,7 @@ function NavBar() {
                     <img src="/logo-gourmet-gurus.png" alt="Logo" />
                 </div>
                 {/* <NavLink className="btn-orange" to="/create-workshop">
-                    Create a worksop
+                    Create a workshop
                 </NavLink> */}
             </div>
             <Search />
@@ -60,15 +54,10 @@ function NavBar() {
                             <img className="auth-icon" src="/logout.png" alt="Log out" />
                         </NavLink> */}
                         {isTeacher ? (
-                            <>
                              <NavLink to={"/see-workshops"}>See my workshops</NavLink>
-                            </>
-                                ):(
-                            <>
-
-                            </>
+                        ):(
+                            <></>
                         )}
-
                     </>
                 )}
             </div>

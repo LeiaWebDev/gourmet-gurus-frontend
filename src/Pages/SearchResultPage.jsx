@@ -18,15 +18,15 @@ function SearchResultPage() {
 
   return (
     
-      <div>
+      <div className='display-search-results'>
         <h1>Your search results</h1>
         {filteredWorkshops.map((workshop)=>{
           return (
             // <Link to={`/workshops/${workshop._id}`}>
-              <div className='search-results' key={workshop._id}>
+              <div className='display-each-card' key={workshop._id}>
                   <WorkshopCard
                       key={workshop._id}
-                      workshopId={workshop._id}
+                      _id={workshop._id}
                       title={workshop.title}
                       category={workshop.category}
                       duration={workshop.duration}

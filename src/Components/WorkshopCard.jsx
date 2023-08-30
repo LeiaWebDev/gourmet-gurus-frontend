@@ -18,18 +18,18 @@ function WorkshopCard({
   return (
     <Link to={`/workshops/${workshopId}`}>
         <div className='workshopCard'>
-            <span>
+            <p>
                 <img className="card-workshop-pic"
                 src={workshopPics[0]}
                 alt="workshop"/>
-            </span>
-            <span>{title}</span>
-            <span> {category}</span>
-            <span>{duration}</span>
-            <span>{maxParticipants} max participants</span>
-            <span>{description}</span>
-            <span>Address: {location}</span>
-            <span>{price} € / pers</span>
+            </p>
+            <p>{title} </p>
+            {/* <p> {category} category</p> */}
+            <p>{duration} workshop</p>
+            {/* <p>{maxParticipants} participants max</p> */}
+            {/* <p>{description}</p> */}
+            {/* <p>Address: {location}</p> */}
+            <p>{price} € / pers</p>
         </div>
     </Link>
   );

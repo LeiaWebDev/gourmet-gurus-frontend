@@ -1,7 +1,7 @@
 import React from 'react'
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import Cards from "react-credit-cards-2";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import myApi from '../api/service';
@@ -12,28 +12,36 @@ function PaymentPage() {
   const [date, SetDate] = useState("");
   const [cvc, SetCvc] = useState("");
   const [focus, SetFocus] = useState("");
+  const [booking, setBooking] = useState(null)
  
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-    const paymentAmount = searchParams.get("amount");
-  const bookingId = searchParams.get("bookingId");
+//   const queryParams = new URLSearchParams(location.search);
+    // const paymentAmount = queryParams.get("amount");
+//   const bookingId = queryParams.get("bookingId");
 
+useEffect(() => {
+    myApi.get('/api/bookings/last').then(response => {
+        console.log(response)
+        setBooking(response.data)
+    }).catch(console.log)
+},[])
   function handleSubmit(event) {
     event.preventDefault();
     if (!number || !date || !cvc || !name || !focus) {
         alert("Please fill in all required fields.");
        
     } else {
-        updateBookingStatus(bookingId) // Pass the bookingId to updateBookingStatus
+        updateBookingStatus() // Pass the bookingId to updateBookingStatus
     } 
     }  
 
 
-    async function updateBookingStatus(bookingId){
+    async function updateBookingStatus(){
         try {
-            const response = await myApi.updateBookingStatus(bookingId);
+            const response = await myApi.updateBookingStatus(booking._id);
+            // const paymentAmount = booking.quantity * booking.workshopId.price
             console.log("Booking status updated:", response.data);
-            alert(`Your payment of ${paymentAmount} euros has been validated, and booking is confirmed.`);
+            alert(`Your payment of ${booking.quantity * booking.workshopId.price} euros has been validated, and booking is confirmed.`);
             
             // You might want to navigate to a confirmation page or some other route
           } catch (error) {
@@ -42,13 +50,15 @@ function PaymentPage() {
           }
     }
 
+    if (!booking) {
+        return <p>Loading</p>
+    }
+
   return (
     <div className="payment">
             <Cards number={number} expiry={date} cvc={cvc} name={name} focused={focus}></Cards>
 
-            {paymentAmount && (
-                <h2 id="payment-amount">Payment details for {paymentAmount} euros</h2>
-            )}
+                <h2 id="payment-amount">Payment details for {booking.quantity * booking.workshopId.price} euros</h2>
            
 
             <form onSubmit={handleSubmit} id="card-details">
@@ -114,7 +124,7 @@ function PaymentPage() {
                             onFocus={(e) => SetFocus(e.target.name)}
                         ></input>
                     </div>
-                    <button id="payment-button" type="submit">
+                    <button id="button" type="submit">
                         Validate payment
                     </button>
                 </div>
