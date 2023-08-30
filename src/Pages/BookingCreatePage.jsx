@@ -34,6 +34,7 @@ function BookingCreatePage() {
         // const confirmedStatus = newBooking.status("Confirmed")
         // setBookingStatus(confirmedStatus)
         const bookingToCreate = {
+          // _id: newBooking._id,
           session: newBooking.session,
           status: "Pending",
           cancellation: newBooking.cancellation,
@@ -47,9 +48,8 @@ function BookingCreatePage() {
       .then((response) => {
        console.log(response)
         const createdBooking = response.data;
-        // alert("Your booking is ready for payment");
-        // setNewBooking(createdBooking);
-        navigate(`/payment`);
+        const bookingId = createdBooking._id;
+        navigate(`/payment?amount=${calculateTotalPrice()}`);
       })
       .catch((error) => {
         console.log(error);
@@ -147,8 +147,9 @@ console.log(workshop)
             </button>
         </div>
         <p>Total Price : {calculateTotalPrice()} euros</p>
-        {/* <Link to={`/payment?amount=${calculateTotalPrice}`}> */}
-        <Link>
+        
+        <Link to={`/payment?amount=${calculateTotalPrice()}`}>
+        {/* <Link> */}
             <button className="validate-booking" onClick={handleValidateBooking}>
                 Validate Booking
             </button>
