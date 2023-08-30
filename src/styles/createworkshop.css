@@ -1,17 +1,30 @@
 #root {
-  --clr-accent: #f36527;
-  --gradient: linear-gradient(
-    45deg,
-    #d65db1,
-    #ff6f91,
-    #ff9671,
-    #ffc75f,
-    #f9f871
-  );
-  background-color: var(--gradient);
+  --PrimaryColor: hsl(26, 93%, 50%);
+  --HoverColor: hsl(26, 90%, 42%)
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --textColor: hsl(240, 1%, 48%);
+  --whiteColorDream: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greyText: rgb(190, 190, 190)
+  --inputColor: hsl(330, 12%, 97%)
 }
 
-.create-workshop-form {
+
+.create-workshop-card{
+  width: 100%;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  position: absolute;
+  gap: 1rem;
+  justify-content: center;
+  bottom: 30%;
+}
+/* .create-workshop-container{
+  border: 
+} */
+/* .create-workshop-form {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -26,9 +39,9 @@ select {
   width: 80%;
   padding: 16px 20px;
   border-radius: 4px;
-  background-color: #f1f1f1a1;
+  background-color: (--whiteColorDream);
   accent-color: var(--clr-accent);
-  border: 3px solid rgb(202, 107, 17);
+  border: 3px solid var(--PrimaryColor)
 }
 input[type="text"],
 [type="number"],
@@ -61,4 +74,4 @@ h1 {
   align-items: center;
   font-weight: lighter;
   color: rgb(220, 115, 29);
-}
+} */

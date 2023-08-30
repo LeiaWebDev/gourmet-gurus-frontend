@@ -62,7 +62,9 @@ function UpdateProfile() {
   };
 
   return (
-    <div>
+   <>
+    <section className="updateProfileSection">
+      <div className="">
       <form id="update-profile">
         <label htmlFor="firstName"> First Name </label>
         <input
@@ -105,10 +107,12 @@ function UpdateProfile() {
           }}
         />
         <p className="error">{error}</p>
-        <button onClick={handleUpdateProfile}> Update Profile </button>
+        <button className="btn" onClick={handleUpdateProfile}> Update Profile </button>
       </form>
+      </div>
+      </section>
 
-      <div>
+      <section className="userProfile">
         {/* {profileUpdated && myProfile && ( */}
         <div className="user-profile">
           <h2>Teacher's Profile</h2>
@@ -120,8 +124,10 @@ function UpdateProfile() {
           <p>{user.bio}</p>
         </div>
         {/* )} */}
-      </div>
-    </div>
+        
+      </section>
+    
+    </>
   );
 }
 

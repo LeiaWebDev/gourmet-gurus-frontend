@@ -54,14 +54,14 @@ function SeeMyWorkshops() {
                 <img className="workshop-pics" src={picture} width={200} />
               ))}{" "}
             </div>
-            <button>
+            <button className='btn'>
               <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
             </button>
-            <button onClick={() => handleDeleteWorkshop(workshop._id)}>
+            <button className='btn' onClick={() => handleDeleteWorkshop(workshop._id)}>
               {" "}
               Delete{" "}
             </button>
-            <button>
+            <button className='btn'>
               {" "}
               <Link to={`/see-sessions/${workshop._id}`}>
                 See available sessions
