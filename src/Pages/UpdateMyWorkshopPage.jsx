@@ -223,7 +223,7 @@ function UpdateMyWorkshopPage() {
             readOnly
           ></input>
         </div> */}
-        <button className="submit-button" onClick={handleSubmit}>
+        <button className="btn" onClick={handleSubmit}>
           {" "}
           Update workshop{" "}
         </button>

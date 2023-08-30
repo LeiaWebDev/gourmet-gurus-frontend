@@ -56,13 +56,13 @@ function CreateWorkshopPage() {
   };
 
   return (
-    <>
+    <section className="create-workshop-container">
       {/* {successMessage && <p>{successMessage}</p>} */}
-      <h1 className="pagetitle">Create a workshop</h1>
 
-      <div className="create-workshop-form">
-        <div>
-          <label>Workshop Title</label>
+      <div className="create-workshop-card">
+        <h1>Create a workshop</h1>
+        <div className="workshopTitleDiv">
+          <label className="workshopTitle">Workshop Title</label>
           <input
             type="text"
             name="title"
@@ -70,8 +70,8 @@ function CreateWorkshopPage() {
             onChange={(e) => setTitle(e.target.value)}
           ></input>
         </div>
-        <div>
-          <label>Category</label>
+        <div className="categoryTitleDiv">
+          <label htmlFor="category">Category</label>
           <select name="category" onChange={(e) => setCategory(e.target.value)}>
             <option value="">Choose an option</option>
             <option value="Cooking">Cooking</option>
@@ -79,8 +79,8 @@ function CreateWorkshopPage() {
             <option value="Patisserie">Pastry</option>
           </select>
         </div>
-        <div>
-          <label>Sub Category</label>
+        <div className="subCategoryDiv">
+          <label htmlFor="subCategory">Sub Category</label>
           <select
             name="subCategory"
             onChange={(e) => setSubCategory(e.target.value)}
@@ -95,18 +95,19 @@ function CreateWorkshopPage() {
             <option value="Italian Cuisine">Italian Cuisine</option>
           </select>
         </div>
-        <div>
-          <label>Duration</label>
+        <div className="durationDiv">
+          <label htmlFor="duration">Duration</label>
           <select name="duration" onChange={(e) => setDuration(e.target.value)}>
             <option value="">Choose an option</option>
-            <option value="1h">1h</option>
-            <option value="2h">2h</option>
-            <option value="3h">3h</option>
+            <option value="1 hour">1 hour</option>
+            <option value="2 hours">2 hours</option>
+            <option value="2.5 hours">2.5 hours</option>
+            <option value="3 hours">3 hours</option>
           </select>
         </div>
 
-        <div>
-          <label>Max Participants</label>
+        <div className="maxParticipantsDiv">
+          <label htmlFor="maxParticipants">Max Participants</label>
           <input
             type="number"
             name="maxParticipants"
@@ -117,8 +118,8 @@ function CreateWorkshopPage() {
           ></input>
         </div>
 
-        <div>
-          <label>Description</label>
+        <div className="descriptionDiv">
+          <label htmlFor="description">Description</label>
           <input
             type="text"
             name="description"
@@ -126,8 +127,8 @@ function CreateWorkshopPage() {
             onChange={(e) => setDescription(e.target.value)}
           ></input>
         </div>
-        <div>
-          <label>Workshop Photos</label>
+        <div className="workshopPicsDiv">
+          <label htmlFor="workshopPhotos">Workshop Photos</label>
           <input
             type="file"
             multiple={true}
@@ -136,8 +137,8 @@ function CreateWorkshopPage() {
             onChange={(e) => setWorkshopPics(e.target.files)}
           ></input>
         </div>
-        <div>
-          <label>Location</label>
+        <div className="locationDiv">
+          <label htmlFor="location">Location</label>
           <input
             type="text"
             name="location"
@@ -145,8 +146,8 @@ function CreateWorkshopPage() {
             onChange={(e) => setLocation(e.target.value)}
           ></input>
         </div>
-        <div>
-          <label>Workshop Materials</label>
+        <div className="workshopMaterialsDiv">
+          <label htmlFor="workshopMaterials">Workshop Materials</label>
           <input
             type="text"
             name="workshopMaterial"
@@ -154,8 +155,8 @@ function CreateWorkshopPage() {
             onChange={(e) => setWorkshopMaterial(e.target.value)}
           ></input>
         </div>
-        <div>
-          <label>Price</label>
+        <div className="priceDiv">
+          <label htmlFor="price">Price</label>
           <input
             type="number"
             name="price"
@@ -165,12 +166,12 @@ function CreateWorkshopPage() {
           ></input>
         </div>
 
-        <button className="submit-button" onClick={handleSubmit}>
+        <button className="btn" onClick={handleSubmit}>
           {" "}
           Create Workshop{" "}
         </button>
       </div>
-    </>
+    </section>
   );
 }
 
