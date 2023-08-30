@@ -102,6 +102,12 @@ myApi.deleteOneWorkshopSession = function (workshopId, sessionIndex) {
   return myApi.delete(`/api/workshops/${workshopId}/sessions/${sessionIndex}`);
 };
 
+
+//PROFILE
+myApi.getUserProfile = function (userId) {
+  return myApi.get(`/api/users/${userId}/profile`)
+}
+
 myApi.updateUserProfile = function (userId, updatedProfile) {
   return myApi.put(`/api/users/${userId}/update-profile`, updatedProfile);
 };

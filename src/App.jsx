@@ -13,7 +13,7 @@ import CreateWorkshopPage from "./Pages/CreateWorkshopPage";
 import SeeMyWorkshops from "./Pages/SeeMyWorkshops";
 import SeeMySessions from "./Pages/SeeMySessions";
 import UpdateMyWorkshopPage from "./Pages/UpdateMyWorkshopPage";
-import CreateSessionPage from "./Pages/CreateSessionPage";
+// import CreateSessionPage from "./Pages/CreateSessionPage";
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import IsLoggedIn from "./Components/IsLoggedIn";
@@ -75,7 +75,7 @@ function App() {
         <Route path="/see-sessions/:workshopId" element={<SeeMySessions />} />
 
         <Route path="/" element={<IsTeacher />}>
-          <Route path="/create-session" element={<CreateSessionPage />} />
+         
         </Route>
       </Routes>
     </>

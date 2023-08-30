@@ -47,22 +47,32 @@ function UpdateMyWorkshopPage() {
   }, [workshopId]);
 
   const handleSubmit = () => {
-    const updatedData = {
-      title: updatedTitle,
-      category: updatedCategory,
-      subCategory: updatedSubCategory,
-      duration: updatedDuration,
-      maxParticipants: updatedMaxParticipants,
-      description: updatedDescription,
-      workshopPics: updatedWorkshopPics,
-      location: updatedLocation,
-      workshopMaterial: updatedWorkshopMaterial,
-      price: updatedPrice,
-      sessionsAvailable: updatedSessionsAvailable,
-      // teacherId: teacherId,
-    };
+    const fd = new FormData();
+    fd.append("title", title);
+    fd.append("category", category);
+    fd.append("subCategory", subCategory);
+    fd.append("duration", duration);
+    fd.append("maxParticipants", maxParticipants);
+    fd.append("description", description);
+    fd.append("workshopPics", workshopPics);
+    fd.append("location", location);
+    fd.append("price", price);
+    // const updatedData = {
+    //   title: updatedTitle,
+    //   category: updatedCategory,
+    //   subCategory: updatedSubCategory,
+    //   duration: updatedDuration,
+    //   maxParticipants: updatedMaxParticipants,
+    //   description: updatedDescription,
+    //   workshopPics: updatedWorkshopPics,
+    //   location: updatedLocation,
+    //   workshopMaterial: updatedWorkshopMaterial,
+    //   price: updatedPrice,
+    //   sessionsAvailable: updatedSessionsAvailable,
+    //   // teacherId: teacherId,
+    // };
     myApi
-      .updateWorkshopById(teacherId, workshopId, updatedData)
+      .updateWorkshopById(teacherId, workshopId, fd)
       .then((response) => {
         console.log("Workshop updated successfully:", response);
         navigate("/see-workshops");
@@ -97,7 +107,7 @@ function UpdateMyWorkshopPage() {
             <option value="">Choose an option</option>
             <option value="Cooking">Cooking</option>
             <option value="Baking">Baking</option>
-            <option value="Patisserie">Patisserie</option>
+            <option value="Patisserie">Pastry Making</option>
           </select>
         </div>
         <div>
@@ -157,9 +167,10 @@ function UpdateMyWorkshopPage() {
           <label>Workshop Photos</label>
           <input
             type="file"
+            multiple={true}
             name="workshopPics"
-            value={updatedWorkshopPics}
-            onChange={(e) => setUpdatedWorkshopPics(e.target.value)}
+            id="workshopPics"
+            onChange={(e) => setUpdatedWorkshopPics(e.target.files[0])}
           ></input>
         </div>
 

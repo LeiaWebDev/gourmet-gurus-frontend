@@ -43,7 +43,7 @@ function AuthContext({ children }) {
   return (
     // value = logOutUser
     <UserContext.Provider
-      value={{ user, authenticateUser, isLoggedIn, isLoading }}
+      value={{ user, authenticateUser, isLoggedIn, isLoading, setUser }}
     >
       {children}
     </UserContext.Provider>

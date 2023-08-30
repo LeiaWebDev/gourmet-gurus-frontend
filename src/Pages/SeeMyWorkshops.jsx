@@ -48,7 +48,9 @@ function SeeMyWorkshops() {
             <p>{workshop.workshopMaterial}</p>
             <div>
               {" "}
-              <img className="workshop-pics" src={workshop.workshopPics} />{" "}
+              {workshop.workshopPics.map((picture) => (
+                <img className="workshop-pics" src={picture} width={200} />
+              ))}{" "}
             </div>
             <button>
               <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
