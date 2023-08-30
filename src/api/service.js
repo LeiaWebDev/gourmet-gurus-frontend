@@ -7,13 +7,13 @@ const myApi = axios.create({
 
 myApi.interceptors.request.use((request) => {
   const token = localStorage.getItem("token");
-  console.log("Token from localStorage:", token); // Check if token is retrieved
+  // console.log("Token from localStorage:", token); // Check if token is retrieved
   if (token) {
     request.headers.Authorization = `Bearer ${token}`;
-    console.log(
-      "Authorization header set with token:",
-      request.headers.Authorization
-    ); // Check if header is set
+    // console.log(
+    //   "Authorization header set with token:",
+    //   request.headers.Authorization
+    // ); // Check if header is set
   }
 
   return request;

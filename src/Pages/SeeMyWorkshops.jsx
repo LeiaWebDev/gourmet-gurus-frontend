@@ -2,9 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import myApi from "../api/service";
 import { UserContext } from "./../context/AuthContext";
 import { Link } from "react-router-dom";
+import {BiTime} from 'react-icons/bi' 
 
 function SeeMyWorkshops() {
   const [myWorkshops, setMyWorkshops] = useState([]);
+  const [updatedWorkshop, setUpdatedWorkshop] = useState("")
   const { user } = useContext(UserContext);
   const teacherId = user?._id;
   useEffect(() => {
@@ -28,7 +30,7 @@ function SeeMyWorkshops() {
         const updatedWorkshops = myWorkshops.filter(
           (workshop) => workshop.id !== workshopId
         );
-        setMyWorkshops(updatedWorkshops);
+        setUpdatedWorkshop(updatedWorkshops);
       })
       .catch((error) => {
         console.log("Error deleting workshop:", error);
@@ -44,9 +46,9 @@ function SeeMyWorkshops() {
             <h2>{workshop.title}</h2>
             <p>{workshop.description}</p>
             <p>{workshop.price}€</p>
-            <p>{workshop.duration}</p>
+            <p><BiTime/>{workshop.duration}</p>
             <p>{workshop.workshopMaterial}</p>
-            <div>
+            <div className="workshop-pic">
               {" "}
               {workshop.workshopPics.map((picture) => (
                 <img className="workshop-pics" src={picture} width={200} />

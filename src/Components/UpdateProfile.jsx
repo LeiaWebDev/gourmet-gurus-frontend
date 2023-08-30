@@ -51,7 +51,7 @@ function UpdateProfile() {
       .then((response) => {
         const updatedProfile = response.data;
         alert("Profile successfully completed!");
-        // navigate("/create-workshop");
+        navigate("/create-workshop");
         // setUser(updatedProfile);
         // setMyProfile(updatedProfile);
         setUser(updatedProfile);

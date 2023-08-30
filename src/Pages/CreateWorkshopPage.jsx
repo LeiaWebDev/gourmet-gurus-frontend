@@ -33,7 +33,7 @@ function CreateWorkshopPage() {
     fd.append("maxParticipants", maxParticipants);
     fd.append("description", description);
     for (const file of workshopPics) {
-      fd.append('workshopPics', file)
+      fd.append("workshopPics", file);
     }
     fd.append("location", location);
     fd.append("price", price);
@@ -76,7 +76,7 @@ function CreateWorkshopPage() {
             <option value="">Choose an option</option>
             <option value="Cooking">Cooking</option>
             <option value="Baking">Baking</option>
-            <option value="Patisserie">Patisserie</option>
+            <option value="Patisserie">Pastry</option>
           </select>
         </div>
         <div>
