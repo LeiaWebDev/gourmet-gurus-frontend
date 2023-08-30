@@ -5,6 +5,8 @@ import myApi from '../api/service'
 import axios from 'axios'
 import { UserContext } from '../context/AuthContext';
 import IsLoggedIn from '../Components/IsLoggedIn';
+import "./../styles/userpages.css"
+
 
  const API_URL = import.meta.env.VITE_API_URL;
 

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios"
 // import { UserContext } from '../context/AuthContext';
 import { NavLink, Link } from 'react-router-dom';
+import "./../styles/userpages.css"
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -29,9 +30,9 @@ function SignupPage() {
       
     
       return (
-          <div>
-            <h2>Signup</h2>
-            <form className="form-Login" onSubmit={handleSubmit}>
+          <div className='signup'>
+            <h1>Signup</h1>
+            <form className="form-login" onSubmit={handleSubmit}>
                
               <div className="area-block">
                 <div className="email-area">
@@ -59,12 +60,14 @@ function SignupPage() {
                 </div>
               </div>
                 <p className="error">{errorMessage}</p>
-                <button type= "submit">Signup</button>
+                <button className="btn" type= "submit">Signup</button>
             </form>
-
-            {errorMessage && <p className='error-message'>{errorMessage}</p>}
-            <p>Already have account?</p>
-            <Link to={"/login"}> Login</Link>
+            <div className="want-signup">
+              {errorMessage && <p className='error-message'>{errorMessage}</p>}
+              <p>Already have account?</p>
+              <Link to={"/login"}> Login</Link>
+            </div>
+            
           </div>
       )
 }

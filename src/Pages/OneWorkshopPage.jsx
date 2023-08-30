@@ -4,6 +4,8 @@ import axios from "axios";
 import myApi from "../api/service";
 import IsLoggedIn from "../Components/IsLoggedIn";
 import { UserContext } from "../context/AuthContext";
+import "./../styles/userpages.css"
+
 
 const API_URL = import.meta.env.VITE_API_URL;
 

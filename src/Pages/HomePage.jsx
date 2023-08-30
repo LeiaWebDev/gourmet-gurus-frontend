@@ -4,7 +4,8 @@ import myApi from "../api/service";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Search from "../Components/Search";
-import "./../styles/homepage.css"
+import "./../styles/userpages.css"
+import "../styles/workshopCard.css";
 
 // Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = import.meta.env.VITE_API_URL;
