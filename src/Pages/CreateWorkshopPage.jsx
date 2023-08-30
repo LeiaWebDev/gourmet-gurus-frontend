@@ -56,13 +56,13 @@ function CreateWorkshopPage() {
   };
 
   return (
-    <section className="create-workshop-container"> 
+    <section className="create-workshop-container">
       {/* {successMessage && <p>{successMessage}</p>} */}
-      <h1 className="pagetitle">Create a workshop</h1>
 
       <div className="create-workshop-card">
+        <h1>Create a workshop</h1>
         <div className="workshopTitleDiv">
-          <label htmlFor="workshopTitle">Workshop Title</label>
+          <label className="workshopTitle">Workshop Title</label>
           <input
             type="text"
             name="title"
@@ -95,13 +95,14 @@ function CreateWorkshopPage() {
             <option value="Italian Cuisine">Italian Cuisine</option>
           </select>
         </div>
-        <div htmlFor="durationDiv">
+        <div className="durationDiv">
           <label htmlFor="duration">Duration</label>
           <select name="duration" onChange={(e) => setDuration(e.target.value)}>
             <option value="">Choose an option</option>
-            <option value="1h">1h</option>
-            <option value="2h">2h</option>
-            <option value="3h">3h</option>
+            <option value="1 hour">1 hour</option>
+            <option value="2 hours">2 hours</option>
+            <option value="2.5 hours">2.5 hours</option>
+            <option value="3 hours">3 hours</option>
           </select>
         </div>
 
@@ -136,7 +137,7 @@ function CreateWorkshopPage() {
             onChange={(e) => setWorkshopPics(e.target.files)}
           ></input>
         </div>
-        <div>
+        <div className="locationDiv">
           <label htmlFor="location">Location</label>
           <input
             type="text"

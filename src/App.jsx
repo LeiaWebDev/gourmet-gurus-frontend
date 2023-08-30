@@ -21,17 +21,13 @@ import NavBar from "./Components/NavBar";
 import Search from "./Components/Search";
 import UpdateProfile from "./Components/UpdateProfile";
 import IsAdmin from "./Components/isAdmin";
-import IsTeacher from "./Components/IsTeacher"
+import IsTeacher from "./Components/IsTeacher";
 import BookingCreatePage from "./Pages/BookingCreatePage";
 
-
 function App() {
-  
-
   return (
     <>
-      
-      <NavBar/>
+      <NavBar />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -39,26 +35,31 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/workshops/:workshopId" element={<OneWorkshopPage />} />
         <Route path="/search-result" element={<SearchResultPage />} />
-        
+
         {/* <Route path="/booking/:bookingId" element={<BookingPage />} /> */}
 
-        <Route path="/" element={<IsLoggedIn/>}>
-        <Route path="/booking/workshop/:workshopId" element={<BookingCreatePage />} />
+        <Route path="/" element={<IsLoggedIn />}>
+          <Route
+            path="/booking/workshop/:workshopId"
+            element={<BookingCreatePage />}
+          />
           {/* <Route path="/booking-details/:bookingId" element={<BookingValidationPage />} /> */}
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/users/:userId/update-profile" element={<UpdateProfile/>}/>
+          <Route
+            path="/users/:userId/update-profile"
+            element={<UpdateProfile />}
+          />
         </Route>
-        <Route path="/create-workshop" element={<CreateWorkshopPage />} />
-        <Route path="/see-workshops" element={<SeeMyWorkshops />} />
-        <Route
-          path="/update-workshop/:workshopId"
-          element={<UpdateMyWorkshopPage />}
-        />
-        <Route path="/see-sessions/:workshopId" element={<SeeMySessions />} />
 
         <Route path="/" element={<IsTeacher />}>
-         
+          <Route path="/create-workshop" element={<CreateWorkshopPage />} />
+          <Route path="/see-workshops" element={<SeeMyWorkshops />} />
+          <Route
+            path="/update-workshop/:workshopId"
+            element={<UpdateMyWorkshopPage />}
+          />
+          <Route path="/see-sessions/:workshopId" element={<SeeMySessions />} />
         </Route>
       </Routes>
     </>
