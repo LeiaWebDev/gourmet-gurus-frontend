@@ -67,7 +67,8 @@ flex{
 }
 .btn a {
  color: var(--whiteColor);
- font-weight: 500;
+ font-weight: 400;
+ font-size: 1rem;
 }
 .btn:hover a{
   color: var(--whiteColor)
