@@ -7,13 +7,13 @@ const myApi = axios.create({
 
 myApi.interceptors.request.use((request) => {
   const token = localStorage.getItem("token");
-  console.log("Token from localStorage:", token); // Check if token is retrieved
+  // console.log("Token from localStorage:", token); // Check if token is retrieved
   if (token) {
     request.headers.Authorization = `Bearer ${token}`;
-    console.log(
-      "Authorization header set with token:",
-      request.headers.Authorization
-    ); // Check if header is set
+    // console.log(
+    //   "Authorization header set with token:",
+    //   request.headers.Authorization
+    // ); // Check if header is set
   }
 
   return request;
@@ -105,6 +105,12 @@ myApi.getAWorkshopSession = function (workshopId) {
 myApi.deleteOneWorkshopSession = function (workshopId, sessionIndex) {
   return myApi.delete(`/api/workshops/${workshopId}/sessions/${sessionIndex}`);
 };
+
+
+//PROFILE
+myApi.getUserProfile = function (userId) {
+  return myApi.get(`/api/users/${userId}/profile`)
+}
 
 myApi.updateUserProfile = function (userId, updatedProfile) {
   return myApi.put(`/api/users/${userId}/update-profile`, updatedProfile);

@@ -23,24 +23,29 @@ function CreateWorkshopPage() {
   const [price, setPrice] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  
   const handleSubmit = () => {
     const fd = new FormData();
+    console.log(workshopPics.length);
     fd.append("title", title);
     fd.append("category", category);
     fd.append("subCategory", subCategory);
     fd.append("duration", duration);
     fd.append("maxParticipants", maxParticipants);
     fd.append("description", description);
-    fd.append("workshopPics", workshopPics);
+    for (const file of workshopPics) {
+      fd.append("workshopPics", file);
+    }
     fd.append("location", location);
     fd.append("price", price);
 
+    for (const [key, value] of fd.entries()) {
+      console.log(key, value);
+    }
     myApi
       .createWorkshop(fd)
       .then((response) => {
         const createdWorkshop = response.data;
-        setSuccessMessage("Workshop successfully created!");
+        // setSuccessMessage("Workshop successfully created!");
         alert("Workshop successfully created!");
         setNewWorkshop(createdWorkshop);
         navigate("/see-workshops");
@@ -50,12 +55,11 @@ function CreateWorkshopPage() {
       });
   };
 
-
   return (
     <>
       {/* {successMessage && <p>{successMessage}</p>} */}
       <h1 className="pagetitle">Create a workshop</h1>
-    
+
       <div className="create-workshop-form">
         <div>
           <label>Workshop Title</label>
@@ -72,7 +76,7 @@ function CreateWorkshopPage() {
             <option value="">Choose an option</option>
             <option value="Cooking">Cooking</option>
             <option value="Baking">Baking</option>
-            <option value="Patisserie">Patisserie</option>
+            <option value="Patisserie">Pastry</option>
           </select>
         </div>
         <div>
@@ -126,10 +130,10 @@ function CreateWorkshopPage() {
           <label>Workshop Photos</label>
           <input
             type="file"
-            multiple="true"
+            multiple={true}
             name="workshopPics"
             id="workshopPics"
-            onChange={(e) => setWorkshopPics(e.target.files[0])}
+            onChange={(e) => setWorkshopPics(e.target.files)}
           ></input>
         </div>
         <div>

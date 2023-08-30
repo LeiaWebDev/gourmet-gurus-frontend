@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useContext, useState } from "react";
 import myApi from "../api/service";
 import { UserContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function UpdateProfile() {
   const { user, setUser } = useContext(UserContext);
@@ -10,36 +11,34 @@ function UpdateProfile() {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
   const [phone, setPhone] = useState(user.phone);
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(user.photo);
   const [bio, setBio] = useState(user.bio);
   const [role, setRole] = useState(user.role);
+  const [myProfile, setMyProfile] = useState(null);
+  const [profileUpdated, setProfileUpdated] = useState(false);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    myApi
+      .getUserProfile(user._id)
+      .then((response) => {
+        const userProfile = response.data;
+        console.log(response);
+        // setMyProfile(userProfile);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [user]);
 
-  // const [updatedFirstName, setUpdatedFirstName] = useState(user.firstName);
-  // const [updatedLastName, setUpdatedLastName] = useState(user.lastName);
-  // const [updatedPhone, setUpdatedPhone] = useState("");
-  // const [updatedPhoto, setUpdatedPhoto] = useState("");
-  // const [updatedBio, setUpdatedBio] = useState(user.bio);
-  // const [updatedRole, setUpdatedRole] = useState(user.role);
-
-  // useEffect(() => {
-  //   setUpdatedFirstName(user.firstName);
-  //   setUpdatedLastName(user.lastName);
-  //   setUpdatedPhone(user.phone);
-  //   setUpdatedPhoto(user.photo);
-  //   setUpdatedBio(user.bio);
-  //   setUpdatedRole(user.role);
-  // }, [user]);
-  // const updatedProfile = {
-  //   firstName: updatedFirstName,
-  //   lastName: updatedLastName,
-  //   phone: updatedPhone,
-  //   photo: updatedPhoto,
-  //   bio: updatedBio,
-  //   role: updatedRole,
-  // };
-  
-  const handleUpdateProfile = () => {
+  const handleUpdateProfile = (e) => {
+    e.preventDefault();
     const fd = new FormData();
+    if (firstName === "" || lastName === "") {
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return setError("No empty fields please!");
+    }
     fd.append("firstName", firstName);
     fd.append("lastName", lastName);
     fd.append("phone", phone);
@@ -47,19 +46,21 @@ function UpdateProfile() {
     fd.append("bio", bio);
     fd.append("role", role);
 
-
     myApi
       .updateUserProfile(user._id, fd)
       .then((response) => {
         const updatedProfile = response.data;
-        setUser(updatedProfile);
         alert("Profile successfully completed!");
         navigate("/create-workshop");
+        // setUser(updatedProfile);
+        // setMyProfile(updatedProfile);
+        setUser(updatedProfile);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   return (
     <div>
       <form id="update-profile">
@@ -84,8 +85,9 @@ function UpdateProfile() {
         <label htmlFor="photo"> Photo </label>
         <input
           type="file"
-          name="workshopPics"
-          id="workshopPics"
+          multiple={true}
+          name="photo"
+          id="photo"
           onChange={(e) => setPhoto(e.target.files[0])}
         />
         <label htmlFor="bio"> Bio </label>
@@ -102,10 +104,49 @@ function UpdateProfile() {
             setRole(role === "Teacher" ? "User" : "Teacher");
           }}
         />
+        <p className="error">{error}</p>
         <button onClick={handleUpdateProfile}> Update Profile </button>
       </form>
+
+      <div>
+        {/* {profileUpdated && myProfile && ( */}
+        <div className="user-profile">
+          <h2>Teacher's Profile</h2>
+          <h3>
+            {user.firstName} {user.lastName}
+          </h3>
+          <p>Contact number: {user.phone}</p>
+          <img className="user-photo" src={user.photo} width={200} />
+          <p>{user.bio}</p>
+        </div>
+        {/* )} */}
+      </div>
     </div>
   );
 }
 
 export default UpdateProfile;
+
+// const [updatedFirstName, setUpdatedFirstName] = useState(user.firstName);
+// const [updatedLastName, setUpdatedLastName] = useState(user.lastName);
+// const [updatedPhone, setUpdatedPhone] = useState("");
+// const [updatedPhoto, setUpdatedPhoto] = useState("");
+// const [updatedBio, setUpdatedBio] = useState(user.bio);
+// const [updatedRole, setUpdatedRole] = useState(user.role);
+
+// useEffect(() => {
+//   setUpdatedFirstName(user.firstName);
+//   setUpdatedLastName(user.lastName);
+//   setUpdatedPhone(user.phone);
+//   setUpdatedPhoto(user.photo);
+//   setUpdatedBio(user.bio);
+//   setUpdatedRole(user.role);
+// }, [user]);
+// const updatedProfile = {
+//   firstName: updatedFirstName,
+//   lastName: updatedLastName,
+//   phone: updatedPhone,
+//   photo: updatedPhoto,
+//   bio: updatedBio,
+//   role: updatedRole,
+// };
