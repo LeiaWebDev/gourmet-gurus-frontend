@@ -4,14 +4,13 @@ import Search from './Search'
 import "../styles/navbar.css"
 import AuthContext, { UserContext } from '../context/AuthContext'
 import IsLoggedIn from './IsLoggedIn'
-import IsTeacher from './IsTeacher'
 
 function NavBar() {
 
     const location = useLocation()
      // Subscribe to the AuthContext to gain access to
     // the values from AuthContext.Provider `value` prop
-    const {isLoggedIn, isTeacher, authenticateUser} = useContext(UserContext)
+    const {isLoggedIn, user, authenticateUser} = useContext(UserContext)
     function logout(){
         localStorage.removeItem("token")
         authenticateUser()
@@ -47,14 +46,16 @@ function NavBar() {
                     </>
                 ) : (
                     <>
-                      <NavLink to={"/login"} onClick={logout}>
-                      <img className="auth-icon" src="/logout.png" alt="Log out" />
-                      </NavLink>
-                        {/* <NavLink to={"/login"} >
-                            <img className="auth-icon" src="/logout.png" alt="Log out" />
-                        </NavLink> */}
-                        {isTeacher ? (
-                             <NavLink to={"/see-workshops"}>See my workshops</NavLink>
+                      
+                      <img onClick={logout} className="auth-icon" src="/logout.png" alt="Log out" />
+                      
+                        
+                        {user.role === "Teacher" ? (
+                            <>
+                            <NavLink to={"/see-workshops"}>See my workshops</NavLink>
+                            <NavLink to={"/users/:userId/update-profile"}>Update profile</NavLink>    
+                            </>
+                             
                         ):(
                             <></>
                         )}

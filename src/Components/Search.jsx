@@ -45,7 +45,7 @@ function Search() {
           setSearchText(e.target.value);
         }}
         ></input>
-        <button className="search-button" type='submit'>Search</button>
+        <button className="btn" type='submit'>Search</button>
         {/* <button onClick={findResult(string.title)}>Search</button> */}
     </form>
   )

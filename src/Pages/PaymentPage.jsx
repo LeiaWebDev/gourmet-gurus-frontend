@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 import myApi from '../api/service';
+import "./../styles/userpages.css"
+
 
 function PaymentPage() {
   const [number, SetNumber] = useState("");
@@ -124,7 +126,7 @@ useEffect(() => {
                             onFocus={(e) => SetFocus(e.target.name)}
                         ></input>
                     </div>
-                    <button id="button" type="submit">
+                    <button id="btn" type="submit">
                         Validate payment
                     </button>
                 </div>

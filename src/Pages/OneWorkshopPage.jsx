@@ -108,58 +108,65 @@ function OneWorkshopPage({user}) {
             alt={workshop.title}
           />
           
-          <div className="workshop-details">
-              <h2>Details of workshop</h2>
-              <p>{workshop.duration} workshop</p>
-              <p>Max participants: {workshop.maxParticipants}</p>
-              <p>Description: {workshop.description}</p>
-              <p>Workshop material: {workshop.workshopMaterial}</p>
-          </div>
+          <div className="presentation-workshop">
+
+            <div className="workshop-details">
+                <h2>Details of workshop</h2>
+                <p>{workshop.duration} workshop</p>
+                <p>Max participants: {workshop.maxParticipants}</p>
+                <p>Description: {workshop.description}</p>
+                <p>Workshop material: {workshop.workshopMaterial}</p>
+                <p>Location: {workshop.location}</p>
+
+            </div>
           
-          <div className="price-availability">
-            <h2>{workshop.price} € / pers</h2>
-            <select 
-              name="sessionsAvailable"  
-              value={sessionsAvailable} 
-              onChange={(e) => setSessionsAvailable(e.target.value)}>
-             <option value="-1" disabled>
-                Choose an option
-              </option>
-               {handleAvailability()}
-            </select>
-            {/* <Link to={`/booking/workshop/${workshopId}`}>Check availability */}
-              {/* <button onClick={handleAvailability}>Check availability</button> */}
-            {/* </Link> */}
+            <div className="price-availability">
+              <h2>Availability</h2>
+              <h3>{workshop.price} € / pers</h3>
+              <select 
+                name="sessionsAvailable"  
+                value={sessionsAvailable} 
+                onChange={(e) => setSessionsAvailable(e.target.value)}>
+              <option value="-1" disabled>
+                  Choose an option
+                </option>
+                {handleAvailability()}
+              </select>
+              {/* <Link to={`/booking/workshop/${workshopId}`}>Check availability */}
+                {/* <button onClick={handleAvailability}>Check availability</button> */}
+              {/* </Link> */}
+            </div>
           </div>
 
+
           {teacher && (
-            <div className="teacher-details">
-              <h2>Teacher's details :</h2>
+            <div className="teacher-area">
+              <h2 className="h2-center">Teacher's details </h2>
+              <div className="teacher-details">
+              
                 {/* <Link to={`workshops/teachers/${teacherId._id}`}> */}
                 {/* <Link classname="teacher-details" to={`workshops/teachers/${teacherId._id}`}> */}
                 {/* NOT SURE FOR LINK */}
-              <p>{teacher.photo}</p>
-              <p>{teacher.firstName}</p>
-              <p>{teacher.lastName}</p>
-              <p>A few words about the Teacher: {teacher.bio}</p>
-          
+                <img className="teacher-pic"
+                  src={teacher.photo}
+                />
+                <div className="teacher-presentation">
+                  <p>{teacher.firstName}  {teacher.lastName}</p>
+                  <p>About the Teacher :</p>
+                  <p>{teacher.bio}</p>
+                </div>
+              
+              </div>
             </div>
 
-            )
-          }
-        
-          <div className="workshop-location">
-            <h2>Workshop location : </h2>
-            <p>{workshop.location}</p>
-          </div>
-        
+          )}
           
           </>
         )}
  
     
       <div>
-        <Link to={`/booking/workshop/${workshopId}`} className="button-book-workshop">
+        <Link to={`/booking/workshop/${workshopId}`} >
           <button className="btn" onClick={handleBooking}>Book workshop</button>
         </Link>
         
