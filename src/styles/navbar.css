@@ -23,21 +23,24 @@
 
 .navbar-links {
     gap: 20px;
-    font-size: 24px;
+    font-size: 14px;
     width: 300px;
     display: flex;
     margin-right: 10%;
+    margin-top:20px;
     justify-content: right;
 }
 
 .btn-block {
     width: 100%;
 }
-
+/* 
 button {
     font-size: 24px;
-}
+} */
 
 .auth-icon {
     width: 30px;
+    height: 30px;
+    
 }

@@ -63,9 +63,9 @@ useEffect(() => {
                 <h2 id="payment-amount">Payment details for {booking.quantity * booking.workshopId.price} euros</h2>
            
 
-            <form onSubmit={handleSubmit} id="card-details">
+            <form onSubmit={handleSubmit} className="card-details">
                 <div className="each-card">
-                    <div className="Card">
+                    <div className="card">
                        
                         <label className="card-labels">Card Number</label>
                        
@@ -83,7 +83,7 @@ useEffect(() => {
                         
                     </div>
 
-                    <div className="Card">
+                    <div className="card">
                         <label className="card-labels">Card Name</label>
                         <input
                             className="card-inputs"
@@ -98,7 +98,7 @@ useEffect(() => {
                         ></input>
                     </div>
 
-                    <div className="Card">
+                    <div className="card">
                         <label className="card-labels">Expiration date</label>
                         <input
                             className="card-inputs"
@@ -112,7 +112,7 @@ useEffect(() => {
                             onFocus={(e) => SetFocus(e.target.name)}
                         ></input>
                     </div>
-                    <div className="Card">
+                    <div className="card">
                         <label className="card-labels">CVC</label>
                         <input
                             className="card-inputs"
@@ -126,9 +126,12 @@ useEffect(() => {
                             onFocus={(e) => SetFocus(e.target.name)}
                         ></input>
                     </div>
-                    <button id="btn" type="submit">
-                        Validate payment
-                    </button>
+                    <div className='validate-payment'>
+                        <button className="btn" type="submit">
+                            Validate payment
+                        </button>
+                    </div>
+                    
                 </div>
             </form>
         </div>

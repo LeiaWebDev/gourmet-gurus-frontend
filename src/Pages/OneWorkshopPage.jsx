@@ -103,10 +103,25 @@ function OneWorkshopPage({user}) {
         {workshop &&(
           <>
           <h1>{workshop.title}</h1>
-          <img className="oneWorkshopPage-pic"
-            src={workshop.workshopPics[0]}
+          <div className="workshop-all-pics">
+                
+                {workshop.workshopPics.map((picture) => (
+                  <div>
+                    <img
+                      key={picture.name}
+                      className="workshop-each-pics"
+                      src={picture}
+                      alt="workshop-picture"
+                    />
+                  </div>
+                ))}
+               
+              </div>
+
+          {/* <img className="oneWorkshopPage-pic"
+            src={workshop.workshopPics}
             alt={workshop.title}
-          />
+          /> */}
           
           <div className="presentation-workshop">
 
@@ -165,7 +180,7 @@ function OneWorkshopPage({user}) {
         )}
  
     
-      <div>
+      <div className="book-workshop-button">
         <Link to={`/booking/workshop/${workshopId}`} >
           <button className="btn" onClick={handleBooking}>Book workshop</button>
         </Link>

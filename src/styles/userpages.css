@@ -85,6 +85,21 @@
     align-content: center;
     margin: 100px;
 }
+
+.workshop-all-pics{
+    margin: 20px;
+    display: flex;
+    width: 80%;
+
+}
+.workshop-each-pics{
+    margin: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 7px var(--PrimaryColor);
+  width: 250px;
+  height: 260px;
+}
+
 .workshop-details{
     margin:50px;
     padding : 10px;
@@ -126,6 +141,12 @@
     text-align: center;
 }
 
+.book-workshop-button{
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+}
+
 /* =============== */
 
 
@@ -149,13 +170,15 @@
 .one-workshop-price{
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 50px;
+    padding:30px;
 }
 .cart-quantity{
     margin-top: 40px;
 }
 .buttonCart{
     height: 40px;
+    width: 20px;
     margin-top: 30px;
 }
 .cart-text-details{
@@ -170,6 +193,7 @@
 }
 .recap-price{
     align-items: end;
+    margin: 40px;
 }
 
 .session {
@@ -187,21 +211,57 @@
 } */
 .quantity{
     display: inline-flex;
-    margin: 20px;
+    margin: 40px;
     gap: 10px;
 }
 .total-price{
     font-size: 24px;
     color: coral;
+    align-items: end;
+    margin-top: 50px;
+    display: flex;
+    justify-content: end;
+    margin-right: 50px;
 }
 
+.cancellation-policy{
+    margin: 50px;
+}
+.validate-booking-button{
+    display: flex;
+    justify-content: center;
+}
 
-
+/* payment */
 .payment{
     margin-top: 150px;
 }
 
-.payment-amount{
+#payment-amount{
     margin: 50px;
+    text-align: center;
+}
+.validate-payment{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.card-details{
+    display: flex;
+    justify-content: center;
+}
+.each-card{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.card{
+    display:flex;
+    margin-top: 20px;
+}
+.card-labels{
+    width: 200px;
+    margin: 10px;
 }
 

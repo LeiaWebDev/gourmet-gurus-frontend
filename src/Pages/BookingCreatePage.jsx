@@ -128,17 +128,14 @@ console.log(workshop)
               <button className='buttonCart' onClick={handleIncrement}>
               +
               </button>
+              <h3 className='recap-price'> =      {calculateTotalPrice()} €</h3>
             </div>
 
-            <p className='recap-price'> = {calculateTotalPrice()} €</p>
+            
 
         </div>
         
-        
-        
         <p className='total-price'>Total Price : {calculateTotalPrice()} euros</p>
-        
-        
         
         <div className='session'>
          
@@ -162,18 +159,22 @@ console.log(workshop)
           </select>
         </div>
 
-        <h3 className='cancellation-policy'>Cancellation policy</h3>
-        {/* <p>{booking.cancellation}</p> */}
-
+        <div className='cancellation-policy'>
+          <h3>Cancellation policy</h3>
+          {/* <p>{booking.cancellation}</p> */}
+          <p>Free cancellation 48h before session date</p>
+          
+        </div>
         
+        <div className='validate-booking-button'>
+          <Link to={`/payment`}>
+          {/* <Link> */}
+              <button className="btn" onClick={handleValidateBooking}>
+                  Validate Booking
+              </button>
+          </Link>
+        </div>
         
-        
-        <Link to={`/payment`}>
-        {/* <Link> */}
-            <button className="btn" onClick={handleValidateBooking}>
-                Validate Booking
-            </button>
-        </Link>
     </div>
  
 

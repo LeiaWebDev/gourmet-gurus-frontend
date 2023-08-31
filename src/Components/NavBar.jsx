@@ -52,8 +52,8 @@ function NavBar() {
                         
                         {user.role === "Teacher" ? (
                             <>
-                            <NavLink to={"/see-workshops"}>See my workshops</NavLink>
-                            <NavLink to={"/users/:userId/update-profile"}>Update profile</NavLink>    
+                            <NavLink className="nav-text" to={"/see-workshops"}>See my workshops</NavLink>
+                            <NavLink className="nav-text" to={"/users/:userId/update-profile"}>Update profile</NavLink>    
                             </>
                              
                         ):(
