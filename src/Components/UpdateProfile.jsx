@@ -4,7 +4,7 @@ import myApi from "../api/service";
 import { UserContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import '../styles/updateprofile.css'
+import "../styles/updateprofile.css";
 
 function UpdateProfile() {
   const { user, setUser } = useContext(UserContext);
@@ -15,8 +15,9 @@ function UpdateProfile() {
   const [photo, setPhoto] = useState(user.photo);
   const [bio, setBio] = useState(user.bio);
   const [role, setRole] = useState(user.role);
-  const [myProfile, setMyProfile] = useState(null);
-  const [profileUpdated, setProfileUpdated] = useState(false);
+  // const [myProfile, setMyProfile] = useState(null);
+  const [formVisible, setFormVisible] = useState(true);
+  const [isProfileUpdated, setIsProfileUpdated] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => {
     myApi
@@ -52,10 +53,12 @@ function UpdateProfile() {
       .then((response) => {
         const updatedProfile = response.data;
         alert("Profile successfully completed!");
-        navigate("/create-workshop");
         // setUser(updatedProfile);
         // setMyProfile(updatedProfile);
         setUser(updatedProfile);
+        setIsProfileUpdated(true);
+        setFormVisible(false);
+        navigate("/create-workshop");
       })
       .catch((error) => {
         console.log(error);
@@ -63,96 +66,74 @@ function UpdateProfile() {
   };
 
   return (
-   
     <div className="update-profile-card">
-      <div className="update-profile-form">
-      <form id="update-profile">
-        <label htmlFor="firstName"> First Name </label>
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <label htmlFor="phone"> Phone Number </label>
-        <input
-          type="text"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-        <label htmlFor="photo"> Photo </label>
-        <input
-          type="file"
-          multiple={true}
-          name="photo"
-          id="photo"
-          onChange={(e) => setPhoto(e.target.files[0])}
-        />
-        <label htmlFor="bio"> Bio </label>
-        <input
-          type="text"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-        <label htmlFor="role"> I would like to be a teacher </label>
-        <input
-          type="checkbox"
-          checked={role === "Teacher"}
-          onChange={() => {
-            setRole(role === "Teacher" ? "User" : "Teacher");
-          }}
-        />
-        <p className="error">{error}</p>
-        <button className="btn" onClick={handleUpdateProfile}> Update Profile </button>
-      </form>
-      </div>
+      {formVisible && (
+        <div className="update-profile-form">
+          <form id="update-profile">
+            <label htmlFor="firstName"> First Name </label>
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <label htmlFor="phone"> Phone Number </label>
+            <input
+              type="text"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <label htmlFor="photo"> Photo </label>
+            <input
+              type="file"
+              multiple={true}
+              name="photo"
+              id="photo"
+              onChange={(e) => setPhoto(e.target.files[0])}
+            />
+            <label htmlFor="bio"> Bio </label>
+            <input
+              type="text"
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+            />
+            <label htmlFor="role"> I would like to be a teacher </label>
+            <input
+              type="checkbox"
+              checked={role === "Teacher"}
+              onChange={() => {
+                setRole(role === "Teacher" ? "User" : "Teacher");
+              }}
+            />
+            <p className="error">{error}</p>
+            <button className="btn" onClick={handleUpdateProfile}>
+              {" "}
+              Update Profile{" "}
+            </button>
+          </form>
+        </div>
+      )}
 
       {/* <section className="userProfile"> */}
-        {/* {profileUpdated && myProfile && ( */}
-        <div className="user-profile">
-          <h2>Teacher's Profile</h2>
-          <h3>
-            {user.firstName} {user.lastName}
-          </h3>
-          <p>Contact number: {user.phone}</p>
-          <img className="user-photo" src={user.photo} width={200} />
-          <p>{user.bio}</p>
-        </div>
-        {/* )} */}
-        
+      {/* {profileUpdated && myProfile && ( */}
+      <div className="user-profile">
+        <h2>Teacher's Profile</h2>
+        <h3>
+          {user.firstName} {user.lastName}
+        </h3>
+        <p>Contact number: {user.phone}</p>
+        <img className="user-photo" src={user.photo} width={200} />
+        <p>{user.bio}</p>
       </div>
-    
-    
+      {/* )} */}
+    </div>
   );
 }
 
 export default UpdateProfile;
 
-// const [updatedFirstName, setUpdatedFirstName] = useState(user.firstName);
-// const [updatedLastName, setUpdatedLastName] = useState(user.lastName);
-// const [updatedPhone, setUpdatedPhone] = useState("");
-// const [updatedPhoto, setUpdatedPhoto] = useState("");
-// const [updatedBio, setUpdatedBio] = useState(user.bio);
-// const [updatedRole, setUpdatedRole] = useState(user.role);
-
-// useEffect(() => {
-//   setUpdatedFirstName(user.firstName);
-//   setUpdatedLastName(user.lastName);
-//   setUpdatedPhone(user.phone);
-//   setUpdatedPhoto(user.photo);
-//   setUpdatedBio(user.bio);
-//   setUpdatedRole(user.role);
-// }, [user]);
-// const updatedProfile = {
-//   firstName: updatedFirstName,
-//   lastName: updatedLastName,
-//   phone: updatedPhone,
-//   photo: updatedPhoto,
-//   bio: updatedBio,
-//   role: updatedRole,
-// };

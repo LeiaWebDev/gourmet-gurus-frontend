@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import myApi from "../api/service";
 import { UserContext } from "../context/AuthContext";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -124,6 +124,9 @@ function SeeMySessions() {
           </button>
         </div>
       </div>
+        <button className="btn">
+        <Link to={"/see-workshops/"}> Back to my workshops </Link>
+        </button>
     </div>
   );
 }

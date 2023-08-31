@@ -10,9 +10,17 @@
 .sessions-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 30px;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  position: absolute;
+  gap: 2rem;
+  justify-content: center;
+  text-align: center;
+  top: 300px;
+  transform: translate(10%);
+  box-shadow: 0 2px 8px 4px rgba(178, 178, 178, 0.5);
 }
 
 .date-picker {
