@@ -13,7 +13,7 @@
     255
   ); /* Set a background color for the navbar */
   /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); Add a subtle shadow */
-  /* z-index: 100; */
+  z-index: 1;
 }
 .navbar-logo {
   display: flex;
