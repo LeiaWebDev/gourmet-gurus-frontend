@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import myApi from "../api/service";
+import '../styles/updateworkshop.css';
 
 function UpdateMyWorkshopPage() {
   const { teacherId, workshopId } = useParams();
@@ -83,9 +84,9 @@ function UpdateMyWorkshopPage() {
   };
 
   return (
-    <div>
+    <div className="update-workshop-container">
+      <div className="update-workshop-form">
       <h1>Update Workshop</h1>
-      <div className="create-workshop-form">
         <div>
           <label>Workshop Title</label>
           <input
@@ -135,9 +136,10 @@ function UpdateMyWorkshopPage() {
             onChange={(e) => setUpdatedDuration(e.target.value)}
           >
             <option value="">Choose an option</option>
-            <option value="1h">1h</option>
-            <option value="2h">2h</option>
-            <option value="3h">3h</option>
+            <option value="1 hour">1 hour</option>
+            <option value="2 hours">2 hours</option>
+            <option value="2.5 hours">2.5 hours</option>
+            <option value="3 hours">3 hours</option>
           </select>
         </div>
 

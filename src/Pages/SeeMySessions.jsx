@@ -6,6 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
+import "../styles/seemysessions.css";
 
 function SeeMySessions() {
   const { workshopId } = useParams();
@@ -73,44 +74,56 @@ function SeeMySessions() {
   }
   console.log(selectedDate);
   return (
-    <div>
-      <h1>My workshop sessions </h1>
-      <p>{workshop.title}</p>
+    <div className="sessions-container">
+      <div>
+        <h1>My workshop sessions </h1>
+      </div>
 
-      <ul>
-        {sessions.map((session, index) => (
-          <li key={index}>
-            {" "}
-            {new Intl.DateTimeFormat(undefined, {
-              timeStyle: "short",
-              dateStyle: "long",
-            }).format(new Date(session))}
-            <button onClick={() => handleRemoveSession(index)}> Delete </button>
-          </li>
-        ))}
-      </ul>
+      <div className="sessions-card">
+        <p>{workshop.title}</p>
+        <ul>
+          {sessions.map((session, index) => (
+            <li key={index}>
+              {" "}
+              {new Intl.DateTimeFormat(undefined, {
+                timeStyle: "short",
+                dateStyle: "long",
+              }).format(new Date(session))}
+              <button
+                className="btn"
+                onClick={() => handleRemoveSession(index)}
+              >
+                {" "}
+                Delete{" "}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <div className="date-picker">
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimePicker
+              label=""
+              value={selectedDate}
+              onChange={(value) => {
+                setSelectedDate(dayjs(value));
+              }}
+            />
+          </LocalizationProvider>
 
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateTimePicker
-          label=""
-          value={selectedDate}
-          onChange={(value) => {
-            setSelectedDate(dayjs(value));
-          }}
-        />
-      </LocalizationProvider>
-
-      <button
-        onClick={() => {
-          if (selectedDate) {
-            handleAddSession(selectedDate);
-            console.log(selectedDate);
-            setSelectedDate(null);
-          }
-        }}
-      >
-        Add a session
-      </button>
+          <button
+            className="btn"
+            onClick={() => {
+              if (selectedDate) {
+                handleAddSession(selectedDate);
+                console.log(selectedDate);
+                setSelectedDate(null);
+              }
+            }}
+          >
+            Add a session
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

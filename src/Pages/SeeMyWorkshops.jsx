@@ -2,11 +2,16 @@ import React, { useEffect, useState, useContext } from "react";
 import myApi from "../api/service";
 import { UserContext } from "./../context/AuthContext";
 import { Link } from "react-router-dom";
-import {BiTime} from 'react-icons/bi' 
+import { BiTime } from "react-icons/bi";
+import "../styles/seemyworkshops.css";
+import { BsArrowLeftCircle } from "react-icons/bs";
+import { BsArrowRightCircle } from "react-icons/bs";
+import { MdDeleteForever } from "react-icons/md";
+
 
 function SeeMyWorkshops() {
   const [myWorkshops, setMyWorkshops] = useState([]);
-  const [updatedWorkshop, setUpdatedWorkshop] = useState("")
+  const [updatedWorkshop, setUpdatedWorkshop] = useState("");
   const { user } = useContext(UserContext);
   const teacherId = user?._id;
   useEffect(() => {
@@ -38,39 +43,58 @@ function SeeMyWorkshops() {
   };
 
   return (
-    <div>
-      <h1>My Workshops</h1>
-      <div>
-        {myWorkshops.map((workshop) => (
-          <div key={workshop._id} id="workshop-container">
-            <h2>{workshop.title}</h2>
-            <p>{workshop.description}</p>
-            <p>{workshop.price}€</p>
-            <p><BiTime/>{workshop.duration}</p>
-            <p>{workshop.workshopMaterial}</p>
-            <div className="workshop-pic">
-              {" "}
-              {workshop.workshopPics.map((picture) => (
-                <img className="workshop-pics" src={picture} width={200} />
-              ))}{" "}
+    <>
+      <div className="workshop-container">
+        <div className="one-workshop">
+          <h1>My Workshops</h1>
+          {/* <BsArrowLeftCircle className="arrow arrow-left" /> */}
+          {myWorkshops.map((workshop) => (
+            <div key={workshop._id} id="workshop-container">
+              <h2>{workshop.title}</h2>
+              <p>{workshop.description}</p>
+              <p>{workshop.price}€</p>
+              <p>
+                <BiTime />
+                {workshop.duration}
+              </p>
+              <p>{workshop.workshopMaterial}</p>
+
+              <div className="workshop-pic">
+                {" "}
+                {workshop.workshopPics.map((picture) => (
+                  <div>
+                    <img
+                      key={picture.name}
+                      className="workshop-pics"
+                      src={picture}
+                      alt="workshop-pics"
+                    />
+                  </div>
+                ))}{" "}
+                {/* <BsArrowRightCircle /> */}
+              </div>
+
+              <button className="btn">
+                <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
+              </button>
+              <button
+                className="btn-delete"
+                onClick={() => handleDeleteWorkshop(workshop._id)}
+              >
+                {" "}
+                Delete{" "}
+              </button>
+              <button className="btn">
+                {" "}
+                <Link to={`/see-sessions/${workshop._id}`}>
+                  See available sessions
+                </Link>{" "}
+              </button>
             </div>
-            <button className='btn'>
-              <Link to={`/update-workshop/${workshop._id}`}>Update</Link>
-            </button>
-            <button className='btn' onClick={() => handleDeleteWorkshop(workshop._id)}>
-              {" "}
-              Delete{" "}
-            </button>
-            <button className='btn'>
-              {" "}
-              <Link to={`/see-sessions/${workshop._id}`}>
-                See available sessions
-              </Link>{" "}
-            </button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

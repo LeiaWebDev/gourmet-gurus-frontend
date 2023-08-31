@@ -1,0 +1,37 @@
+
+
+.update-profile-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.update-profile-form{
+width: 80%;
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  position: absolute;
+  gap: 2rem;
+  justify-content: center;
+  text-align: center;
+  top: 10%;
+  transform: translate(10%);
+  box-shadow: 0 2px 8px 4px rgba(178, 178, 178, 0.5);
+}
+.user-profile {
+    border-radius: 1rem;
+  padding: 2rem;
+  background: var(--whiteColor);
+  position: absolute;
+  gap: 2rem;
+  justify-content: center;
+  text-align: center;
+  top: 70%;
+  transform: translate(10%);
+  box-shadow: 0 2px 8px 4px rgba(178, 178, 178, 0.5); 
+}
+
+.btn {
+    color: var(--whiteColor)
+  }

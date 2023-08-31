@@ -1,0 +1,14 @@
+.update-workshop-form {
+  margin-bottom: 10%;
+  margin-top: 20%;
+  border-radius: 1rem;
+  padding: 4rem;
+  background: var(--whiteColor);
+  position: relative;
+  gap: 3rem;
+  justify-content: center;
+  text-align: center;
+  top: 70%;
+  transform: translate(10%);
+  box-shadow: 0 2px 8px 4px rgba(178, 178, 178, 0.5);
+}

@@ -4,6 +4,7 @@ import myApi from "../api/service";
 import { UserContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import '../styles/updateprofile.css'
 
 function UpdateProfile() {
   const { user, setUser } = useContext(UserContext);
@@ -62,9 +63,9 @@ function UpdateProfile() {
   };
 
   return (
-   <>
-    <section className="updateProfileSection">
-      <div className="">
+   
+    <div className="update-profile-card">
+      <div className="update-profile-form">
       <form id="update-profile">
         <label htmlFor="firstName"> First Name </label>
         <input
@@ -110,9 +111,8 @@ function UpdateProfile() {
         <button className="btn" onClick={handleUpdateProfile}> Update Profile </button>
       </form>
       </div>
-      </section>
 
-      <section className="userProfile">
+      {/* <section className="userProfile"> */}
         {/* {profileUpdated && myProfile && ( */}
         <div className="user-profile">
           <h2>Teacher's Profile</h2>
@@ -125,9 +125,9 @@ function UpdateProfile() {
         </div>
         {/* )} */}
         
-      </section>
+      </div>
     
-    </>
+    
   );
 }
 

@@ -13,6 +13,7 @@
 h1 {
   color: var(--PrimaryColor);
   font-size: 3rem;
+  text-align: center;
 }
 .create-workshop-card {
   width: 80%;
@@ -43,14 +44,12 @@ h1 {
     font-weight: 500;
     font-size: 13px;
     padding-bottom: 0.4rem;
-    
-
   }
 }
 input[type="text"],
 [type="number"],
 [type="file"],
-[type="date"]{
+[type="date"] {
   width: 100%;
   background: var(--inputColor);
   border-radius: 10px;
@@ -69,6 +68,9 @@ select {
   font-weight: 500;
 }
 
+.btn {
+  color: var(--whiteColor)
+}
 
 /* .workshopTitleDiv, .categoryTitleDiv, .subCategoryDiv, .durationDiv, .maxParticipantsDiv, .descriptionDiv, .workshopPicsDiv, .locationDiv, .workshopMaterialsDiv, .priceDiv {
   width: 100%;
