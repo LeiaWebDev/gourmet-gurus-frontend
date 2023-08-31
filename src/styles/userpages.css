@@ -44,19 +44,11 @@
     margin-top: 50px;
 }
 
-/* .suggested-workshops{
-    margin-top: 100px; */
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: space-between; */ 
-/* } */
 
 
 .h2-padding{ 
     padding-bottom: 10px;
-    /* background-color:lightgray;
-    width: 40%;
-    padding: 0px 0px 16px 0px; */
+   
 
 }
 /* create workshop page */
@@ -85,6 +77,21 @@
     align-content: center;
     margin: 100px;
 }
+
+.workshop-all-pics{
+    margin: 20px;
+    display: flex;
+    width: 80%;
+
+}
+.workshop-each-pics{
+    margin: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 7px var(--PrimaryColor);
+  width: 250px;
+  height: 260px;
+}
+
 .workshop-details{
     margin:50px;
     padding : 10px;
@@ -99,7 +106,6 @@
     width: 30%;
     padding: 25px;
     background-color: chocolate;
-    /* padding-left: 30px; */
     text-align: center;
 }
 
@@ -126,6 +132,12 @@
     text-align: center;
 }
 
+.book-workshop-button{
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+}
+
 /* =============== */
 
 
@@ -149,27 +161,33 @@
 .one-workshop-price{
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
+    padding:30px;
 }
 .cart-quantity{
-    margin-top: 40px;
+    margin-top: 10px;
 }
 .buttonCart{
     height: 40px;
-    margin-top: 30px;
+    width: 25px;
+    
 }
 .cart-text-details{
     display: flex;
     flex-direction: row;
     margin-top: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 .total-price{
     align-items: end;
     margin-top: 50px;
+    margin-right : 100px;
 }
 .recap-price{
     align-items: end;
+    margin: 50px;
+    padding: 30px;
 }
 
 .session {
@@ -181,27 +199,65 @@
 
 }
 
+.label-session{
+    width: 250px;
+}
 
-/* .select-session{
-    width: 50%;
-} */
 .quantity{
     display: inline-flex;
-    margin: 20px;
+    margin: 40px;
     gap: 10px;
 }
 .total-price{
     font-size: 24px;
     color: coral;
+    align-items: end;
+    margin-top: 50px;
+    display: flex;
+    justify-content: end;
+    margin-right: 50px;
+}
+
+.cancellation-policy{
+    margin: 50px;
+}
+.validate-booking-button{
+    display: flex;
+    justify-content: center;
 }
 
 
 
+/* payment */
 .payment{
     margin-top: 150px;
 }
 
-.payment-amount{
+#payment-amount{
     margin: 50px;
+    text-align: center;
+}
+.validate-payment{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.card-details{
+    display: flex;
+    justify-content: center;
+}
+.each-card{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.card{
+    display:flex;
+    margin-top: 20px;
+}
+.card-labels{
+    width: 200px;
+    margin: 10px;
 }
 

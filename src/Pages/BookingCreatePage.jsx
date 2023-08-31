@@ -118,7 +118,8 @@ console.log(workshop)
               <p>Address : {workshop.location}</p>
             </div>
             
-            <h3 className='one-workshop-price'>{workshop.price} €   X  </h3>
+            <h3 className='one-workshop-price'>{workshop.price} €</h3>
+            <h3>X</h3>
 
             <div className='quantity'> 
               <button className='buttonCart' onClick={handleDecrement}>
@@ -130,19 +131,17 @@ console.log(workshop)
               </button>
             </div>
 
-            <p className='recap-price'> = {calculateTotalPrice()} €</p>
+            <h3>=</h3>
+            <h3 className='recap-price'>{calculateTotalPrice()} €</h3>
+            
 
         </div>
         
-        
-        
         <p className='total-price'>Total Price : {calculateTotalPrice()} euros</p>
-        
-        
         
         <div className='session'>
          
-          <label>Sessions available</label>
+          <label className='label-session'>Sessions available</label>
           <select 
           name="select-session" 
           value={newBooking.session} 
@@ -162,18 +161,22 @@ console.log(workshop)
           </select>
         </div>
 
-        <h3 className='cancellation-policy'>Cancellation policy</h3>
-        {/* <p>{booking.cancellation}</p> */}
-
+        <div className='cancellation-policy'>
+          <h3>Cancellation policy</h3>
+          {/* <p>{booking.cancellation}</p> */}
+          <p>Free cancellation 48h before session date</p>
+          
+        </div>
         
+        <div className='validate-booking-button'>
+          <Link to={`/payment`}>
+          {/* <Link> */}
+              <button className="btn" onClick={handleValidateBooking}>
+                  Validate Booking
+              </button>
+          </Link>
+        </div>
         
-        
-        <Link to={`/payment`}>
-        {/* <Link> */}
-            <button className="btn" onClick={handleValidateBooking}>
-                Validate Booking
-            </button>
-        </Link>
     </div>
  
 
