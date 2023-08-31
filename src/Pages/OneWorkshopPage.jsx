@@ -105,7 +105,8 @@ function OneWorkshopPage({user}) {
           <h1>{workshop.title}</h1>
           <div className="workshop-all-pics">
                 
-                {workshop.workshopPics.map((picture) => (
+                {workshop.workshopPics &&
+                 workshop.workshopPics.map((picture) => (
                   <div>
                     <img
                       key={picture.name}
