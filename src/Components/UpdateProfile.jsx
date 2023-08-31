@@ -66,6 +66,9 @@ function UpdateProfile() {
   };
 
   return (
+    <div className="update-profile-container">
+
+    
     <div className="update-profile-card">
       {formVisible && (
         <div className="update-profile-form">
@@ -131,6 +134,7 @@ function UpdateProfile() {
         <p>{user.bio}</p>
       </div>
       {/* )} */}
+    </div>
     </div>
   );
 }

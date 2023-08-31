@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import myApi from "../api/service";
-import '../styles/updateworkshop.css';
+import "../styles/updateworkshop.css";
 
 function UpdateMyWorkshopPage() {
   const { teacherId, workshopId } = useParams();
@@ -21,7 +21,6 @@ function UpdateMyWorkshopPage() {
   const [updatedPrice, setUpdatedPrice] = useState("");
   const [updatedSessionsAvailable, setUpdatedSessionsAvailable] = useState("");
   const [updatedSuccessMessage, setUpdatedSuccessMessage] = useState("");
-
 
   useEffect(() => {
     myApi
@@ -49,21 +48,21 @@ function UpdateMyWorkshopPage() {
 
   const handleSubmit = () => {
     const fd = new FormData();
-    fd.append("title", title);
-    fd.append("category", category);
-    fd.append("subCategory", subCategory);
-    fd.append("duration", duration);
-    fd.append("maxParticipants", maxParticipants);
-    fd.append("description", description);
-    fd.append("workshopPics", workshopPics);
-    fd.append("location", location);
-    fd.append("price", price);
-    
- 
+    fd.append("title", updatedTitle);
+    fd.append("category", updatedCategory);
+    fd.append("subCategory", updatedSubCategory);
+    fd.append("duration", updatedDuration);
+    fd.append("maxParticipants", updatedMaxParticipants);
+    fd.append("description", updatedDescription);
+    fd.append("workshopPics", updatedWorkshopPics);
+    fd.append("location", updatedLocation);
+    fd.append("price", updatedPrice);
+
     myApi
       .updateWorkshopById(teacherId, workshopId, fd)
       .then((response) => {
         console.log("Workshop updated successfully:", response);
+        console.log(title);
         navigate("/see-workshops");
       })
       .catch((error) => {
@@ -74,7 +73,7 @@ function UpdateMyWorkshopPage() {
   return (
     <div className="update-workshop-container">
       <div className="update-workshop-form">
-      <h1>Update Workshop</h1>
+        <h1>Update Workshop</h1>
         <div>
           <label>Workshop Title</label>
           <input
@@ -205,4 +204,3 @@ function UpdateMyWorkshopPage() {
 }
 
 export default UpdateMyWorkshopPage;
-
