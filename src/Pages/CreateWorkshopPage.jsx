@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
 import myApi from "../api/service";
 import "../styles/createworkshop.css";
@@ -165,10 +165,16 @@ function CreateWorkshopPage() {
             onChange={(e) => setPrice(e.target.value)}
           ></input>
         </div>
-
+        <button className="btn">
+        <Link to={"/see-workshops/"}> See my workshops </Link>
+        </button>
         <button className="btn" onClick={handleSubmit}>
           {" "}
           Create Workshop{" "}
+        </button>
+        <button className="btn">
+          {" "}
+          <Link to={"/"}>Back to home</Link>{" "}
         </button>
       </div>
     </section>
