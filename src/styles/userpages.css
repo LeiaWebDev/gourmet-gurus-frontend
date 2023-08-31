@@ -44,19 +44,11 @@
     margin-top: 50px;
 }
 
-/* .suggested-workshops{
-    margin-top: 100px; */
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: space-between; */ 
-/* } */
 
 
 .h2-padding{ 
     padding-bottom: 10px;
-    /* background-color:lightgray;
-    width: 40%;
-    padding: 0px 0px 16px 0px; */
+   
 
 }
 /* create workshop page */
@@ -114,7 +106,6 @@
     width: 30%;
     padding: 25px;
     background-color: chocolate;
-    /* padding-left: 30px; */
     text-align: center;
 }
 
@@ -206,9 +197,6 @@
 }
 
 
-/* .select-session{
-    width: 50%;
-} */
 .quantity{
     display: inline-flex;
     margin: 40px;
