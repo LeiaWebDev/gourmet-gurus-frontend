@@ -52,17 +52,19 @@ function HomePage() {
         </div>
       </div>
 
+
       <div className="suggested-workshops">
         <h1>Suggested workshops</h1>
+        
         <div className="display-each-card">
           {workshops &&
             workshops.map((workshop, index) => (
               <WorkshopCard
-                key={workshop._id}
-                {...workshop}
-                className="one-workshop-card"
+              key={workshop._id}
+              {...workshop}
+              className="one-workshop-card"
               />
-            ))}
+              ))}
         </div>
         
       </div>
@@ -71,3 +73,20 @@ function HomePage() {
 }
 
 export default HomePage;
+
+{/* <section className="suggested section container">
+<div className="secContainer">
+
+
+  <div className="secHeadear flex">
+
+  </div>
+</div>
+
+<div className="mainContent grid">
+  <div className="one-workshop"></div> 
+  <div className="workshopImage"></div>
+
+
+</div>
+</section> */}

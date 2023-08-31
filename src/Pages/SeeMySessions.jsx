@@ -34,7 +34,6 @@ function SeeMySessions() {
       .getExistingSessions(user._id, workshopId)
       .then((response) => {
         console.log(response);
-        setSessionsAvailable(response.data);
         setSessions(response.data);
       })
       .catch((error) => {
@@ -48,8 +47,7 @@ function SeeMySessions() {
       if (!selectedDate) return;
       const formattedDate = selectedDate.toISOString();
       await myApi.addSessionToWorkshop(user._id, workshopId, formattedDate);
-      console.log(user, workshopId, formattedDate);
-      setSessionsAvailable([...sessionsAvailable, formattedDate]);
+      setSessions([...sessions, formattedDate]);
       setSessionsAmount(sessionsAmount + 1);
       setSelectedDate(null);
     } catch (error) {
@@ -123,50 +121,14 @@ function SeeMySessions() {
             Add a session
           </button>
         </div>
+        <div className="back-button">
+          <button className="btn">
+            <Link to={"/see-workshops/"}> Back to my workshops </Link>
+          </button>
+        </div>
       </div>
-        <button className="btn">
-        <Link to={"/see-workshops/"}> Back to my workshops </Link>
-        </button>
     </div>
   );
 }
 
 export default SeeMySessions;
-
-{
-  /* <div>
-       
-        {new Array(sessionsAmount).fill(0).map((el, index) => {
-          console.log(sessionsAvailable, index);
-          const currentSession = sessionsAvailable[index];
-          return (
-            <div key={currentSession?.id}>
-              <input
-                name="date"
-                type="datetime-local"
-                value={currentSession?.value}
-                onChange={(e) =>
-                  setSessionsAvailable([
-                    ...sessionsAvailable,
-                    { id: crypto.randomUUID(), value: e.target.value },
-                  ])
-                }
-              ></input>
-              <button
-                onClick={() => {
-                  console.log(currentSession);
-                  setSessionsAvailable(
-                    sessionsAvailable.filter(
-                      (session) => session.id !== currentSession.id
-                    )
-                  );
-                  setSessionsAmount(sessionsAmount - 1);
-                }}
-              >
-                X
-              </button>
-            </div>
-          );
-        })}
-        </div> */
-}

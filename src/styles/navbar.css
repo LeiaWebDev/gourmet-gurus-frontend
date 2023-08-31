@@ -1,43 +1,139 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100px;
-    padding: 0 20px; /* Add some horizontal padding for spacing */
-    background-color: white; /* Set a background color for the navbar */
-    /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); Add a subtle shadow */
-    /* z-index: 100; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  padding: 0 20px; /* Add some horizontal padding for spacing */
+  background-color: rgb(
+    255,
+    255,
+    255
+  ); /* Set a background color for the navbar */
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); Add a subtle shadow */
+  /* z-index: 100; */
 }
 .navbar-logo {
-    display: flex;
-    align-items: flex-start;
-    gap: 50px;
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
 }
 .navbar-logo img {
-    width: 200px;
+  width: 200px;
 }
 
-
 .navbar-links {
-    gap: 20px;
-    font-size: 24px;
-    width: 300px;
-    display: flex;
-    margin-right: 10%;
-    justify-content: right;
+  gap: 20px;
+  font-size: 24px;
+  width: 300px;
+  display: flex;
+  margin-right: 10%;
+  justify-content: right;
 }
 
 .btn-block {
-    width: 100%;
+  width: 100%;
 }
 
 button {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .auth-icon {
-    width: 30px;
+  width: 30px;
+}
+
+/* //hamburger */
+.menu-trigger {
+  position: absolute;
+  top: 2rem;
+  height: 10rem;
+  cursor: pointer;
+  color: #dd681f;
+}
+.col {
+  display: flex;
+  width: 7rem;
+  border-radius: 30%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12rem;
+  margin-bottom: 0.5rem;
+}
+.col:hover {
+  margin-right: 12rem;
+  padding: 0.4rem;
+  border-radius: 30%;
+  background-color: rgba(231, 94, 3, 0.1);
+  border: none;
+}
+.hambIcon {
+  font-size: 2.2rem;
+}
+.userIconNav {
+  font-size: 2.2rem;
+  padding-top: 0;
+  margin-top: 0;
+}
+.dropdown-menu {
+  position: absolute;
+  /* top: 65px; */
+  right: 10px;
+  /* height: 100%; */
+  background-color: var(--whiteColorDream);
+  border-radius: 8px;
+}
+
+.dropdown-icons {
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px;
+}
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  height: 20px;
+  width: 20px;
+  background: var(----whiteColorDream);
+  transform: rotate(45deg);
+}
+.dropdown-menu.active {
+  margin-right: 12rem;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: var(--speed) ease;
+
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.dropdown-menu.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--speed) ease;
+}
+
+h3 span {
+  font-size: 14px;
+  font-weight: 500;
+}
+.dropdown-menu ul li {
+  padding: 10px 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.dropdown-menu ul li:hover h2 {
+  color: black;
+  cursor: pointer;
+}
+.dropdownItem {
+  display: block;
+  margin: 10px auto;
 }

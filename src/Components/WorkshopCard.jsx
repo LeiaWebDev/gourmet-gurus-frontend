@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/workshopCard.css";
+import { BiTime } from "react-icons/bi";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -16,22 +17,21 @@ function WorkshopCard({
   price,
 }) {
   return (
-    <Link to={`/workshops/${workshopId}`}>
+   
         <div className='workshopCard'>
-            <p>
+            <div>
                 <img className="card-workshop-pic"
                 src={workshopPics[0]}
                 alt="workshop"/>
-            </p>
+            </div>
+            <Link to={`/workshops/${workshopId}`}>
             <p>{title} </p>
+            </Link>
             {/* <p> {category} category</p> */}
-            <p>{duration} workshop</p>
-            {/* <p>{maxParticipants} participants max</p> */}
-            {/* <p>{description}</p> */}
-            {/* <p>Address: {location}</p> */}
+            <p> <BiTime/> {duration} </p>
             <p>{price} € / pers</p>
         </div>
-    </Link>
+   
   );
 }
 

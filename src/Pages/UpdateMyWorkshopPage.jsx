@@ -21,7 +21,7 @@ function UpdateMyWorkshopPage() {
   const [updatedPrice, setUpdatedPrice] = useState("");
   const [updatedSessionsAvailable, setUpdatedSessionsAvailable] = useState("");
   const [updatedSuccessMessage, setUpdatedSuccessMessage] = useState("");
-  // const [teacherId, setTeacherId] = useState("");
+
 
   useEffect(() => {
     myApi
@@ -58,20 +58,8 @@ function UpdateMyWorkshopPage() {
     fd.append("workshopPics", workshopPics);
     fd.append("location", location);
     fd.append("price", price);
-    // const updatedData = {
-    //   title: updatedTitle,
-    //   category: updatedCategory,
-    //   subCategory: updatedSubCategory,
-    //   duration: updatedDuration,
-    //   maxParticipants: updatedMaxParticipants,
-    //   description: updatedDescription,
-    //   workshopPics: updatedWorkshopPics,
-    //   location: updatedLocation,
-    //   workshopMaterial: updatedWorkshopMaterial,
-    //   price: updatedPrice,
-    //   sessionsAvailable: updatedSessionsAvailable,
-    //   // teacherId: teacherId,
-    // };
+    
+ 
     myApi
       .updateWorkshopById(teacherId, workshopId, fd)
       .then((response) => {
@@ -207,24 +195,6 @@ function UpdateMyWorkshopPage() {
           ></input>
         </div>
 
-        {/* <div>
-          <label>Sessions Available</label>
-          <input
-            type="date"
-            name="date"
-            value={updatedSessionsAvailable}
-            onChange={(e) => setUpdatedSessionsAvailable(e.target.value)}
-          ></input>
-        </div> */}
-        {/* <div>
-          <label> Teacher's Id</label>
-          <input
-            type="text"
-            name="teacherId"
-            value={teacherId}
-            readOnly
-          ></input>
-        </div> */}
         <button className="btn" onClick={handleSubmit}>
           {" "}
           Update workshop{" "}
@@ -235,44 +205,4 @@ function UpdateMyWorkshopPage() {
 }
 
 export default UpdateMyWorkshopPage;
-//   useEffect(() => {
-//     myApi
-//       .getWorkshopById(workshopId)
-//       .then((response) => {
-//         const workshopData = response.data;
-//         setWorkshop(workshopData);
-//         setUpdatedTitle(workshopData.title)
 
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   }, [workshopId]);
-//   const handleUpdate = () => {
-//     const updatedData = { title: updatedTitle}
-
-//     myApi.updateWorkshop(workshopId, updatedData)
-//     .then(() => {
-//         console.log("Workshop updated successfully!");
-//         navigate("/see-workshops")
-//     })
-//     .catch((error) => {
-//         console.log(error);
-//     })
-//   };
-
-//   const navigate = useNavigate();
-//   const [workshop, setWorkshop] = useState({
-//     title: "",
-//     category: "",
-//     subCategory: "",
-//     duration: "",
-//     maxParticipants: "",
-//     description: "",
-//     workshopPics: "",
-//     location: "",
-//     workshopMaterial: "",
-//     price: "",
-//     teacherId: "",
-//     sessionsAvailable: "",
-//   });
