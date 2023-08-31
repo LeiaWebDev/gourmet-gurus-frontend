@@ -82,7 +82,7 @@ function NavBar() {
 
             {IsLoggedIn && (
               <ul>
-                <Link to={"/users/:userId/update-profile"}>
+                <Link to={`/users/${user?._id}/update-profile`}>
                   <li>
                     <h3>Update profile</h3>
                   </li>
