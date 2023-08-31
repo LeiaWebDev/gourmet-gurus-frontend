@@ -21,7 +21,7 @@ import NavBar from "./Components/NavBar";
 import Search from "./Components/Search";
 import UpdateProfile from "./Components/UpdateProfile";
 import IsAdmin from "./Components/isAdmin";
-import IsTeacher from "./Components/IsTeacher";
+import IsTeacher from "./Components/isTeacher";
 import BookingCreatePage from "./Pages/BookingCreatePage";
 
 function App() {
