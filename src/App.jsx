@@ -38,7 +38,6 @@ function App() {
             element={<BookingCreatePage />}
           />
           <Route path="/payment" element={<PaymentPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/users/:userId/update-profile"
             element={<UpdateProfile />}
           />
