@@ -118,7 +118,8 @@ console.log(workshop)
               <p>Address : {workshop.location}</p>
             </div>
             
-            <h3 className='one-workshop-price'>{workshop.price} €   X  </h3>
+            <h3 className='one-workshop-price'>{workshop.price} €</h3>
+            <h3>X</h3>
 
             <div className='quantity'> 
               <button className='buttonCart' onClick={handleDecrement}>
@@ -128,9 +129,10 @@ console.log(workshop)
               <button className='buttonCart' onClick={handleIncrement}>
               +
               </button>
-              <h3 className='recap-price'> =      {calculateTotalPrice()} €</h3>
             </div>
 
+            <h3>=</h3>
+            <h3 className='recap-price'>{calculateTotalPrice()} €</h3>
             
 
         </div>
@@ -139,7 +141,7 @@ console.log(workshop)
         
         <div className='session'>
          
-          <label>Sessions available</label>
+          <label className='label-session'>Sessions available</label>
           <select 
           name="select-session" 
           value={newBooking.session} 

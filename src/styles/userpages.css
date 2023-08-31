@@ -161,21 +161,22 @@
 .one-workshop-price{
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
     padding:30px;
 }
 .cart-quantity{
-    margin-top: 40px;
+    margin-top: 10px;
 }
 .buttonCart{
     height: 40px;
-    width: 20px;
-    margin-top: 30px;
+    width: 25px;
+    
 }
 .cart-text-details{
     display: flex;
     flex-direction: row;
     margin-top: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 .total-price{
@@ -184,7 +185,8 @@
 }
 .recap-price{
     align-items: end;
-    margin: 40px;
+    margin: 50px;
+    padding: 30px;
 }
 
 .session {
@@ -196,6 +198,9 @@
 
 }
 
+.label-session{
+    width: 250px;
+}
 
 .quantity{
     display: inline-flex;
@@ -219,6 +224,8 @@
     display: flex;
     justify-content: center;
 }
+
+
 
 /* payment */
 .payment{
