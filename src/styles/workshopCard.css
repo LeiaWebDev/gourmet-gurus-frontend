@@ -1,8 +1,14 @@
 .card-workshop-pic{
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 140px;
 }
 .workshopCard{
     width: 200px;
-    height: 250px;
+    height: 370px;
+    border: orange 2px solid;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    line-height: 2;
+    margin: 30px;
 }

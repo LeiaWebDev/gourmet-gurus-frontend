@@ -1,37 +1,72 @@
-.audience-persona{
+
+/* login and sign up pages */
+.login, .signup {
+    margin-top: 200px;
+}
+.form-login, 
+.want-signup {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    line-height: 4;
+    gap: 5px;
+    
+}
+
+/* =====homepage=====start */
+.homepage{
+    padding-top: 150px;
+    
+}
+
+.img-homepage-top{
+    width: 50%;
+    margin: 50px;
+}
+
+.students-block{
+    width: 100%;
+    margin: 50px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    /* margin-top: 200px; */
-    padding-top: 100px;
-    font-size: 20px;
+}
+.chefs-block{
+    width: 100%;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.homepage-top{
+    margin-top: 50px;
 }
 
-.suggested-workshops{
-    margin-top: 100px;
+/* .suggested-workshops{
+    margin-top: 100px; */
     /* display: flex; */
     /* align-items: center; */
     /* justify-content: space-between; */ 
-}
+/* } */
 
 
-.create-workshop-area{
-    background-color:lightgray;
+.h2-padding{ 
+    padding-bottom: 10px;
+    /* background-color:lightgray;
     width: 40%;
-    padding: 0px 0px 16px 0px;
+    padding: 0px 0px 16px 0px; */
+
 }
-
-
-/* create workshop page done*/
-
-
+/* create workshop page */
 
 
 .display-each-card{
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 20px;
 }
 
 /* search result page */
@@ -43,20 +78,106 @@
 .oneWorkshopPage{
     margin-top: 150px;
 }
+
 .oneWorkshopPage-pic{
-    width: 70%;
+    width: 80%;
+    display: block;
+    align-content: center;
+    margin: 100px;
 }
+.workshop-details{
+    margin:50px;
+    padding : 10px;
+    line-height: 3;
+    width: 55%;
+}
+
+.price-availability{
+    margin: 50px;
+    height: 245px;
+    line-height: 3;
+    width: 30%;
+    padding: 25px;
+    background-color: chocolate;
+    /* padding-left: 30px; */
+    text-align: center;
+}
+
+.presentation-workshop{
+    display: flex;
+}
+
+.teacher-details{
+    width: 100%;
+    margin: 50px;
+    display: flex;
+}
+
+.teacher-presentation{
+    margin: 50px;
+    line-height: 2.5;
+}
+
+.teacher-pic{
+    width: 30%;
+}
+
+.h2-center{
+    text-align: center;
+}
+
+/* =============== */
+
 
 
 /* create booking page */
 .cart{
     margin-top: 150px;
+    margin-bottom: 50px;
+}
+.cart-workshop-pic{
+    width: 150px;
+    margin: 50px;
+}
+
+.one-cart-description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.one-workshop-price{
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+.cart-quantity{
+    margin-top: 40px;
+}
+.buttonCart{
+    height: 40px;
+    margin-top: 30px;
+}
+.cart-text-details{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.total-price{
+    align-items: end;
+    margin-top: 50px;
+}
+.recap-price{
+    align-items: end;
 }
 
 .session {
     display:flex;
     align-items: center;
     justify-content: space-around;
+    width: 80%;
+    margin: 50px;
 
 }
 
@@ -75,22 +196,12 @@
 }
 
 
+
 .payment{
     margin-top: 150px;
 }
 
-/* login and sign up pages */
-.login, .signup {
-    margin-top: 200px;
+.payment-amount{
+    margin: 50px;
 }
-.form-login, 
-.want-signup {
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    line-height: 4;
-    gap: 5px;
-    
-}
+

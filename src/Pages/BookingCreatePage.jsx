@@ -106,18 +106,40 @@ console.log(workshop)
     <div className="cart">
         <h1>Your cart</h1>
         <div className="cart-text-details">
-            <h2>{workshop.title}</h2>
-            <img className="oneWorkshopPage-pic"
+            
+            <img className="cart-workshop-pic"
                 src={workshop.workshopPics[0]}
                 alt={workshop.title}
             />
-            <p>{workshop.duration} workshop</p>
-        
-            <p>Address : {workshop.location}</p>
-            <p>{workshop.price} € / pers</p>
+            
+            <div className='one-cart-description'>
+              <h2>{workshop.title}</h2>
+              <p>{workshop.duration} workshop</p>
+              <p>Address : {workshop.location}</p>
+            </div>
+            
+            <h3 className='one-workshop-price'>{workshop.price} €   X  </h3>
+
+            <div className='quantity'> 
+              <button className='buttonCart' onClick={handleDecrement}>
+              -
+              </button>
+              <p className='cart-quantity'>{newBooking.quantity}</p>
+              <button className='buttonCart' onClick={handleIncrement}>
+              +
+              </button>
+            </div>
+
+            <p className='recap-price'> = {calculateTotalPrice()} €</p>
 
         </div>
-
+        
+        
+        
+        <p className='total-price'>Total Price : {calculateTotalPrice()} euros</p>
+        
+        
+        
         <div className='session'>
          
           <label>Sessions available</label>
@@ -140,18 +162,11 @@ console.log(workshop)
           </select>
         </div>
 
+        <h3 className='cancellation-policy'>Cancellation policy</h3>
+        {/* <p>{booking.cancellation}</p> */}
 
-        <div className='quantity'> 
-            <p> Quantity:  </p>
-            <button className='buttonCart' onClick={handleDecrement}>
-            -
-            </button>
-            <p>{newBooking.quantity}</p>
-            <button className='buttonCart' onClick={handleIncrement}>
-            +
-            </button>
-        </div>
-        <p className='total-price'>Total Price : {calculateTotalPrice()} euros</p>
+        
+        
         
         <Link to={`/payment`}>
         {/* <Link> */}
