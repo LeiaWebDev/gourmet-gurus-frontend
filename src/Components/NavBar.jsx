@@ -80,30 +80,30 @@ function NavBar() {
               </ul>
             )}
 
-            {user?.role === "Teacher" && (
-              <ul>
-                <Link to={"/see-workshops"}>
-                  <li>
-                    <h3>See my workshops</h3>
-                  </li>
-                </Link>
-
-                <Link to={"/users/:userId/update-profile"}>
-                  <li>
-                    <h3>Update</h3>
-                  </li>
-                </Link>
-              </ul>
-            )}
-
             {IsLoggedIn && (
               <ul>
+                <Link to={"/users/:userId/update-profile"}>
+                  <li>
+                    <h3>Update profile</h3>
+                  </li>
+                </Link>
+
                 <li>
                   <h2 onClick={logout}>
                     {" "}
                     <HiOutlineLogout />
                   </h2>
                 </li>
+              </ul>
+            )}
+
+            {IsLoggedIn && user?.role === "Teacher" && (
+              <ul>
+                <Link to={"/see-workshops"}>
+                  <li>
+                    <h3>See my workshops</h3>
+                  </li>
+                </Link>
               </ul>
             )}
           </div>

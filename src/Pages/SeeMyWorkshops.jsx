@@ -4,9 +4,6 @@ import { UserContext } from "./../context/AuthContext";
 import { Link } from "react-router-dom";
 import { BiTime } from "react-icons/bi";
 import "../styles/seemyworkshops.css";
-import { BsArrowLeftCircle } from "react-icons/bs";
-import { BsArrowRightCircle } from "react-icons/bs";
-import { MdDeleteForever } from "react-icons/md";
 
 
 function SeeMyWorkshops() {
