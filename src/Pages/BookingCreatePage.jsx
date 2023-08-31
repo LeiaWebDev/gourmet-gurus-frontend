@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-// import { UserContext } from "../context/AuthContext";
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import myApi from '../api/service'
 import axios from 'axios'
@@ -27,15 +26,11 @@ function BookingCreatePage() {
     const [cancellation, setCancellation] = useState("")
     const [totalPrice, setTotalPrice] = useState(0)
     const navigate = useNavigate()
-    // const { authenticateUser } = useContext(UserContext);
 
 
     const handleValidateBooking = async(e) => {
         e.preventDefault();
 
-
-        // const confirmedStatus = newBooking.status("Confirmed")
-        // setBookingStatus(confirmedStatus)
         const bookingToCreate = {
           // _id: newBooking._id,
           session: newBooking.session,
@@ -73,7 +68,7 @@ function BookingCreatePage() {
     }, [])
 
     const handleIncrement = () =>{
-        // setQuantity(()=>(booking.quantity += 1))
+       
         setNewBooking((prevBooking) => ({
         ...prevBooking,
         quantity: prevBooking.quantity + 1
@@ -102,7 +97,7 @@ function BookingCreatePage() {
 
 console.log(workshop)
   return (
-    // <div>title{workshop.title}</div>
+    
     <div className="cart">
         <h1>Your cart</h1>
         <div className="cart-text-details">

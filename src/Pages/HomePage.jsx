@@ -73,20 +73,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-{/* <section className="suggested section container">
-<div className="secContainer">
-
-
-  <div className="secHeadear flex">
-
-  </div>
-</div>
-
-<div className="mainContent grid">
-  <div className="one-workshop"></div> 
-  <div className="workshopImage"></div>
-
-
-</div>
-</section> */}

@@ -16,12 +16,9 @@ function OneWorkshopPage({user}) {
   const { workshopId, teacherId } = useParams()
   const [loading, setLoading] = useState(true)
   const [sessionsAvailable, setSessionsAvailable] = useState("")
-  // const valuesFromContext = useContext(UserContext)
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
-
 
   const handleBooking=()=>{
-    // if(user||workshopId){
+    
       if(!IsLoggedIn){
         alert ("You must be logged in to book a workshop")
         navigate(`/login`)
@@ -41,10 +38,7 @@ function OneWorkshopPage({user}) {
     )
     )}  return null; // Return null or a default option if sessionsAvailable is not available
   }
-    // {booking.workshopId.sessionsAvailable.map(date => {
-      //  
-      //  return <option key={booking.workshopId.sessionsAvailable.date} value={date}>{new Date(date).toLocaleDateString()}</option>
-      //         })}
+    
 
   useEffect(() => {
     const getWorkshop = async () => {
@@ -118,11 +112,6 @@ function OneWorkshopPage({user}) {
                 ))}
                
               </div>
-
-          {/* <img className="oneWorkshopPage-pic"
-            src={workshop.workshopPics}
-            alt={workshop.title}
-          /> */}
           
           <div className="presentation-workshop">
 
@@ -148,9 +137,7 @@ function OneWorkshopPage({user}) {
                 </option>
                 {handleAvailability()}
               </select>
-              {/* <Link to={`/booking/workshop/${workshopId}`}>Check availability */}
-                {/* <button onClick={handleAvailability}>Check availability</button> */}
-              {/* </Link> */}
+             
             </div>
           </div>
 
@@ -160,9 +147,7 @@ function OneWorkshopPage({user}) {
               <h2 className="h2-center">Teacher's details </h2>
               <div className="teacher-details">
               
-                {/* <Link to={`workshops/teachers/${teacherId._id}`}> */}
-                {/* <Link classname="teacher-details" to={`workshops/teachers/${teacherId._id}`}> */}
-                {/* NOT SURE FOR LINK */}
+                
                 <img className="teacher-pic"
                   src={teacher.photo}
                 />

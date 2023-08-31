@@ -2,18 +2,14 @@ import { useState } from "react";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import BookingPage from "./Pages/BookingPage";
 import HomePage from "./Pages/HomePage";
 import OneWorkshopPage from "./Pages/OneWorkshopPage";
 import SearchResultPage from "./Pages/SearchResultPage";
-// import BookingValidationPage from "./Pages/BookingValidationPage";
-import FavoritesPage from "./Pages/FavoritesPage";
 import PaymentPage from "./Pages/PaymentPage";
 import CreateWorkshopPage from "./Pages/CreateWorkshopPage";
 import SeeMyWorkshops from "./Pages/SeeMyWorkshops";
 import SeeMySessions from "./Pages/SeeMySessions";
 import UpdateMyWorkshopPage from "./Pages/UpdateMyWorkshopPage";
-// import CreateSessionPage from "./Pages/CreateSessionPage";
 import SignupPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import IsLoggedIn from "./Components/IsLoggedIn";
@@ -36,18 +32,14 @@ function App() {
         <Route path="/workshops/:workshopId" element={<OneWorkshopPage />} />
         <Route path="/search-result" element={<SearchResultPage />} />
 
-        {/* <Route path="/booking/:bookingId" element={<BookingPage />} /> */}
-
         <Route path="/" element={<IsLoggedIn />}>
           <Route
             path="/booking/workshop/:workshopId"
             element={<BookingCreatePage />}
           />
-          {/* <Route path="/booking-details/:bookingId" element={<BookingValidationPage />} /> */}
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
-          <Route
-            path="/users/:userId/update-profile"
+          <Route path="/users/:userId/update-profile"
             element={<UpdateProfile />}
           />
         </Route>
@@ -55,8 +47,7 @@ function App() {
         <Route path="/" element={<IsTeacher />}>
           <Route path="/create-workshop" element={<CreateWorkshopPage />} />
           <Route path="/see-workshops" element={<SeeMyWorkshops />} />
-          <Route
-            path="/update-workshop/:workshopId"
+          <Route path="/update-workshop/:workshopId"
             element={<UpdateMyWorkshopPage />}
           />
           <Route path="/see-sessions/:workshopId" element={<SeeMySessions />} />

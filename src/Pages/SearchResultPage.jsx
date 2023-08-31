@@ -9,11 +9,10 @@ const API_URL = import.meta.env.VITE_API_URL
 
 function SearchResultPage() {
   const [searchResults, setSearchResults] = useState([])
-  // const [filteredWorkshops, setFilteredWorkshops] = useState()
+  
   const location = useLocation()
   const filteredWorkshops = location.state.filteredWorkshops||[]
-  // const [searchParams, setSearchParams] = useSearchParams();
-    // const search = searchParams.get("search");
+ 
     
 
   return (
