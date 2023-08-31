@@ -182,6 +182,7 @@
 .total-price{
     align-items: end;
     margin-top: 50px;
+    margin-right : 100px;
 }
 .recap-price{
     align-items: end;
